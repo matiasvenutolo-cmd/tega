@@ -1019,8 +1019,84 @@ const LANG = {
   }
 };
 
+// ── PANEL TRANSLATIONS (content not in main LANG object) ──
+let currentLang = 'es';
+
+const PANEL_T = {
+  ind: {
+    en: {
+      auto:   { tag:'Automotive industry',         text:'First company to equip automotive assembly lines in Argentina, São Paulo and Curitiba. Solutions for body assembly, paint booths, stamping and engine mounting.',                                                      chips:['Body assembly','Paint booths','Stamping','Engine mounting'] },
+      mfg:    { tag:'Industrial manufacturing',    text:'Lifting equipment for the most diverse industrial manufacturing operations. From material handling to high-speed serial production with maximum availability.',                                                       chips:['Production lines','Warehouses','Material handling','High availability'] },
+      mining: { tag:'Mining industry',             text:'Certified equipment for the harshest conditions: dust, moisture and extreme vibration. For continuous operation in open-pit and underground mining.',                                                              chips:['Open-pit','Underground','Dust & humidity','24/7 operation'] },
+      nuclear:{ tag:'Nuclear industry',            text:'Qualified CNEA supplier since 1973. Equipment with full traceability, manufactured under ASME standards and certified for controlled and supervised nuclear areas.',                                               chips:['CNEA qualified','Full traceability','ASME standards','Supervised areas'] },
+      food:   { tag:'Food & beverage',             text:'Stainless steel and sanitary materials for the food industry. Hygienic design for easy cleaning, compliant with FDA/SENASA regulations and resistant to frequent washdowns.',                                       chips:['Stainless steel','Hygienic design','FDA / SENASA','Easy cleaning'] },
+      petro:  { tag:'Petrochemical industry',      text:'Certified equipment for corrosive environments with special materials and coatings. Solutions for refining, processing and petrochemical distribution.',                                                            chips:['Corrosive environments','Special coatings','Refining','Processing'] },
+      oil:    { tag:'Oil & Gas',                   text:'Specialists in lifting for onshore and offshore fields. Explosion-proof equipment resistant to flammable gas and vapor environments. Leaders in South America.',                                                    chips:['Onshore / Offshore','Explosion-proof','Flammable vapors','ATEX Zone 1 & 2'] },
+      energy: { tag:'Energy sector',               text:'Lifting solutions for power plants, wind turbines, solar panels and substations. High-availability equipment for critical operations.',                                                                             chips:['Power plants','Wind energy','Solar','Substations'] },
+      paper:  { tag:'Pulp & Paper',                text:'High-capacity equipment for handling paper rolls, coils and raw materials. Designed for humid environments with maximum reliability and low maintenance.',                                                          chips:['Rolls & coils','Humid environments','High capacity','Low maintenance'] },
+      steel:  { tag:'Steel industry',              text:'From billet to finished product. Equipment with capacities up to 200 tons for steelworks and rolling mills, with resistance to high temperatures.',                                                               chips:['Up to 200 tons','High temperatures','Steelworks','Rolling mills'] },
+      naval:  { tag:'Naval industry',              text:'Equipment designed for marine environments with salt corrosion protection. Solutions for assembly, maintenance and repair of vessels and offshore structures.',                                                     chips:['Salt protection','Shipyards','Naval assembly','Repairs'] },
+      chem:   { tag:'Chemical industry',           text:'Equipment for the safe handling of raw materials and chemical products, with materials resistant to corrosive agents and international safety certifications.',                                                    chips:['Resistant materials','Certifications','ATEX safety','Chemical corrosion'] },
+      const:  { tag:'Construction & infrastructure',text:'Tower cranes and hoists for civil works, high-rise buildings and road infrastructure. Reliability and safety in outdoor working conditions.',                                                                   chips:['Civil works','Infrastructure','Tower cranes','Outdoor'] },
+      aero:   { tag:'Aerospace industry',          text:'Precision lifting for high-tech components. Fine control and anti-shock systems for handling aeronautical, space and defense structures.',                                                                         chips:['Millimeter precision','Anti-shock','Aeronautics','Defense'] }
+    },
+    pt: {
+      auto:   { tag:'Indústria automotiva',        text:'Primeira empresa a equipar linhas de montagem automotiva na Argentina, São Paulo e Curitiba. Soluções para estampagem, montagem de carroceria, cabines de pintura e montagem de motores.',                        chips:['Montagem de carroceria','Cabines de pintura','Estampagem','Montagem de motores'] },
+      mfg:    { tag:'Manufatura industrial',       text:'Equipamentos de içamento para as mais diversas operações de manufatura industrial. Do manuseio de materiais à produção em série de alta velocidade.',                                                             chips:['Linhas de produção','Armazéns','Manuseio de materiais','Alta disponibilidade'] },
+      mining: { tag:'Indústria de mineração',      text:'Equipamentos certificados para as condições mais adversas: poeira, umidade e vibrações extremas. Para operação contínua em mineração a céu aberto e subterrânea.',                                               chips:['Mineração a céu aberto','Subterrânea','Poeira e umidade','Operação 24/7'] },
+      nuclear:{ tag:'Indústria nuclear',           text:'Fornecedor qualificado da CNEA desde 1973. Equipamentos com rastreabilidade total, fabricados sob normas ASME e certificados para áreas controladas e supervisionadas.',                                          chips:['CNEA qualificado','Rastreabilidade total','Normas ASME','Áreas supervisionadas'] },
+      food:   { tag:'Indústria alimentícia',       text:'Equipamentos em aço inoxidável e materiais sanitários para a indústria alimentícia. Design higiênico de fácil limpeza, em conformidade com as regulamentações FDA/ANVISA.',                                       chips:['Aço inoxidável','Design higiênico','FDA / ANVISA','Fácil limpeza'] },
+      petro:  { tag:'Indústria petroquímica',      text:'Equipamentos certificados para ambientes corrosivos com materiais e revestimentos especiais. Soluções para refino, processamento e distribuição petroquímica.',                                                    chips:['Ambientes corrosivos','Revestimentos especiais','Refino','Processamento'] },
+      oil:    { tag:'Oil & Gas',                   text:'Especialistas em içamento para campos onshore e offshore. Equipamentos anti-explosivos resistentes a gases e vapores inflamáveis. Líderes na América do Sul.',                                                    chips:['Onshore / Offshore','Anti-explosivo','Vapores inflamáveis','ATEX Zona 1 e 2'] },
+      energy: { tag:'Setor energético',            text:'Soluções de içamento para usinas de geração elétrica, turbinas eólicas, painéis solares e subestações. Equipamentos de alta disponibilidade para operações críticas.',                                           chips:['Usinas elétricas','Energia eólica','Solar','Subestações'] },
+      paper:  { tag:'Papel e Celulose',            text:'Equipamentos de alta capacidade para o manuseio de rolos de papel, bobinas e matérias-primas. Projetados para ambientes úmidos com máxima confiabilidade e baixa manutenção.',                                  chips:['Rolos e bobinas','Ambientes úmidos','Alta capacidade','Baixa manutenção'] },
+      steel:  { tag:'Indústria siderúrgica',       text:'Do tarugo ao produto final. Equipamentos com capacidades de até 200 toneladas para siderúrgicas e laminadoras, com resistência a altas temperaturas.',                                                           chips:['Até 200 toneladas','Altas temperaturas','Siderúrgicas','Laminação'] },
+      naval:  { tag:'Indústria naval',             text:'Equipamentos projetados para ambientes marinhos com proteção anticorrosão salina. Soluções para montagem, manutenção e reparo de embarcações e estruturas offshore.',                                              chips:['Proteção salina','Estaleiros','Montagem naval','Reparos'] },
+      chem:   { tag:'Indústria química',           text:'Equipamentos para o manuseio seguro de matérias-primas e produtos químicos, com materiais resistentes a agentes corrosivos e certificações de segurança internacionais.',                                         chips:['Materiais resistentes','Certificações','Segurança ATEX','Corrosão química'] },
+      const:  { tag:'Construção e infraestrutura', text:'Torres grúa e talhas para obras civis, edifícios de grande porte e infraestrutura viária. Confiabilidade e segurança em condições de trabalho ao ar livre.',                                                    chips:['Obras civis','Infraestrutura viária','Torres grúa','Ao ar livre'] },
+      aero:   { tag:'Indústria aeroespacial',      text:'Içamento de precisão para componentes de alta tecnologia. Sistemas de controle fino e anti-choque para o manuseio de estruturas aeronáuticas, espaciais e de defesa.',                                           chips:['Precisão milimétrica','Anti-choque','Aeronáutica','Defesa'] }
+    }
+  },
+  prod: {
+    en: {
+      crane:    { text:'Bridge cranes, gantries and jibs designed and manufactured in Argentina. The most complete range on the market for every duty class, from occasional use to continuous 24/7 service.',                                                               specs:[['Capacity','Up to 200 t'],['Span','Up to 40 m'],['Standards','FEM / CMAA / IRAM'],['Duty class','A1 to A8 (FEM)']] },
+      powerlift:{ text:'Electric wire rope hoists of national manufacture. Robustness and versatility for the most demanding applications. Double-action sealed brakes, variable speed drive and control panel.',                                                            specs:[['Capacity','0.5 – 30 t'],['Speeds','Single / dual'],['Standards','FEM / DIN'],['Protection','IP55']] },
+      ultralift:{ text:'Maximum-capacity electric hoist with near-vertical lifting. Safety sealed brakes, Siemens variable speed drive and high-rigidity monoblock structure. For the most demanding industrial operations.',                                                specs:[['Capacity','Up to 80,000 kg'],['Feature','Near-vertical lifting'],['Brakes','Double sealed'],['Drive','Siemens VFD']] },
+      antiex:   { text:'Lifting equipment certified for ATEX Zone 1 and Zone 2. First and most important manufacturer of anti-explosive equipment in Latin America. Leaders in petrochemicals, oil & gas, mining and chemicals.',                                           specs:[['Zones','ATEX Zone 1 & 2'],['Standards','UL / VDE / IRAM'],['Application','Petro, gas, mining'],['Position','#1 in South America']] },
+      chain:    { text:'Electric chain hoists of national manufacture. Compact, quiet and reliable for mounting on monorail or light structures. Wide range of capacities and control options.',                                                                             specs:[['Capacity','125 kg – 10 t'],['Phases','Single & three-phase'],['Chain','Class 80 DIN'],['Protection','IP54']] },
+      kit:      { text:'Complete component line for custom bridge cranes: profiled or box beams, monorail and birrail trolleys, end trucks, travel motors and control panels. Full integration guaranteed.',                                                                specs:[['Beams','Profile or box'],['Trolleys','Mono & birrail'],['Motors','Travel & lift'],['Integration','Full TEGA line']] },
+      radio:    { text:'Radio frequency wireless control system for bridge cranes and hoists. Maximum operator freedom of movement, without cables or fixed push-button stations. Up to 18 programmable functions.',                                                         specs:[['Technology','Radio frequency'],['Functions','Up to 18'],['Compatibility','Full TEGA range'],['Battery','Rechargeable + backup']] },
+      movicar:  { text:'Electrohydraulic stackers for load handling in industrial warehouses. Compact, maneuverable and quiet. Ideal for confined spaces with frequent lifting requirements.',                                                                               specs:[['Type','Electrohydraulic'],['Environment','Warehouses'],['Feature','Compact & maneuverable'],['Operation','Electric, zero emissions']] },
+      service:  { text:'Preventive, corrective maintenance and revamping service direct from factory. Our technicians know the complete traceability of each TEGA equipment. 24-hour response throughout Argentina and Latin America.',                                     specs:[['Type','Preventive / corrective'],['Standards','FEM / CMAA'],['Response','24 h'],['Coverage','Argentina & LATAM']] }
+    },
+    pt: {
+      crane:    { text:'Pontes rolantes, pórticos e plumas projetadas e fabricadas na Argentina. A linha mais completa do mercado para cada classe de serviço, do uso esporádico ao serviço contínuo 24/7.',                                                                specs:[['Capacidade','Até 200 t'],['Vão','Até 40 m'],['Normas','FEM / CMAA / IRAM'],['Classe de serviço','A1 a A8 (FEM)']] },
+      powerlift:{ text:'Talhas elétricas a cabo de aço de fabricação nacional. Robustez e versatilidade para os usos mais exigentes. Freios selados de dupla ação, variador de velocidade e painel de manobras.',                                                          specs:[['Capacidade','0,5 – 30 t'],['Velocidades','Simples / dupla'],['Normas','FEM / DIN'],['Proteção','IP55']] },
+      ultralift:{ text:'Talha elétrica de máxima capacidade com içamento quase vertical. Freios de segurança selados, variador de velocidade Siemens e estrutura monobloco de alta rigidez. Para as operações industriais mais exigentes.',                                 specs:[['Capacidade','Até 80.000 kg'],['Característica','Içamento quase vertical'],['Freios','Duplo selado'],['Drive','Variador Siemens']] },
+      antiex:   { text:'Equipamentos de içamento certificados para zonas ATEX Zona 1 e Zona 2. Primeiro e mais importante fabricante de equipamentos anti-explosivos da América Latina. Referência em petroquímica, oil & gas, mineração e química.',                       specs:[['Zonas','ATEX Zona 1 e 2'],['Normas','UL / VDE / IRAM'],['Aplicação','Petro, gás, mineração'],['Posição','1° na América do Sul']] },
+      chain:    { text:'Talhas elétricas a corrente de fabricação nacional. Compactas, silenciosas e confiáveis para montagem em monoviga ou estruturas leves. Ampla gama de capacidades e opções de comando.',                                                             specs:[['Capacidade','125 kg – 10 t'],['Fases','Mono e trifásico'],['Corrente','Classe 80 DIN'],['Proteção','IP54']] },
+      kit:      { text:'Linha completa de componentes para pontes rolantes sob medida: vigas perfiladas ou caixão, carros monorraíl e birrail, extremidades de vigas, motores de translação e painéis de controle. Integração total garantida.',                           specs:[['Vigas','Perfil ou caixão'],['Carros','Mono e birrail'],['Motores','Translação e içamento'],['Integração','Linha TEGA completa']] },
+      radio:    { text:'Sistema de comando sem fio por radiofrequência para pontes rolantes e talhas. Máxima liberdade de movimento para o operador, sem cabos nem pulsadores fixos. Até 18 funções programáveis.',                                                         specs:[['Tecnologia','Radiofrequência'],['Funções','Até 18'],['Compatibilidade','Toda linha TEGA'],['Bateria','Recarregável + backup']] },
+      movicar:  { text:'Empilhadeiras eletrohidráulicas para o manuseio de cargas em depósitos e armazéns industriais. Compactas, manobráveis e silenciosas. Ideais para espaços reduzidos com exigências frequentes de elevação.',                                        specs:[['Tipo','Eletrohidráulica'],['Ambiente','Depósitos e armazéns'],['Característica','Compacta e manobrável'],['Operação','Elétrica, sem emissões']] },
+      service:  { text:'Serviço de manutenção preventiva, corretiva e revamping direto da fábrica. Nossos técnicos conhecem a rastreabilidade completa de cada equipamento TEGA. Resposta em 24 horas em toda a Argentina e América Latina.',                             specs:[['Tipo','Preventiva / corretiva'],['Normas','FEM / CMAA'],['Resposta','24 h'],['Alcance','Argentina e LATAM']] }
+    }
+  }
+};
+
+function getIndData(key) {
+  const base = IND[key];
+  const t = PANEL_T.ind[currentLang]?.[key];
+  return t ? { ...base, ...t } : base;
+}
+function getProdData(key) {
+  const base = PROD[key];
+  const t = PANEL_T.prod[currentLang]?.[key];
+  return t ? { ...base, ...t } : base;
+}
+
 function setLang(code) {
   if (!LANG[code]) return;
+  currentLang = code;
   document.documentElement.lang = code;
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const v = LANG[code][el.dataset.i18n];
@@ -1031,6 +1107,9 @@ function setLang(code) {
     if (v !== undefined) { el.innerHTML = v; if (el.id === 'heroH1') el.classList.add('switched'); }
   });
   document.querySelectorAll('.nav-lang button').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === code));
+  // Re-render open panels with new language
+  if (activeInd) renderIndPanel(activeInd, false);
+  if (activeProd) renderProdPanel(activeProd, false);
   try { localStorage.setItem('tega-lang', code); } catch(e) {}
 }
 
@@ -1101,6 +1180,23 @@ function renderSpecs(specs) {
 // ── INDUSTRY PANEL ──
 let activeInd = null;
 const indPanel = document.getElementById('indPanel');
+
+function renderIndPanel(key, animate) {
+  const d = getIndData(key); if (!d) return;
+  document.getElementById('indPanelImg').src = d.img;
+  document.getElementById('indPanelImg').alt = d.name;
+  document.getElementById('indPanelTag').textContent = d.tag;
+  document.getElementById('indPanelTitle').textContent = LANG[currentLang]?.['ind.'+key] || d.name;
+  document.getElementById('indPanelText').textContent = d.text;
+  document.getElementById('indPanelChips').innerHTML = d.chips.map(c=>`<span class="ep-chip">${c}</span>`).join('');
+  if (animate === true) {
+    if (activeInd === null) { openPanel(indPanel); } else { refreshPanel(indPanel); }
+    setTimeout(() => indPanel.scrollIntoView({ behavior:'smooth', block:'nearest' }), 50);
+  } else {
+    refreshPanel(indPanel);
+  }
+}
+
 document.getElementById('indPanelClose').addEventListener('click', () => {
   document.querySelectorAll('.ind-card').forEach(c => c.classList.remove('selected'));
   closePanel(indPanel); activeInd = null;
@@ -1113,24 +1209,33 @@ document.querySelectorAll('.ind-card').forEach(card => {
       card.classList.remove('selected');
       closePanel(indPanel); activeInd = null; return;
     }
-    const d = IND[key]; if (!d) return;
     document.querySelectorAll('.ind-card').forEach(c => c.classList.remove('selected'));
     card.classList.add('selected');
-    document.getElementById('indPanelImg').src = d.img;
-    document.getElementById('indPanelImg').alt = d.name;
-    document.getElementById('indPanelTag').textContent = d.tag;
-    document.getElementById('indPanelTitle').textContent = d.name;
-    document.getElementById('indPanelText').textContent = d.text;
-    document.getElementById('indPanelChips').innerHTML = d.chips.map(c=>`<span class="ep-chip">${c}</span>`).join('');
-    if (activeInd === null) { openPanel(indPanel); } else { refreshPanel(indPanel); }
+    renderIndPanel(key, true);
     activeInd = key;
-    setTimeout(() => indPanel.scrollIntoView({ behavior:'smooth', block:'nearest' }), 50);
   });
 });
 
 // ── PRODUCT PANEL ──
 let activeProd = null;
 const prodPanel = document.getElementById('prodPanel');
+
+function renderProdPanel(key, animate) {
+  const d = getProdData(key); if (!d) return;
+  document.getElementById('prodPanelImg').src = d.img;
+  document.getElementById('prodPanelImg').alt = d.name;
+  document.getElementById('prodPanelTag').textContent = LANG[currentLang]?.['p'+(['crane','powerlift','ultralift','antiex','chain','kit','radio','movicar','service'].indexOf(key)+1)+'.cat'] || d.tag;
+  document.getElementById('prodPanelTitle').textContent = d.name;
+  document.getElementById('prodPanelText').textContent = d.text;
+  document.getElementById('prodPanelSpecs').innerHTML = renderSpecs(d.specs);
+  if (animate === true) {
+    if (activeProd === null) { openPanel(prodPanel); } else { refreshPanel(prodPanel); }
+    setTimeout(() => prodPanel.scrollIntoView({ behavior:'smooth', block:'nearest' }), 50);
+  } else {
+    refreshPanel(prodPanel);
+  }
+}
+
 document.getElementById('prodPanelClose').addEventListener('click', () => {
   document.querySelectorAll('.prod-card').forEach(c => c.classList.remove('selected'));
   closePanel(prodPanel); activeProd = null;
@@ -1144,18 +1249,10 @@ document.querySelectorAll('.prod-card').forEach(card => {
       card.classList.remove('selected');
       closePanel(prodPanel); activeProd = null; return;
     }
-    const d = PROD[key]; if (!d) return;
     document.querySelectorAll('.prod-card').forEach(c => c.classList.remove('selected'));
     card.classList.add('selected');
-    document.getElementById('prodPanelImg').src = d.img;
-    document.getElementById('prodPanelImg').alt = d.name;
-    document.getElementById('prodPanelTag').textContent = d.tag;
-    document.getElementById('prodPanelTitle').textContent = d.name;
-    document.getElementById('prodPanelText').textContent = d.text;
-    document.getElementById('prodPanelSpecs').innerHTML = renderSpecs(d.specs);
-    if (activeProd === null) { openPanel(prodPanel); } else { refreshPanel(prodPanel); }
+    renderProdPanel(key, true);
     activeProd = key;
-    setTimeout(() => prodPanel.scrollIntoView({ behavior:'smooth', block:'nearest' }), 50);
   });
 });
 </script>
