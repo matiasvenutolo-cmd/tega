@@ -100,9 +100,19 @@ nav.scrolled{box-shadow:var(--shadow)}
 .trust-name:hover{color:var(--mid)}
 
 /* ── DIFF ── */
-.diff{padding:100px 56px;background:var(--ink);position:relative;overflow:hidden}
-.diff::after{content:'';position:absolute;bottom:-120px;right:-120px;width:500px;height:500px;background:radial-gradient(circle,rgba(242,182,0,0.08) 0%,transparent 70%);pointer-events:none}
-.diff-inner{max-width:1280px;margin:0 auto}
+.diff{
+  padding:100px 56px;background:var(--ink);position:relative;overflow:hidden;
+  background-image:url('https://www.tega.com.ar/img/automotriz/automotriz-02.jpg');
+  background-size:cover;background-position:center;background-attachment:fixed;
+}
+/* dark overlay — keeps the image subtle, texto legible */
+.diff::before{
+  content:'';position:absolute;inset:0;z-index:0;
+  background:linear-gradient(135deg,rgba(10,10,10,0.93) 0%,rgba(10,10,10,0.82) 60%,rgba(10,10,10,0.90) 100%);
+}
+/* yellow glow bottom-right (mantiene el original) */
+.diff::after{content:'';position:absolute;bottom:-120px;right:-120px;width:500px;height:500px;background:radial-gradient(circle,rgba(242,182,0,0.1) 0%,transparent 70%);pointer-events:none;z-index:0}
+.diff-inner{max-width:1280px;margin:0 auto;position:relative;z-index:1}
 .diff-top{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:64px}
 .diff-tag{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--y);display:flex;align-items:center;gap:10px;margin-bottom:20px}
 .diff-tag::before{content:'';width:24px;height:2px;background:var(--y);border-radius:2px}
