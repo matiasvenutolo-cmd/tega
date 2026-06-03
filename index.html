@@ -57,25 +57,24 @@ nav.scrolled{box-shadow:var(--shadow)}
 .hero-img-wrap::after{content:'';position:absolute;inset:0;z-index:0;background-image:url('https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=1400&q=85&auto=format&fit=crop');background-size:cover;background-position:center;animation:slowZoom 24s ease-in-out infinite alternate;filter:brightness(0.82) saturate(0.9)}
 @keyframes slowZoom{0%{transform:scale(1)}100%{transform:scale(1.07)}}
 
-/* ── HERO BRIDGE CRANE ANIMATION ── */
-.hero-crane{position:absolute;top:104px;left:0;right:0;height:170px;z-index:4;pointer-events:none;overflow:hidden}
-/* runway rails (las dos vías por donde corre el puente) */
-.hero-crane::before{content:'';position:absolute;top:8px;left:0;right:0;height:4px;background:var(--ink);opacity:.18}
-.hero-crane::after{content:'';position:absolute;top:26px;left:0;right:0;height:4px;background:var(--ink);opacity:.12}
-/* el carro/trolley que traslada */
-.crane-trolley{position:absolute;top:0;left:2%;width:64px;animation:craneTraverse 13s cubic-bezier(0.45,0,0.55,1) infinite alternate}
-.crane-beam{width:64px;height:34px;background:var(--ink);border-radius:4px;position:relative;box-shadow:0 4px 10px rgba(70,58,0,0.18)}
-/* franja amarilla del puente grúa */
-.crane-beam::before{content:'';position:absolute;left:6px;right:6px;top:13px;height:8px;background:var(--y);border-radius:2px}
-.crane-beam::after{content:'';position:absolute;left:10px;top:-6px;width:44px;height:6px;background:var(--ink);border-radius:2px}
-/* grupo de izaje: cable + gancho, varía de altura (sube/baja) */
-.crane-lift{position:absolute;top:34px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;height:56px;animation:craneHoist 4.5s ease-in-out infinite}
-.crane-cable{width:2px;flex:1;background:var(--ink);opacity:.55}
-.crane-hook{width:20px;height:18px;background:var(--ink);border-radius:3px;position:relative}
-.crane-hook::before{content:'';position:absolute;left:3px;right:3px;top:4px;height:4px;background:var(--y);border-radius:1px}
-.crane-hook::after{content:'';position:absolute;left:50%;bottom:-9px;width:8px;height:10px;border:2px solid var(--ink);border-top:none;border-radius:0 0 8px 8px;transform:translateX(-50%)}
+/* ── FOOTER BRIDGE CRANE ANIMATION ── */
+.footer-crane{position:relative;height:120px;margin-bottom:40px;overflow:hidden;border-bottom:1px solid rgba(255,255,255,0.08)}
+/* vías de rodadura (sobre fondo oscuro) */
+.footer-crane::before{content:'';position:absolute;top:16px;left:0;right:0;height:3px;background:rgba(255,255,255,0.14)}
+.footer-crane::after{content:'';position:absolute;top:32px;left:0;right:0;height:3px;background:rgba(255,255,255,0.07)}
+/* carro/trolley que traslada */
+.crane-trolley{position:absolute;top:8px;left:3%;width:64px;animation:craneTraverse 14s cubic-bezier(0.45,0,0.55,1) infinite alternate}
+.crane-beam{width:64px;height:30px;background:var(--y);border-radius:4px;position:relative;box-shadow:0 6px 16px rgba(0,0,0,0.45)}
+.crane-beam::before{content:'';position:absolute;left:6px;right:6px;top:11px;height:7px;background:var(--ink);border-radius:2px}
+.crane-beam::after{content:'';position:absolute;left:10px;top:-6px;width:44px;height:6px;background:rgba(255,255,255,0.22);border-radius:2px}
+/* grupo de izaje: cable + gancho (sube/baja) */
+.crane-lift{position:absolute;top:30px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;height:50px;animation:craneHoist 4.5s ease-in-out infinite}
+.crane-cable{width:2px;flex:1;background:rgba(255,255,255,0.45)}
+.crane-hook{width:18px;height:16px;background:var(--y);border-radius:3px;position:relative}
+.crane-hook::before{content:'';position:absolute;left:3px;right:3px;top:4px;height:4px;background:var(--ink);border-radius:1px}
+.crane-hook::after{content:'';position:absolute;left:50%;bottom:-8px;width:8px;height:9px;border:2px solid var(--y);border-top:none;border-radius:0 0 8px 8px;transform:translateX(-50%)}
 @keyframes craneTraverse{0%{left:3%}100%{left:calc(100% - 64px - 3%)}}
-@keyframes craneHoist{0%,100%{height:42px}50%{height:88px}}
+@keyframes craneHoist{0%,100%{height:40px}50%{height:78px}}
 
 .hero-content{position:relative;z-index:5;max-width:640px;padding:80px 56px 0;display:flex;flex-direction:column;justify-content:center;flex:1}
 .hero-badge{display:inline-flex;align-items:center;gap:10px;background:var(--y-light);border-radius:var(--radius-btn);padding:7px 16px;margin-bottom:40px;align-self:flex-start;opacity:0;transform:translateY(12px);animation:up .6s .1s ease forwards}
@@ -272,7 +271,9 @@ textarea.f-ctrl{resize:vertical;min-height:96px;font-family:var(--body)}
 footer{background:var(--ink);color:white;padding:72px 56px 32px}
 .footer-inner{max-width:1280px;margin:0 auto}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:64px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.07)}
-.f-logo{height:34px;width:auto;display:block;filter:brightness(0) invert(1);margin-bottom:20px}
+.f-logo{display:inline-flex;align-items:flex-end;gap:12px;text-decoration:none;margin-bottom:22px}
+.f-logo-name{font-family:var(--display);font-weight:900;font-size:34px;letter-spacing:0.04em;color:#fff;line-height:.85}
+.f-logo-sub{font-family:var(--display);font-weight:800;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);line-height:1.25;padding-bottom:2px}
 .f-desc{font-size:14px;line-height:1.7;color:rgba(255,255,255,0.45);max-width:260px}
 .f-col-title{font-family:var(--display);font-size:11px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:var(--y);margin-bottom:20px}
 .f-links{list-style:none;display:flex;flex-direction:column;gap:10px}
@@ -480,16 +481,6 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
 <!-- HERO -->
 <section class="hero">
   <div class="hero-img-wrap"></div>
-  <!-- Puente grúa animado: traslada y eleva (su planta no se detiene) -->
-  <div class="hero-crane" aria-hidden="true">
-    <div class="crane-trolley">
-      <div class="crane-beam"></div>
-      <div class="crane-lift">
-        <div class="crane-cable"></div>
-        <div class="crane-hook"></div>
-      </div>
-    </div>
-  </div>
   <div class="hero-content">
     <div class="hero-badge">
       <span class="hero-badge-dot"></span>
@@ -554,8 +545,8 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
   <div class="diff-inner">
     <div class="diff-top">
       <div>
-        <div class="diff-tag" data-i18n="diff.tag">Nuestros diferenciales</div>
-        <h2 class="diff-title" data-i18n-html="diff.title">¿Por qué nos <em>eligen?</em></h2>
+        <div class="diff-tag" data-i18n="diff.tag">Por qué nos eligen</div>
+        <h2 class="diff-title" data-i18n-html="diff.title">Confianza en cada tonelada.<br>Soluciones que <em>trascienden décadas.</em></h2>
       </div>
     </div>
     <div class="diff-grid">
@@ -772,8 +763,8 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
 <section class="serv" id="servicios">
   <div class="serv-inner">
     <div class="serv-top">
-      <div class="serv-tag" data-i18n="serv.tag">Servicios &amp; posventa</div>
-      <h2 class="serv-title" data-i18n-html="serv.title">Posventa que <em>no se detiene.</em></h2>
+      <div class="serv-tag" data-i18n="serv.tag">Soporte directo de fábrica</div>
+      <h2 class="serv-title" data-i18n-html="serv.title">Servicios</h2>
       <p class="serv-lead" data-i18n="serv.lead">Desde un cambio de fecha hasta el problema más complejo, lo resolvemos. Respaldo directo de fábrica para que su equipo nunca pare — con repuestos en stock y respuesta en 24 horas.</p>
     </div>
     <div class="serv-grid">
@@ -877,9 +868,22 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
+    <!-- Puente grúa animado: traslada y eleva (su planta no se detiene) -->
+    <div class="footer-crane" aria-hidden="true">
+      <div class="crane-trolley">
+        <div class="crane-beam"></div>
+        <div class="crane-lift">
+          <div class="crane-cable"></div>
+          <div class="crane-hook"></div>
+        </div>
+      </div>
+    </div>
     <div class="footer-top">
       <div>
-        <img class="f-logo" src="https://www.tega.com.ar/img/tega-logo-y-texto.png" alt="TEGA" onerror="this.style.display='none'">
+        <a class="f-logo" href="#" aria-label="TEGA">
+          <span class="f-logo-name">TEGA</span>
+          <span class="f-logo-sub">Aparejos, Grúas<br>y Apiladoras S.A.</span>
+        </a>
         <p class="f-desc" data-i18n="footer.desc">Ingeniería de elevación industrial. Fabricación propia desde 1947 en Buenos Aires, Argentina. Stock de repuestos garantizado de por vida.</p>
       </div>
       <div>
@@ -976,8 +980,8 @@ const LANG = {
     'stat.years':'años en el rubro','stat.response':'respuesta técnica',
     'stat.stock':'repuestos en stock','stat.factory':'planta propia','stat.iso':'calidad certificada',
     'trust.label':'Empresas que confían en TEGA',
-    'diff.tag':'Nuestros diferenciales',
-    'diff.title':'¿Por qué nos <em>eligen?</em>',
+    'diff.tag':'Por qué nos eligen',
+    'diff.title':'Confianza en cada tonelada.<br>Soluciones que <em>trascienden décadas.</em>',
     'diff.c1.title':'No somos revendedores.','diff.c1.text':'Cada equipo nace en nuestro departamento de ingeniería — adaptado al desafío específico de su nave industrial. Donde otros ofrecen catálogo, nosotros ofrecemos solución.',
     'diff.c2.title':'Repuestos de por vida.','diff.c2.text':'Al ser fabricantes, mantenemos inventario crítico de componentes originales. Si lo fabricamos, tenemos el repuesto — hoy y dentro de 30 años. Ningún proveedor importado puede garantizarlo.',
     'diff.c3.title':'Posventa directo de fábrica.','diff.c3.text':'Nuestro equipo técnico conoce la trazabilidad completa de su equipo. El respaldo de quienes lo construyeron desde el primer perno — no de un call center. Respuesta en 24 horas.',
@@ -1000,7 +1004,7 @@ const LANG = {
     'ind.const':'Construcción','ind.aero':'Aeroespacial',
     'prod.tag':'Línea de productos','prod.title':'Equipamiento para<br>cada <em>industria.</em>',
     'prod.lead':'Desde el aparejo más compacto hasta el puente grúa antisísmico — toda la gama diseñada y fabricada en Argentina, con asistencia técnica de por vida.',
-    'serv.tag':'Servicios & posventa','serv.title':'Posventa que <em>no se detiene.</em>',
+    'serv.tag':'Soporte directo de fábrica','serv.title':'Servicios',
     'serv.lead':'Desde un cambio de fecha hasta el problema más complejo, lo resolvemos. Respaldo directo de fábrica para que su equipo nunca pare — con repuestos en stock y respuesta en 24 horas.',
     'serv.1.t':'Mantenimiento preventivo','serv.1.d':'Optimiza la seguridad y eficiencia del equipo durante toda su vida útil, evitando paradas no programadas.',
     'serv.2.t':'Reparación','serv.2.d':'Reparación integral de equipos de movimiento, propios o de terceros, bajo normas FEM y CMAA.',
@@ -1041,8 +1045,8 @@ const LANG = {
     'stat.years':'years in business','stat.response':'technical response',
     'stat.stock':'spare parts in stock','stat.factory':'own factory','stat.iso':'certified quality',
     'trust.label':'Companies that trust TEGA',
-    'diff.tag':'What sets us apart',
-    'diff.title':'Why they <em>choose us.</em>',
+    'diff.tag':'Why they choose us',
+    'diff.title':'Trust in every ton.<br>Solutions that <em>transcend decades.</em>',
     'diff.c1.title':'We are not resellers.','diff.c1.text':'Every piece of equipment is born in our engineering department — tailored to the specific challenge of your facility. Where others offer a catalogue, we offer a solution.',
     'diff.c2.title':'Spare parts for life.','diff.c2.text':'As manufacturers, we keep critical inventory of original components. If we built it, we have the spare part — today and 30 years from now. No importer can guarantee that.',
     'diff.c3.title':'After-sales direct from factory.','diff.c3.text':'Our technical team knows the complete traceability of your equipment. The backing of those who built it from the first bolt — not a call center. 24-hour response.',
@@ -1065,7 +1069,7 @@ const LANG = {
     'ind.const':'Construction','ind.aero':'Aerospace',
     'prod.tag':'Product line','prod.title':'Equipment for<br>every <em>industry.</em>',
     'prod.lead':'From the most compact hoist to the seismic-resistant bridge crane — the entire range designed and manufactured in Argentina, with lifetime technical support.',
-    'serv.tag':'Service & after-sales','serv.title':'After-sales that <em>never stops.</em>',
+    'serv.tag':'Factory-direct support','serv.title':'Services',
     'serv.lead':'From a rescheduling to the most complex problem, we solve it. Factory-direct support so your equipment never stops — with spare parts in stock and 24-hour response.',
     'serv.1.t':'Preventive maintenance','serv.1.d':'Optimizes equipment safety and efficiency throughout its lifespan, preventing unplanned downtime.',
     'serv.2.t':'Repair','serv.2.d':'Comprehensive repair of material-handling equipment, ours or third-party, under FEM and CMAA standards.',
@@ -1106,8 +1110,8 @@ const LANG = {
     'stat.years':'anos no setor','stat.response':'resposta técnica',
     'stat.stock':'peças em estoque','stat.factory':'fábrica própria','stat.iso':'qualidade certificada',
     'trust.label':'Empresas que confiam na TEGA',
-    'diff.tag':'Nossos diferenciais',
-    'diff.title':'Por que nos <em>escolhem?</em>',
+    'diff.tag':'Por que nos escolhem',
+    'diff.title':'Confiança em cada tonelada.<br>Soluções que <em>transcendem décadas.</em>',
     'diff.c1.title':'Não somos revendedores.','diff.c1.text':'Cada equipamento nasce em nosso departamento de engenharia — adaptado ao desafio específico da sua instalação. Onde outros oferecem catálogo, nós oferecemos solução.',
     'diff.c2.title':'Peças de reposição vitalícias.','diff.c2.text':'Como fabricantes, mantemos estoque crítico de componentes originais. Se fabricamos, temos a peça — hoje e daqui a 30 anos. Nenhum fornecedor importado pode garantir isso.',
     'diff.c3.title':'Pós-venda direto da fábrica.','diff.c3.text':'Nossa equipe técnica conhece a rastreabilidade completa do seu equipamento. O suporte de quem o construiu desde o primeiro parafuso — não de um call center. Resposta em 24 horas.',
@@ -1130,7 +1134,7 @@ const LANG = {
     'ind.const':'Construção','ind.aero':'Aeroespacial',
     'prod.tag':'Linha de produtos','prod.title':'Equipamentos para<br>cada <em>indústria.</em>',
     'prod.lead':'Do talha mais compacto até a ponte rolante antissísmica — toda a linha projetada e fabricada na Argentina, com assistência técnica vitalícia.',
-    'serv.tag':'Serviços & pós-venda','serv.title':'Pós-venda que <em>não para.</em>',
+    'serv.tag':'Suporte direto de fábrica','serv.title':'Serviços',
     'serv.lead':'De uma reprogramação ao problema mais complexo, nós resolvemos. Suporte direto de fábrica para que seu equipamento nunca pare — com peças em estoque e resposta em 24 horas.',
     'serv.1.t':'Manutenção preventiva','serv.1.d':'Otimiza a segurança e eficiência do equipamento durante toda a vida útil, evitando paradas não programadas.',
     'serv.2.t':'Reparo','serv.2.d':'Reparo integral de equipamentos de movimentação, próprios ou de terceiros, sob normas FEM e CMAA.',
