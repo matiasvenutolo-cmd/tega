@@ -52,6 +52,7 @@ nav.scrolled{box-shadow:var(--shadow)}
 
 /* ── HERO ── */
 .hero{min-height:100vh;padding-top:72px;background:var(--bg);position:relative;overflow:hidden;display:flex;flex-direction:column}
+/* ── HERO ── */
 .hero-img-wrap{position:absolute;top:72px;right:0;bottom:0;width:52%;overflow:hidden}
 .hero-img-wrap::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,var(--bg) 0%,rgba(247,243,232,0.3) 40%,transparent 100%)}
 .hero-img-wrap::after{content:'';position:absolute;inset:0;z-index:0;background-image:url('https://images.unsplash.com/photo-1581094288338-2314dddb7ece?w=1400&q=85&auto=format&fit=crop');background-size:cover;background-position:center;animation:slowZoom 24s ease-in-out infinite alternate;filter:brightness(0.82) saturate(0.9)}
@@ -220,7 +221,7 @@ nav.scrolled{box-shadow:var(--shadow)}
 .prod-title{font-family:var(--display);font-weight:800;font-size:clamp(36px,4vw,58px);line-height:1.05;letter-spacing:-0.02em;color:var(--ink)}
 .prod-title em{font-style:normal;background:var(--y);padding:2px 8px 4px;border-radius:8px}
 .prod-lead{font-size:16px;line-height:1.7;color:var(--mid);padding-bottom:8px}
-.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .prod-card{background:var(--card);border:1px solid var(--fog);border-radius:var(--radius-card);padding:32px;display:flex;flex-direction:column;gap:12px;text-decoration:none;color:inherit;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s,border-color .2s;opacity:0;transform:translateY(24px)}
 .prod-card.in-view{animation:cardIn .5s cubic-bezier(0.2,0.7,0.2,1) forwards}
 .prod-card.in-view:nth-child(2){animation-delay:.08s}.prod-card.in-view:nth-child(3){animation-delay:.16s}
@@ -231,6 +232,12 @@ nav.scrolled{box-shadow:var(--shadow)}
 .prod-card:hover .pc-arrow{color:var(--ink);transform:translateX(4px)}
 .pc-icon{width:48px;height:48px;object-fit:contain;margin-bottom:4px}
 .pc-num{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--y)}
+/* chip de tipo de producto */
+.pc-type{align-self:flex-start;font-size:10px;font-weight:800;letter-spacing:0.07em;text-transform:uppercase;padding:4px 11px;border-radius:999px;border:1px solid;line-height:1.3}
+.pc-type-struct{background:#e8effb;color:#1e40af;border-color:#bfd4f5}
+.pc-type-aparejo{background:var(--y-light);color:#876400;border-color:#eecf78}
+.pc-type-access{background:#efefec;color:#5a5a55;border-color:#dad7cf}
+.pc-type-special{background:#fdeceb;color:#9c1f17;border-color:#f2b8b2}
 .pc-title{font-family:var(--display);font-size:22px;font-weight:800;color:var(--ink);letter-spacing:-0.01em;line-height:1.15}
 .pc-desc{font-size:14px;line-height:1.65;color:var(--mid);flex-grow:1}
 .pc-arrow{font-size:16px;color:var(--fog);transition:color .15s,transform .2s;align-self:flex-start;margin-top:4px;font-weight:700}
@@ -308,6 +315,10 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
   transform:scale(1);opacity:1}
 .ep-img:hover img{transform:scale(1.03) !important}
 .ep-img-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,10,10,0.5) 0%,transparent 55%);pointer-events:none}
+/* variante producto: foto de catálogo (se ve completa) sobre fondo oscuro */
+.ep-img.is-product{background:radial-gradient(130% 110% at 50% 32%, #20262f 0%, #0c0f14 70%)}
+.ep-img.is-product img{object-fit:contain;filter:none;padding:7%}
+.ep-img.is-product:hover img{transform:scale(1.02) !important}
 /* fade al cambiar de foto en la galería */
 .ep-img img.swapping{opacity:0 !important;transition:opacity .25s ease !important}
 /* tira de miniaturas de la galería */
@@ -503,7 +514,23 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-img-wrap"></div>
+  <!-- Escena animada: puente grúa TEGA (estilo video, fondo unificado) -->
+  <div class="hero-img-wrap" aria-hidden="true">
+    <div class="ha-watermark">TEGA</div>
+    <div class="ha-col l"></div>
+    <div class="ha-col r"></div>
+    <div class="ha-rail"></div>
+    <div class="ha-girder"><div class="ha-plate"><b>TEGA</b><em>20 t</em></div></div>
+    <div class="ha-trolley">
+      <div class="ha-trolley-body"></div>
+      <div class="ha-lift">
+        <div class="ha-cable"></div>
+        <div class="ha-hookblock"></div>
+        <div class="ha-load"></div>
+      </div>
+    </div>
+    <div class="ha-floor"></div>
+  </div>
   <div class="hero-content">
     <div class="hero-badge">
       <span class="hero-badge-dot"></span>
@@ -709,48 +736,56 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
     </div>
     <div class="prod-grid" id="prodGrid">
       <div class="prod-card reveal" data-prod="crane" role="button" tabindex="0">
+        <span class="pc-type pc-type-struct" data-i18n="ptype.struct">Estructuras</span>
         <div class="pc-num" data-i18n="p1.cat">01 / Izaje pesado</div>
         <h3 class="pc-title">Tega Crane</h3>
         <p class="pc-desc" data-i18n="p1.desc">Puentes grúa, pórticos y plumas. La gama más completa para cada grado de uso, desde uso esporádico hasta servicio continuo intensivo.</p>
         <span class="pc-arrow" data-i18n="prod.more">Ver más →</span>
       </div>
       <div class="prod-card reveal" data-prod="powerlift" role="button" tabindex="0">
+        <span class="pc-type pc-type-aparejo" data-i18n="ptype.aparejo">Aparejos</span>
         <div class="pc-num" data-i18n="p2.cat">02 / Aparejos cable</div>
         <h3 class="pc-title">Power Lift</h3>
         <p class="pc-desc" data-i18n="p2.desc">Aparejos eléctricos a cable de acero. Robustez y versatilidad para los usos más exigentes. Frenos sellados y variador de velocidad.</p>
         <span class="pc-arrow" data-i18n="prod.more">Ver más →</span>
       </div>
       <div class="prod-card reveal" data-prod="ultralift" role="button" tabindex="0">
+        <span class="pc-type pc-type-aparejo" data-i18n="ptype.aparejo">Aparejos</span>
         <div class="pc-num" data-i18n="p3.cat">03 / Alta capacidad</div>
         <h3 class="pc-title">Ultra Lift</h3>
         <p class="pc-desc" data-i18n="p3.desc">Izaje casi vertical, frenos sellados y variador de velocidad. Hasta 80.000 kg. Para las operaciones más demandantes.</p>
         <span class="pc-arrow" data-i18n="prod.more">Ver más →</span>
       </div>
       <div class="prod-card reveal" data-prod="antiex" role="button" tabindex="0">
+        <span class="pc-type pc-type-special" data-i18n="ptype.special">Equipos especiales</span>
         <div class="pc-num" data-i18n="p4.cat">04 / Áreas clasificadas</div>
         <h3 class="pc-title">Anti Explosivo</h3>
         <p class="pc-desc" data-i18n="p4.desc">Tecnología de izaje certificada bajo normas UL, VDE e IRAM para zonas clasificadas. El más importante de Sudamérica.</p>
         <span class="pc-arrow" data-i18n="prod.more">Ver más →</span>
       </div>
       <div class="prod-card reveal" data-prod="chain" role="button" tabindex="0">
+        <span class="pc-type pc-type-aparejo" data-i18n="ptype.aparejo">Aparejos</span>
         <div class="pc-num" data-i18n="p5.cat">05 / Aparejos cadena</div>
         <h3 class="pc-title">Tega Chain</h3>
         <p class="pc-desc" data-i18n="p5.desc">Aparejos eléctricos a cadena. Compactos, eficientes y silenciosos. Hasta 10 toneladas con variantes mono y bifásicas.</p>
         <span class="pc-arrow" data-i18n="prod.more">Ver más →</span>
       </div>
       <div class="prod-card reveal" data-prod="kit" role="button" tabindex="0">
+        <span class="pc-type pc-type-access" data-i18n="ptype.access">Accesorios</span>
         <div class="pc-num" data-i18n="p6.cat">06 / Componentes</div>
         <h3 class="pc-title">Tega Kit</h3>
         <p class="pc-desc" data-i18n="p6.desc">Componentes y accesorios para puentes grúa. Vigas, carros, motores y estructuras para armado e integración a medida.</p>
         <span class="pc-arrow" data-i18n="prod.more">Ver más →</span>
       </div>
       <div class="prod-card reveal" data-prod="radio" role="button" tabindex="0">
+        <span class="pc-type pc-type-access" data-i18n="ptype.access">Accesorios</span>
         <div class="pc-num" data-i18n="p7.cat">07 / Control inalámbrico</div>
         <h3 class="pc-title">Radiolift</h3>
         <p class="pc-desc" data-i18n="p7.desc">Comandos inalámbricos por radio para máxima libertad de operación. Compatible con toda la línea Tega.</p>
         <span class="pc-arrow" data-i18n="prod.more">Ver más →</span>
       </div>
       <div class="prod-card reveal" data-prod="movicar" role="button" tabindex="0">
+        <span class="pc-type pc-type-special" data-i18n="ptype.special">Equipos especiales</span>
         <div class="pc-num" data-i18n="p8.cat">08 / Apiladoras</div>
         <h3 class="pc-title">MoviCar</h3>
         <p class="pc-desc" data-i18n="p8.desc">Apiladoras electrohidráulicas. Solución compacta y maniobrable para depósitos y almacenes industriales.</p>
@@ -761,7 +796,7 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
     <div class="expand-wrap" id="prodPanel">
       <div class="expand-inner">
         <div class="ep-img-wrap">
-          <div class="ep-img"><img id="prodPanelImg" src="" alt="" loading="lazy"></div>
+          <div class="ep-img is-product"><img id="prodPanelImg" src="" alt="" loading="lazy"></div>
           <div class="ep-img-overlay"></div>
           <button class="ep-close" id="prodPanelClose" aria-label="Cerrar">✕</button>
         </div>
@@ -1032,6 +1067,7 @@ const LANG = {
     'ind.const':'Construcción','ind.aero':'Aeroespacial',
     'prod.tag':'Línea de productos','prod.title':'Equipamiento para<br>cada <em>industria.</em>',
     'prod.lead':'Desde el aparejo más compacto hasta el puente grúa antisísmico — toda la gama diseñada y fabricada en Argentina, con asistencia técnica de por vida.',
+    'ptype.struct':'Estructuras','ptype.aparejo':'Aparejos','ptype.access':'Accesorios','ptype.special':'Equipos especiales',
     'serv.tag':'Soporte directo de fábrica','serv.title':'Servicios',
     'serv.lead':'Desde un cambio de fecha hasta el problema más complejo, lo resolvemos. Respaldo directo de fábrica para que su equipo nunca pare — con repuestos en stock y respuesta en 24 horas.',
     'serv.1.t':'Mantenimiento preventivo','serv.1.d':'Optimiza la seguridad y eficiencia del equipo durante toda su vida útil, evitando paradas no programadas.',
@@ -1098,6 +1134,7 @@ const LANG = {
     'ind.const':'Construction','ind.aero':'Aerospace',
     'prod.tag':'Product line','prod.title':'Equipment for<br>every <em>industry.</em>',
     'prod.lead':'From the most compact hoist to the seismic-resistant bridge crane — the entire range designed and manufactured in Argentina, with lifetime technical support.',
+    'ptype.struct':'Structures','ptype.aparejo':'Hoists','ptype.access':'Accessories','ptype.special':'Special equipment',
     'serv.tag':'Factory-direct support','serv.title':'Services',
     'serv.lead':'From a rescheduling to the most complex problem, we solve it. Factory-direct support so your equipment never stops — with spare parts in stock and 24-hour response.',
     'serv.1.t':'Preventive maintenance','serv.1.d':'Optimizes equipment safety and efficiency throughout its lifespan, preventing unplanned downtime.',
@@ -1164,6 +1201,7 @@ const LANG = {
     'ind.const':'Construção','ind.aero':'Aeroespacial',
     'prod.tag':'Linha de produtos','prod.title':'Equipamentos para<br>cada <em>indústria.</em>',
     'prod.lead':'Do talha mais compacto até a ponte rolante antissísmica — toda a linha projetada e fabricada na Argentina, com assistência técnica vitalícia.',
+    'ptype.struct':'Estruturas','ptype.aparejo':'Talhas','ptype.access':'Acessórios','ptype.special':'Equipamentos especiais',
     'serv.tag':'Suporte direto de fábrica','serv.title':'Serviços',
     'serv.lead':'De uma reprogramação ao problema mais complexo, nós resolvemos. Suporte direto de fábrica para que seu equipamento nunca pare — com peças em estoque e resposta em 24 horas.',
     'serv.1.t':'Manutenção preventiva','serv.1.d':'Otimiza a segurança e eficiência do equipamento durante toda a vida útil, evitando paradas não programadas.',
@@ -1203,36 +1241,36 @@ let currentLang = 'es';
 const PANEL_T = {
   ind: {
     en: {
-      auto:   { tag:'Automotive industry',         text:'First company to equip automotive assembly lines in Argentina, São Paulo and Curitiba. Solutions for body assembly, paint booths, stamping and engine mounting.',                                                      chips:['Body assembly','Paint booths','Stamping','Engine mounting'] },
-      mfg:    { tag:'Industrial manufacturing',    text:'Lifting equipment for the most diverse industrial manufacturing operations. From material handling to high-speed serial production with maximum availability.',                                                       chips:['Production lines','Warehouses','Material handling','High availability'] },
-      mining: { tag:'Mining industry',             text:'Certified equipment for the harshest conditions: dust, moisture and extreme vibration. For continuous operation in open-pit and underground mining.',                                                              chips:['Open-pit','Underground','Dust & humidity','24/7 operation'] },
-      nuclear:{ tag:'Nuclear industry',            text:'Qualified CNEA supplier since 1973. Equipment with full traceability, manufactured under ASME standards and certified for controlled and supervised nuclear areas.',                                               chips:['CNEA qualified','Full traceability','ASME standards','Supervised areas'] },
-      food:   { tag:'Food & beverage',             text:'Stainless steel and sanitary materials for the food industry. Hygienic design for easy cleaning, compliant with FDA/SENASA regulations and resistant to frequent washdowns.',                                       chips:['Stainless steel','Hygienic design','FDA / SENASA','Easy cleaning'] },
-      petro:  { tag:'Petrochemical industry',      text:'Certified equipment for corrosive environments with special materials and coatings. Solutions for refining, processing and petrochemical distribution.',                                                            chips:['Corrosive environments','Special coatings','Refining','Processing'] },
-      oil:    { tag:'Oil & Gas',                   text:'Specialists in lifting for onshore and offshore fields. Explosion-proof equipment resistant to flammable gas and vapor environments. Leaders in South America.',                                                    chips:['Onshore / Offshore','Explosion-proof','Flammable vapors','ATEX Zone 1 & 2'] },
-      energy: { tag:'Energy sector',               text:'Lifting solutions for power plants, wind turbines, solar panels and substations. High-availability equipment for critical operations.',                                                                             chips:['Power plants','Wind energy','Solar','Substations'] },
-      paper:  { tag:'Pulp & Paper',                text:'High-capacity equipment for handling paper rolls, coils and raw materials. Designed for humid environments with maximum reliability and low maintenance.',                                                          chips:['Rolls & coils','Humid environments','High capacity','Low maintenance'] },
-      steel:  { tag:'Steel industry',              text:'From billet to finished product. Equipment with capacities up to 200 tons for steelworks and rolling mills, with resistance to high temperatures.',                                                               chips:['Up to 200 tons','High temperatures','Steelworks','Rolling mills'] },
-      naval:  { tag:'Naval industry',              text:'Equipment designed for marine environments with salt corrosion protection. Solutions for assembly, maintenance and repair of vessels and offshore structures.',                                                     chips:['Salt protection','Shipyards','Naval assembly','Repairs'] },
-      chem:   { tag:'Chemical industry',           text:'Equipment for the safe handling of raw materials and chemical products, with materials resistant to corrosive agents and international safety certifications.',                                                    chips:['Resistant materials','Certifications','ATEX safety','Chemical corrosion'] },
-      const:  { tag:'Construction & infrastructure',text:'Tower cranes and hoists for civil works, high-rise buildings and road infrastructure. Reliability and safety in outdoor working conditions.',                                                                   chips:['Civil works','Infrastructure','Tower cranes','Outdoor'] },
-      aero:   { tag:'Aerospace industry',          text:'Precision lifting for high-tech components. Fine control and anti-shock systems for handling aeronautical, space and defense structures.',                                                                         chips:['Millimeter precision','Anti-shock','Aeronautics','Defense'] }
+      auto: { tag:'Automotive industry', text:'Over 60 years serving the demanding automotive industry, where the line cannot stop. Equipment for continuous assembly lines, welding stations, paint booths (many explosion-proof), engine assembly, measurement rooms and stamping.', chips:['Assembly lines','Paint booths','Engine assembly','Stamping'] },
+      mfg: { tag:'Industrial manufacturing', text:'Lifting solutions for the most diverse manufacturing operations: material handling, production lines and warehouses, with the availability each process needs.', chips:['Production lines','Material handling','Warehouses','Availability'] },
+      mining: { tag:'Mining industry', text:'An activity operating in extreme conditions, open-pit or underground: humidity, abrasive dust, corrosion, explosive gases and water. Equipment for heavy-duty cycles and service in remote areas, without stopping operations.', chips:['Open-pit / underground','Dust & corrosion','Heavy-duty cycles','Remote areas'] },
+      nuclear: { tag:'Nuclear industry', text:'We have served the nuclear industry from its beginnings, for over 50 years, where safety is the absolute priority. Qualified suppliers for CNEA and ENACE (Argentina) and UDHE (Germany), with equipment for safe operation even in seismic zones.', chips:['Qualified CNEA · ENACE','UDHE (Germany)','50+ years','Seismic zones'] },
+      food: { tag:'Food & beverage', text:'Order, cleanliness, continuous processes and clean rooms define this sector. Equipment for clean areas with special materials: stainless steels, paints and treatments for cold storage, dairy, bakery and more.', chips:['Stainless steel','Clean rooms','Special treatment','Cold & dairy'] },
+      petro: { tag:'Petrochemical industry', text:'Equipment for corrosive, demanding environments with special materials and coatings. Lifting solutions for refining, processing and petrochemical distribution.', chips:['Corrosive environments','Special coatings','Refining','Processing'] },
+      oil: { tag:'Oil & Gas', text:'Lifting for on-shore and off-shore fields. Explosion-proof equipment for atmospheres with flammable gases and vapors, with wide experience in regional projects.', chips:['On-shore / Off-shore','Explosion-proof','Flammable atmospheres','Regional experience'] },
+      energy: { tag:'Energy sector', text:'Lifting solutions for the energy sector: generation, distribution and equipment maintenance, with the reliability that critical operation requires.', chips:['Generation','Distribution','Maintenance','Critical operation'] },
+      paper: { tag:'Pulp & Paper', text:'Equipment for handling rolls, coils and raw materials in pulp and paper plants, ready for humid environments and continuous operation.', chips:['Rolls & coils','Humid environments','Continuous operation','Raw materials'] },
+      steel: { tag:'Steel industry', text:'From the hot process to the finished product. Robust equipment for steelworks and rolling mills, ready for high temperatures and demanding work cycles.', chips:['High temperatures','Steelworks','Demanding cycles','Large scale'] },
+      naval: { tag:'Naval industry', text:'Equipment for shipyards and the naval industry, ready for marine environments with protection against salt corrosion. For assembly, maintenance and repair.', chips:['Marine environment','Anti-corrosion','Shipyards','Repair'] },
+      chem: { tag:'Chemical industry', text:'Safe handling of raw materials and products in the chemical industry, with materials resistant to corrosive agents and solutions for demanding areas.', chips:['Resistant materials','Demanding areas','Chemical corrosion','Safe handling'] },
+      const: { tag:'Construction & infrastructure', text:'Hoists and lifting equipment for civil works and infrastructure, with the robustness and safety that outdoor work requires.', chips:['Civil works','Infrastructure','Outdoor','Robustness'] },
+      aero: { tag:'Aerospace industry', text:'Precision lifting for high-tech components, with fine-control systems for the careful handling of aeronautical structures.', chips:['Precision','Fine control','Sensitive components','High tech'] },
     },
     pt: {
-      auto:   { tag:'Indústria automotiva',        text:'Primeira empresa a equipar linhas de montagem automotiva na Argentina, São Paulo e Curitiba. Soluções para estampagem, montagem de carroceria, cabines de pintura e montagem de motores.',                        chips:['Montagem de carroceria','Cabines de pintura','Estampagem','Montagem de motores'] },
-      mfg:    { tag:'Manufatura industrial',       text:'Equipamentos de içamento para as mais diversas operações de manufatura industrial. Do manuseio de materiais à produção em série de alta velocidade.',                                                             chips:['Linhas de produção','Armazéns','Manuseio de materiais','Alta disponibilidade'] },
-      mining: { tag:'Indústria de mineração',      text:'Equipamentos certificados para as condições mais adversas: poeira, umidade e vibrações extremas. Para operação contínua em mineração a céu aberto e subterrânea.',                                               chips:['Mineração a céu aberto','Subterrânea','Poeira e umidade','Operação 24/7'] },
-      nuclear:{ tag:'Indústria nuclear',           text:'Fornecedor qualificado da CNEA desde 1973. Equipamentos com rastreabilidade total, fabricados sob normas ASME e certificados para áreas controladas e supervisionadas.',                                          chips:['CNEA qualificado','Rastreabilidade total','Normas ASME','Áreas supervisionadas'] },
-      food:   { tag:'Indústria alimentícia',       text:'Equipamentos em aço inoxidável e materiais sanitários para a indústria alimentícia. Design higiênico de fácil limpeza, em conformidade com as regulamentações FDA/ANVISA.',                                       chips:['Aço inoxidável','Design higiênico','FDA / ANVISA','Fácil limpeza'] },
-      petro:  { tag:'Indústria petroquímica',      text:'Equipamentos certificados para ambientes corrosivos com materiais e revestimentos especiais. Soluções para refino, processamento e distribuição petroquímica.',                                                    chips:['Ambientes corrosivos','Revestimentos especiais','Refino','Processamento'] },
-      oil:    { tag:'Oil & Gas',                   text:'Especialistas em içamento para campos onshore e offshore. Equipamentos anti-explosivos resistentes a gases e vapores inflamáveis. Líderes na América do Sul.',                                                    chips:['Onshore / Offshore','Anti-explosivo','Vapores inflamáveis','ATEX Zona 1 e 2'] },
-      energy: { tag:'Setor energético',            text:'Soluções de içamento para usinas de geração elétrica, turbinas eólicas, painéis solares e subestações. Equipamentos de alta disponibilidade para operações críticas.',                                           chips:['Usinas elétricas','Energia eólica','Solar','Subestações'] },
-      paper:  { tag:'Papel e Celulose',            text:'Equipamentos de alta capacidade para o manuseio de rolos de papel, bobinas e matérias-primas. Projetados para ambientes úmidos com máxima confiabilidade e baixa manutenção.',                                  chips:['Rolos e bobinas','Ambientes úmidos','Alta capacidade','Baixa manutenção'] },
-      steel:  { tag:'Indústria siderúrgica',       text:'Do tarugo ao produto final. Equipamentos com capacidades de até 200 toneladas para siderúrgicas e laminadoras, com resistência a altas temperaturas.',                                                           chips:['Até 200 toneladas','Altas temperaturas','Siderúrgicas','Laminação'] },
-      naval:  { tag:'Indústria naval',             text:'Equipamentos projetados para ambientes marinhos com proteção anticorrosão salina. Soluções para montagem, manutenção e reparo de embarcações e estruturas offshore.',                                              chips:['Proteção salina','Estaleiros','Montagem naval','Reparos'] },
-      chem:   { tag:'Indústria química',           text:'Equipamentos para o manuseio seguro de matérias-primas e produtos químicos, com materiais resistentes a agentes corrosivos e certificações de segurança internacionais.',                                         chips:['Materiais resistentes','Certificações','Segurança ATEX','Corrosão química'] },
-      const:  { tag:'Construção e infraestrutura', text:'Torres grúa e talhas para obras civis, edifícios de grande porte e infraestrutura viária. Confiabilidade e segurança em condições de trabalho ao ar livre.',                                                    chips:['Obras civis','Infraestrutura viária','Torres grúa','Ao ar livre'] },
-      aero:   { tag:'Indústria aeroespacial',      text:'Içamento de precisão para componentes de alta tecnologia. Sistemas de controle fino e anti-choque para o manuseio de estruturas aeronáuticas, espaciais e de defesa.',                                           chips:['Precisão milimétrica','Anti-choque','Aeronáutica','Defesa'] }
+      auto: { tag:'Indústria automotiva', text:'Mais de 60 anos atendendo a exigente indústria automotiva, onde a linha não pode parar. Equipamentos para linhas de montagem contínua, estações de solda, cabines de pintura (muitas antiexplosão), montagem de motores, salas de medição e estampagem.', chips:['Linhas de montagem','Cabines de pintura','Montagem de motores','Estampagem'] },
+      mfg: { tag:'Manufatura industrial', text:'Soluções de içamento para as mais diversas operações de manufatura: movimentação de materiais, linhas de produção e depósitos, com a disponibilidade que cada processo precisa.', chips:['Linhas de produção','Movimentação','Depósitos','Disponibilidade'] },
+      mining: { tag:'Indústria de mineração', text:'Uma atividade que opera em condições extremas, a céu aberto ou subterrânea: umidade, poeira abrasiva, corrosão, gases explosivos e água. Equipamentos para ciclos de trabalho pesado e serviço em zonas remotas, sem parar a operação.', chips:['Céu aberto / subterrânea','Poeira e corrosão','Ciclos pesados','Zonas remotas'] },
+      nuclear: { tag:'Indústria nuclear', text:'Acompanhamos a indústria nuclear desde o início, por mais de 50 anos, onde a segurança é prioridade absoluta. Fornecedores qualificados por CNEA e ENACE (Argentina) e UDHE (Alemanha), com equipamentos para operação segura mesmo em zonas sísmicas.', chips:['Qualificados CNEA · ENACE','UDHE (Alemanha)','+50 anos','Zonas sísmicas'] },
+      food: { tag:'Indústria alimentícia', text:'Ordem, limpeza, processos contínuos e salas limpas definem o setor. Equipamentos para áreas limpas com materiais especiais: aços inoxidáveis, pinturas e tratamentos para frigoríficos, laticínios, panificação e mais.', chips:['Aço inoxidável','Salas limpas','Tratamento especial','Frio e laticínios'] },
+      petro: { tag:'Indústria petroquímica', text:'Equipamentos para ambientes corrosivos e exigentes, com materiais e revestimentos especiais. Soluções de içamento para refino, processamento e distribuição petroquímica.', chips:['Ambientes corrosivos','Revestimentos especiais','Refino','Processamento'] },
+      oil: { tag:'Oil & Gas', text:'Içamento para campos on-shore e off-shore. Equipamentos antiexplosão para atmosferas com gases e vapores inflamáveis, com ampla experiência em projetos da região.', chips:['On-shore / Off-shore','Antiexplosão','Atmosferas inflamáveis','Experiência regional'] },
+      energy: { tag:'Setor energético', text:'Soluções de içamento para o setor energético: geração, distribuição e manutenção de equipamentos, com a confiabilidade que a operação crítica exige.', chips:['Geração','Distribuição','Manutenção','Operação crítica'] },
+      paper: { tag:'Papel e Celulose', text:'Equipamentos para o manuseio de rolos, bobinas e matérias-primas em plantas de papel e celulose, preparados para ambientes úmidos e operação contínua.', chips:['Rolos e bobinas','Ambientes úmidos','Operação contínua','Matérias-primas'] },
+      steel: { tag:'Indústria siderúrgica', text:'Do processo a quente ao produto final. Equipamentos robustos para siderúrgicas e laminadoras, preparados para altas temperaturas e ciclos de trabalho exigentes.', chips:['Altas temperaturas','Siderúrgicas','Ciclos exigentes','Grande porte'] },
+      naval: { tag:'Indústria naval', text:'Equipamentos para estaleiros e indústria naval, preparados para ambientes marinhos com proteção contra a corrosão salina. Para montagem, manutenção e reparo.', chips:['Ambiente marinho','Anticorrosão','Estaleiros','Reparo'] },
+      chem: { tag:'Indústria química', text:'Manuseio seguro de matérias-primas e produtos na indústria química, com materiais resistentes a agentes corrosivos e soluções para áreas exigentes.', chips:['Materiais resistentes','Áreas exigentes','Corrosão química','Manuseio seguro'] },
+      const: { tag:'Construção e infraestrutura', text:'Talhas e equipamentos de içamento para obras civis e infraestrutura, com a robustez e a segurança que o trabalho ao ar livre exige.', chips:['Obras civis','Infraestrutura','Ao ar livre','Robustez'] },
+      aero: { tag:'Indústria aeroespacial', text:'Içamento de precisão para componentes de alta tecnologia, com sistemas de controle fino para o manuseio cuidadoso de estruturas do setor aeronáutico.', chips:['Precisão','Controle fino','Componentes sensíveis','Alta tecnologia'] },
     }
   },
   prod: {
@@ -1322,20 +1360,20 @@ function refreshPanel(panel) {
 
 // ── INDUSTRY DATA ──
 const IND = {
-  auto:   { tag:'Industria automotriz', name:'Automotriz', gallery:['assets/ind/auto-1.jpg','assets/ind/auto-2.jpg','assets/ind/auto-3.jpg','assets/ind/auto-4.jpg'], text:'Primera empresa en equipar líneas de ensamblado automotriz en Argentina, São Paulo y Curitiba. Soluciones para estampado, ensamblado de carrocerías, cabinas de pintura y montaje de motores.', chips:['Ensamblado de carrocerías','Cabinas de pintura','Estampado','Montaje de motores'] },
-  mfg:    { tag:'Manufactura industrial', name:'Manufactura', gallery:['assets/ind/mfg-1.jpg','assets/ind/mfg-2.jpg','assets/ind/mfg-3.jpg'], text:'Equipamiento de izaje para las más diversas operaciones de manufactura industrial. Desde el traslado de materiales hasta la producción en serie con alta disponibilidad.', chips:['Líneas de producción','Almacenes','Manejo de materiales','Alta disponibilidad'] },
-  mining: { tag:'Industria minera', name:'Minería', gallery:['assets/ind/mining-1.jpg','assets/ind/mining-2.jpg','assets/ind/mining-3.jpg','assets/ind/mining-4.jpg'], text:'Equipos certificados para las condiciones más adversas: polvo, humedad y vibraciones extremas. Para operación continua en minería a cielo abierto y subterránea.', chips:['Minería a cielo abierto','Minería subterránea','Polvo y humedad','Operación 24/7'] },
-  nuclear:{ tag:'Industria nuclear', name:'Nuclear', gallery:['assets/ind/nuclear-1.jpg','assets/ind/nuclear-2.jpg','assets/ind/nuclear-3.jpg','assets/ind/nuclear-4.jpg'], text:'Proveedor calificado de la CNEA desde 1973. Equipos con trazabilidad total, fabricación bajo normas ASME y certificación para zonas controladas y vigiladas.', chips:['CNEA calificado','Trazabilidad total','Normas ASME','Zonas vigiladas'] },
-  food:   { tag:'Industria alimenticia', name:'Alimentación', gallery:['assets/ind/food-1.jpg','assets/ind/food-2.jpg','assets/ind/food-3.jpg','assets/ind/food-4.jpg'], text:'Equipos con materiales sanitarios para la industria alimenticia. Diseño higiénico de fácil limpieza, cumplimiento de normativas FDA/SENASA y resistencia a lavados frecuentes.', chips:['Acero inoxidable','Diseño higiénico','FDA / SENASA','Fácil limpieza'] },
-  petro:  { tag:'Industria petroquímica', name:'Petroquímica', gallery:['assets/ind/petro-1.jpg','assets/ind/petro-2.jpg','assets/ind/petro-3.jpg','assets/ind/petro-4.jpg'], text:'Equipos certificados para ambientes corrosivos con materiales y recubrimientos especiales. Soluciones para refinación, procesamiento y distribución petroquímica.', chips:['Ambientes corrosivos','Recubrimientos especiales','Refinación','Procesamiento'] },
-  oil:    { tag:'Oil & Gas', name:'Oil & Gas', gallery:['assets/ind/oil-1.jpg','assets/ind/oil-2.jpg','assets/ind/oil-3.jpg'], text:'Especialistas en izaje para yacimientos onshore y offshore. Equipos anti-explosivos y resistentes a ambientes con gas y vapores inflamables. Referentes en Sudamérica.', chips:['Onshore / Offshore','Anti-explosivo','Vapores inflamables','ATEX zona 1 y 2'] },
-  energy: { tag:'Industria energética', name:'Energía', gallery:['assets/ind/energy-1.jpg','assets/ind/energy-2.jpg','assets/ind/energy-3.jpg','assets/ind/energy-4.jpg'], text:'Soluciones de izaje para plantas de generación eléctrica, turbinas de viento, paneles solares y subestaciones. Equipos con alta disponibilidad para operación crítica.', chips:['Plantas eléctricas','Eólica','Solar','Subestaciones'] },
-  paper:  { tag:'Pulpa y Papel', name:'Pulpa y Papel', gallery:['assets/ind/paper-1.jpg','assets/ind/paper-2.jpg','assets/ind/paper-3.jpg','assets/ind/paper-4.jpg'], text:'Equipos de alta capacidad para el manejo de rollos de papel, bobinas y materias primas. Diseñados para ambientes húmedos con máxima confiabilidad y bajo mantenimiento.', chips:['Rollos y bobinas','Ambientes húmedos','Alta capacidad','Bajo mantenimiento'] },
-  steel:  { tag:'Industria siderúrgica', name:'Aceros', gallery:['assets/ind/steel-1.jpg','assets/ind/steel-2.jpg','assets/ind/steel-3.jpg','assets/ind/steel-4.jpg'], text:'Desde el lingote hasta el producto final. Equipos con capacidades de hasta 200 toneladas para acerías y plantas siderúrgicas, con resistencia a altas temperaturas.', chips:['Hasta 200 toneladas','Altas temperaturas','Acerías','Laminación'] },
-  naval:  { tag:'Industria naval', name:'Astilleros', gallery:['assets/ind/naval-1.jpg','assets/ind/naval-2.jpg','assets/ind/naval-3.jpg'], text:'Equipos diseñados para operar en ambientes marítimos con protección anticorrosión salina. Soluciones para el ensamblado, mantenimiento y reparación de embarcaciones.', chips:['Protección salina','Astilleros','Ensamblado naval','Reparaciones'] },
-  chem:   { tag:'Industria química', name:'Química', gallery:['assets/ind/chem-1.jpg','assets/ind/chem-2.jpg','assets/ind/chem-3.jpg','assets/ind/chem-4.jpg'], text:'Equipos para el manejo seguro de materias primas y productos químicos, con materiales resistentes a agentes corrosivos y certificaciones de seguridad internacionales.', chips:['Materiales resistentes','Certificaciones','Seguridad ATEX','Corrosión química'] },
-  const:  { tag:'Construcción e infraestructura', name:'Construcción', gallery:['assets/ind/const-1.jpg','assets/ind/const-2.jpg','assets/ind/const-3.jpg','assets/ind/const-4.jpg'], text:'Torres grúa y aparejos para obras civiles, edificios de gran altura e infraestructura vial. Confiabilidad y seguridad en condiciones de trabajo a la intemperie.', chips:['Obras civiles','Infraestructura vial','Torres grúa','Intemperie'] },
-  aero:   { tag:'Industria aeroespacial', name:'Aeroespacial', gallery:['assets/ind/aero-1.jpg','assets/ind/aero-2.jpg','assets/ind/aero-3.jpg','assets/ind/aero-4.jpg'], text:'Izaje de precisión para componentes de alta tecnología. Sistemas de control fino y anti-choque para el manejo de estructuras aeronáuticas, espaciales y de defensa.', chips:['Precisión milimétrica','Anti-choque','Aeronáutica','Defensa'] }
+  auto: { tag:'Industria automotriz', name:'Automotriz', gallery:['assets/ind/auto-1.jpg','assets/ind/auto-2.jpg','assets/ind/auto-3.jpg','assets/ind/auto-4.jpg'], text:'Más de 60 años asistiendo a la exigente industria automotriz, donde la línea no puede parar. Equipos para líneas de armado continuo, estaciones de soldadura, cabinas de pintura (muchas anti-explosivas), montaje de motores, salas de medición y estampado.', chips:['Líneas de armado','Cabinas de pintura','Montaje de motores','Estampado'] },
+  mfg: { tag:'Manufactura industrial', name:'Manufactura', gallery:['assets/ind/mfg-1.jpg','assets/ind/mfg-2.jpg','assets/ind/mfg-3.jpg'], text:'Soluciones de izaje para las más diversas operaciones de manufactura: traslado de materiales, líneas de producción y depósitos, con la disponibilidad que cada proceso necesita.', chips:['Líneas de producción','Manejo de materiales','Depósitos','Disponibilidad'] },
+  mining: { tag:'Industria minera', name:'Minería', gallery:['assets/ind/mining-1.jpg','assets/ind/mining-2.jpg','assets/ind/mining-3.jpg','assets/ind/mining-4.jpg'], text:'Una actividad que opera en condiciones extremas, a cielo abierto o bajo tierra: humedad, polvo abrasivo, corrosión, gases explosivos y agua. Equipos para ciclos de trabajo pesado y servicio en zonas remotas, sin detener la actividad.', chips:['Cielo abierto / subterránea','Polvo y corrosión','Ciclos pesados','Zonas remotas'] },
+  nuclear: { tag:'Industria nuclear', name:'Nuclear', gallery:['assets/ind/nuclear-1.jpg','assets/ind/nuclear-2.jpg','assets/ind/nuclear-3.jpg','assets/ind/nuclear-4.jpg'], text:'Acompañamos a la industria nuclear desde sus inicios y por más de 50 años, donde la seguridad es prioridad absoluta. Proveedores calificados por CNEA y ENACE (Argentina) y UDHE (Alemania), con equipos para operación segura incluso en zonas sísmicas.', chips:['Calificados CNEA · ENACE','UDHE (Alemania)','+50 años','Zonas sísmicas'] },
+  food: { tag:'Industria alimenticia', name:'Alimentación', gallery:['assets/ind/food-1.jpg','assets/ind/food-2.jpg','assets/ind/food-3.jpg','assets/ind/food-4.jpg'], text:'Orden, limpieza, procesos continuos y salas limpias son las características del rubro. Equipos para áreas limpias con materiales especiales: aceros inoxidables, pinturas y tratamientos para frigoríficos, lácteos, panificación y más.', chips:['Acero inoxidable','Salas limpias','Tratamiento especial','Frío y lácteos'] },
+  petro: { tag:'Industria petroquímica', name:'Petroquímica', gallery:['assets/ind/petro-1.jpg','assets/ind/petro-2.jpg','assets/ind/petro-3.jpg','assets/ind/petro-4.jpg'], text:'Equipos para ambientes corrosivos y exigentes, con materiales y recubrimientos especiales. Soluciones de izaje para procesos de refinación, procesamiento y distribución petroquímica.', chips:['Ambientes corrosivos','Recubrimientos especiales','Refinación','Procesamiento'] },
+  oil: { tag:'Oil & Gas', name:'Oil & Gas', gallery:['assets/ind/oil-1.jpg','assets/ind/oil-2.jpg','assets/ind/oil-3.jpg'], text:'Izaje para yacimientos on-shore y off-shore. Equipos anti-explosivos para atmósferas con gases y vapores inflamables, con amplia experiencia en proyectos de la región.', chips:['On-shore / Off-shore','Anti-explosivo','Atmósferas inflamables','Experiencia regional'] },
+  energy: { tag:'Industria energética', name:'Energía', gallery:['assets/ind/energy-1.jpg','assets/ind/energy-2.jpg','assets/ind/energy-3.jpg','assets/ind/energy-4.jpg'], text:'Soluciones de izaje para el sector energético: generación, distribución y mantenimiento de equipos, con la confiabilidad que requiere la operación crítica.', chips:['Generación','Distribución','Mantenimiento','Operación crítica'] },
+  paper: { tag:'Pulpa y Papel', name:'Pulpa y Papel', gallery:['assets/ind/paper-1.jpg','assets/ind/paper-2.jpg','assets/ind/paper-3.jpg','assets/ind/paper-4.jpg'], text:'Equipos para el manejo de rollos, bobinas y materias primas en plantas de pulpa y papel, preparados para ambientes húmedos y operación continua.', chips:['Rollos y bobinas','Ambientes húmedos','Operación continua','Materias primas'] },
+  steel: { tag:'Industria siderúrgica', name:'Aceros', gallery:['assets/ind/steel-1.jpg','assets/ind/steel-2.jpg','assets/ind/steel-3.jpg','assets/ind/steel-4.jpg'], text:'Del proceso en caliente al producto final. Equipos robustos para acerías y plantas siderúrgicas, preparados para altas temperaturas y ciclos de trabajo exigentes.', chips:['Altas temperaturas','Acerías','Ciclos exigentes','Gran porte'] },
+  naval: { tag:'Industria naval', name:'Astilleros', gallery:['assets/ind/naval-1.jpg','assets/ind/naval-2.jpg','assets/ind/naval-3.jpg'], text:'Equipos para astilleros e industria naval, preparados para ambientes marítimos con protección frente a la corrosión salina. Para ensamblado, mantenimiento y reparación.', chips:['Ambiente marítimo','Anticorrosión','Astilleros','Reparación'] },
+  chem: { tag:'Industria química', name:'Química', gallery:['assets/ind/chem-1.jpg','assets/ind/chem-2.jpg','assets/ind/chem-3.jpg','assets/ind/chem-4.jpg'], text:'Manejo seguro de materias primas y productos en la industria química, con materiales resistentes a agentes corrosivos y soluciones para áreas exigentes.', chips:['Materiales resistentes','Áreas exigentes','Corrosión química','Manejo seguro'] },
+  const: { tag:'Construcción e infraestructura', name:'Construcción', gallery:['assets/ind/const-1.jpg','assets/ind/const-2.jpg','assets/ind/const-3.jpg','assets/ind/const-4.jpg'], text:'Aparejos y equipos de izaje para obras civiles e infraestructura, con la robustez y la seguridad que requiere el trabajo a la intemperie.', chips:['Obras civiles','Infraestructura','A la intemperie','Robustez'] },
+  aero: { tag:'Industria aeroespacial', name:'Aeroespacial', gallery:['assets/ind/aero-1.jpg','assets/ind/aero-2.jpg','assets/ind/aero-3.jpg','assets/ind/aero-4.jpg'], text:'Izaje de precisión para componentes de alta tecnología, con sistemas de control fino para el manejo cuidadoso de estructuras del sector aeronáutico.', chips:['Precisión','Control fino','Componentes sensibles','Alta tecnología'] },
 };
 
 // ── PRODUCT DATA ──
