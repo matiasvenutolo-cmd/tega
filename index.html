@@ -306,7 +306,16 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
   transition:transform .9s cubic-bezier(0.2,0.7,0.2,1), opacity .6s ease;
   transform:scale(1);opacity:1}
 .ep-img:hover img{transform:scale(1.03) !important}
-.ep-img-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,10,10,0.5) 0%,transparent 55%)}
+.ep-img-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,10,10,0.5) 0%,transparent 55%);pointer-events:none}
+/* fade al cambiar de foto en la galería */
+.ep-img img.swapping{opacity:0 !important;transition:opacity .25s ease !important}
+/* tira de miniaturas de la galería */
+.ep-thumbs{position:absolute;left:16px;right:16px;bottom:14px;z-index:6;display:flex;gap:8px;flex-wrap:wrap}
+.ep-thumb{width:54px;height:40px;border-radius:7px;overflow:hidden;cursor:pointer;border:2px solid rgba(255,255,255,0.35);
+  opacity:.65;transition:opacity .2s,border-color .2s,transform .2s;background:#222;padding:0;flex-shrink:0}
+.ep-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.ep-thumb:hover{opacity:1;transform:translateY(-2px)}
+.ep-thumb.active{opacity:1;border-color:var(--y)}
 
 /* Content: staggered children */
 .ep-content{padding:48px;background:#141414;display:flex;flex-direction:column;gap:16px;justify-content:center}
@@ -349,6 +358,27 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
 .ep-brochure:hover{border-color:var(--y);background:rgba(242,182,0,0.08);color:#fff}
 .ep-brochure.hidden{display:none}
 
+/* ── SERVICIOS ── */
+.serv{padding:100px 56px;background:var(--ink);position:relative;overflow:hidden;background-image:url('assets/prod/service.jpg');background-size:cover;background-position:center;background-attachment:fixed}
+.serv::before{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(160deg,rgba(10,10,10,0.94) 0%,rgba(10,10,10,0.86) 55%,rgba(10,10,10,0.94) 100%)}
+.serv-inner{max-width:1280px;margin:0 auto;position:relative;z-index:1}
+.serv-top{text-align:center;max-width:660px;margin:0 auto 56px}
+.serv-tag{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--y);display:inline-flex;align-items:center;gap:10px;margin-bottom:20px}
+.serv-tag::before,.serv-tag::after{content:'';width:24px;height:2px;background:var(--y);border-radius:2px}
+.serv-title{font-family:var(--display);font-weight:800;font-size:clamp(34px,4vw,56px);line-height:1.05;letter-spacing:-0.02em;color:#fff;margin-bottom:16px}
+.serv-title em{font-style:normal;color:var(--y)}
+.serv-lead{font-size:16px;line-height:1.7;color:rgba(255,255,255,0.55)}
+.serv-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.serv-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-card);padding:30px 22px;display:flex;flex-direction:column;gap:12px;transition:background .25s,border-color .25s,transform .25s;opacity:0;transform:translateY(28px)}
+.serv-card.in-view{animation:cardIn .55s cubic-bezier(0.2,0.7,0.2,1) forwards}
+.serv-card.in-view:nth-child(2){animation-delay:.08s}.serv-card.in-view:nth-child(3){animation-delay:.16s}
+.serv-card.in-view:nth-child(4){animation-delay:.24s}.serv-card.in-view:nth-child(5){animation-delay:.32s}
+.serv-card:hover{background:rgba(242,182,0,0.07);border-color:rgba(242,182,0,0.25);transform:translateY(-4px)}
+.serv-ico{width:46px;height:46px;border-radius:12px;background:rgba(242,182,0,0.12);color:var(--y);display:flex;align-items:center;justify-content:center}
+.serv-ico svg{width:24px;height:24px}
+.serv-h{font-family:var(--display);font-size:17px;font-weight:800;color:#fff;line-height:1.2;letter-spacing:-0.01em}
+.serv-p{font-size:13.5px;line-height:1.6;color:rgba(255,255,255,0.55)}
+
 /* ── RESPONSIVE ── */
 @media(max-width:1100px){
   .hero-img-wrap{width:45%}
@@ -356,6 +386,7 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
   .prod-grid{grid-template-columns:repeat(2,1fr)}
   .diff-top,.prod-top,.contact-grid,.ind-top{grid-template-columns:1fr;gap:32px}
   .ind-grid{grid-template-columns:repeat(4,1fr)}
+  .serv-grid{grid-template-columns:repeat(3,1fr)}
   .timeline::before{left:28px}
   .tl-item{grid-template-columns:56px 1fr;gap:0}
   /* odd items: card in tl-left → show it after center, hide empty tl-right */
@@ -395,11 +426,12 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
   .trust-marquee-wrap{width:100%}
 
   /* ── SECCIONES ── */
-  .diff,.prod,.contact,.historia,.industrias{padding:56px 20px}
+  .diff,.prod,.contact,.historia,.industrias,.serv{padding:56px 20px}
   /* iOS no soporta background-attachment:fixed — genera blancos */
-  .diff,.industrias{background-attachment:scroll}
+  .diff,.industrias,.serv{background-attachment:scroll}
   .diff-grid,.prod-grid{grid-template-columns:1fr}
   .ind-grid{grid-template-columns:repeat(2,1fr)}
+  .serv-grid{grid-template-columns:1fr}
 
   /* ── EXPAND PANELS ── */
   .expand-inner{grid-template-columns:1fr}
@@ -429,7 +461,7 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
   </a>
   <div class="nav-links">
     <a href="#productos" data-i18n="nav.products">Productos</a>
-    <a href="#empresa" data-i18n="nav.company">Empresa</a>
+    <a href="#servicios" data-i18n="nav.services">Servicios</a>
     <a href="#historia" data-i18n="nav.history">Historia</a>
     <a href="#industrias" data-i18n="nav.industries">Industrias</a>
     <a href="#contacto" data-i18n="nav.contact">Contacto</a>
@@ -637,6 +669,7 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
           <div class="ep-img"><img id="indPanelImg" src="" alt="" loading="lazy"></div>
           <div class="ep-img-overlay"></div>
           <button class="ep-close" id="indPanelClose" aria-label="Cerrar">✕</button>
+          <div class="ep-thumbs" id="indPanelThumbs"></div>
         </div>
         <div class="ep-content">
           <div class="ep-tag" id="indPanelTag"></div>
@@ -709,12 +742,6 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
         <p class="pc-desc" data-i18n="p8.desc">Apiladoras electrohidráulicas. Solución compacta y maniobrable para depósitos y almacenes industriales.</p>
         <span class="pc-arrow" data-i18n="prod.more">Ver más →</span>
       </div>
-      <div class="prod-card reveal" data-prod="service" role="button" tabindex="0">
-        <div class="pc-num" data-i18n="p9.cat">09 / Servicio técnico</div>
-        <h3 class="pc-title">Tega Service</h3>
-        <p class="pc-desc" data-i18n="p9.desc">Mantenimiento preventivo, reparación y revamping bajo normas FEM y CMAA. Directo de fábrica, con trazabilidad total del equipo.</p>
-        <span class="pc-arrow" data-i18n="prod.more">Ver más →</span>
-      </div>
     </div>
     <!-- PRODUCT EXPAND PANEL -->
     <div class="expand-wrap" id="prodPanel">
@@ -736,6 +763,44 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
             <a href="#" id="prodPanelBrochure" class="ep-brochure" target="_blank" rel="noopener"><span data-i18n="panel.prod.brochure">Descargar ficha técnica</span></a>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="serv" id="servicios">
+  <div class="serv-inner">
+    <div class="serv-top">
+      <div class="serv-tag" data-i18n="serv.tag">Servicios &amp; posventa</div>
+      <h2 class="serv-title" data-i18n-html="serv.title">Posventa que <em>no se detiene.</em></h2>
+      <p class="serv-lead" data-i18n="serv.lead">Desde un cambio de fecha hasta el problema más complejo, lo resolvemos. Respaldo directo de fábrica para que su equipo nunca pare — con repuestos en stock y respuesta en 24 horas.</p>
+    </div>
+    <div class="serv-grid">
+      <div class="serv-card reveal">
+        <div class="serv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 00-5.4 5.4l-6 6a1.5 1.5 0 002 2l6-6a4 4 0 005.4-5.4l-2.3 2.3-2-2 2.3-2.3z"/></svg></div>
+        <h3 class="serv-h" data-i18n="serv.1.t">Mantenimiento preventivo</h3>
+        <p class="serv-p" data-i18n="serv.1.d">Optimiza la seguridad y eficiencia del equipo durante toda su vida útil, evitando paradas no programadas.</p>
+      </div>
+      <div class="serv-card reveal">
+        <div class="serv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l5 5m0 0l-3 3a2 2 0 01-3-3l3-3zm8-3l4-1 6 6-1 4-4 1-5-5 1-4z"/></svg></div>
+        <h3 class="serv-h" data-i18n="serv.2.t">Reparación</h3>
+        <p class="serv-p" data-i18n="serv.2.d">Reparación integral de equipos de movimiento, propios o de terceros, bajo normas FEM y CMAA.</p>
+      </div>
+      <div class="serv-card reveal">
+        <div class="serv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-3-6.7L21 8m0-5v5h-5"/></svg></div>
+        <h3 class="serv-h" data-i18n="serv.3.t">Revamping</h3>
+        <p class="serv-p" data-i18n="serv.3.d">Modernización y transformación de equipos para cumplir las normas vigentes y extender su vida útil.</p>
+      </div>
+      <div class="serv-card reveal">
+        <div class="serv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.7l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.7l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><path d="M3.3 7L12 12l8.7-5M12 22V12"/></svg></div>
+        <h3 class="serv-h" data-i18n="serv.4.t">Repuestos en stock</h3>
+        <p class="serv-p" data-i18n="serv.4.d">Inventario permanente de componentes originales para entrega inmediata. Ningún proveedor importado lo iguala.</p>
+      </div>
+      <div class="serv-card reveal">
+        <div class="serv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <h3 class="serv-h" data-i18n="serv.5.t">Consultoría</h3>
+        <p class="serv-p" data-i18n="serv.5.d">Asesoramiento en logística, transporte interno y manejo de materiales para optimizar su operación.</p>
       </div>
     </div>
   </div>
@@ -820,26 +885,28 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
       <div>
         <div class="f-col-title" data-i18n="footer.col.products">Productos</div>
         <ul class="f-links">
-          <li><a href="#productos">Tega Crane</a></li>
+          <li><a href="#productos">Tega Crane — Puentes grúa</a></li>
           <li><a href="#productos">Power Lift / Ultra Lift</a></li>
           <li><a href="#productos">Anti Explosivo</a></li>
           <li><a href="#productos">Tega Chain</a></li>
+          <li><a href="#productos">Tega Kit</a></li>
           <li><a href="#productos">Radiolift / MoviCar</a></li>
         </ul>
       </div>
       <div>
         <div class="f-col-title" data-i18n="footer.col.services">Servicios</div>
         <ul class="f-links">
-          <li><a href="#productos">Tega Service</a></li>
-          <li><a href="#productos">Repuestos</a></li>
-          <li><a href="#productos">Mantenimiento</a></li>
-          <li><a href="#productos">Revamping</a></li>
+          <li><a href="#servicios" data-i18n="serv.1.t">Mantenimiento preventivo</a></li>
+          <li><a href="#servicios" data-i18n="serv.2.t">Reparación</a></li>
+          <li><a href="#servicios" data-i18n="serv.3.t">Revamping</a></li>
+          <li><a href="#servicios" data-i18n="serv.4.t">Repuestos en stock</a></li>
+          <li><a href="#servicios" data-i18n="serv.5.t">Consultoría</a></li>
         </ul>
       </div>
       <div>
         <div class="f-col-title" data-i18n="footer.col.company">Empresa</div>
         <ul class="f-links">
-          <li><a href="#empresa" data-i18n="footer.link.about">Quiénes somos</a></li>
+          <li><a href="#empresa" data-i18n="footer.link.about">Por qué nos eligen</a></li>
           <li><a href="#historia" data-i18n="footer.link.history">Historia</a></li>
           <li><a href="#industrias" data-i18n="footer.link.industries">Industrias</a></li>
           <li><a href="#contacto" data-i18n="footer.link.contact">Contacto</a></li>
@@ -899,7 +966,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
 // ── i18n ──
 const LANG = {
   es: {
-    'nav.products':'Productos','nav.company':'Empresa','nav.history':'Historia',
+    'nav.products':'Productos','nav.company':'Empresa','nav.services':'Servicios','nav.history':'Historia',
     'nav.industries':'Industrias','nav.contact':'Contacto',
     'nav.viewProducts':'Ver productos','nav.requestConsult':'Solicitar consulta',
     'hero.badge':'Fabricación Argentina · Desde 1947',
@@ -933,6 +1000,13 @@ const LANG = {
     'ind.const':'Construcción','ind.aero':'Aeroespacial',
     'prod.tag':'Línea de productos','prod.title':'Equipamiento para<br>cada <em>industria.</em>',
     'prod.lead':'Desde el aparejo más compacto hasta el puente grúa antisísmico — toda la gama diseñada y fabricada en Argentina, con asistencia técnica de por vida.',
+    'serv.tag':'Servicios & posventa','serv.title':'Posventa que <em>no se detiene.</em>',
+    'serv.lead':'Desde un cambio de fecha hasta el problema más complejo, lo resolvemos. Respaldo directo de fábrica para que su equipo nunca pare — con repuestos en stock y respuesta en 24 horas.',
+    'serv.1.t':'Mantenimiento preventivo','serv.1.d':'Optimiza la seguridad y eficiencia del equipo durante toda su vida útil, evitando paradas no programadas.',
+    'serv.2.t':'Reparación','serv.2.d':'Reparación integral de equipos de movimiento, propios o de terceros, bajo normas FEM y CMAA.',
+    'serv.3.t':'Revamping','serv.3.d':'Modernización y transformación de equipos para cumplir las normas vigentes y extender su vida útil.',
+    'serv.4.t':'Repuestos en stock','serv.4.d':'Inventario permanente de componentes originales para entrega inmediata. Ningún proveedor importado lo iguala.',
+    'serv.5.t':'Consultoría','serv.5.d':'Asesoramiento en logística, transporte interno y manejo de materiales para optimizar su operación.',
     'p1.cat':'01 / Puentes grúa & pórticos','p1.desc':'Puentes grúa, pórticos, semipórticos y plumas. Monoviga o biviga, vigas perfiladas o tipo cajón — la gama más completa del mercado.',
     'p2.cat':'02 / Aparejos a cable','p2.desc':'Aparejo eléctrico a cable de acero. Motor autofrenante, freno de seguridad WESTON-TEGA y limitador de sobrecarga automático.',
     'p3.cat':'03 / Aparejos alta capacidad','p3.desc':'Generación revolucionaria con izaje casi vertical. Hasta 80.000 kg, variador de frecuencia y tablero NEMA 4.',
@@ -951,13 +1025,13 @@ const LANG = {
     'form.select':'Seleccionar…','form.message':'Mensaje','form.submit':'Enviar consulta',
     'footer.desc':'Ingeniería de elevación industrial. Fabricación propia desde 1947 en Buenos Aires, Argentina. Stock de repuestos garantizado de por vida.',
     'footer.col.products':'Productos','footer.col.services':'Servicios','footer.col.company':'Empresa',
-    'footer.link.about':'Quiénes somos','footer.link.history':'Historia',
+    'footer.link.about':'Por qué nos eligen','footer.link.history':'Historia',
     'footer.link.industries':'Industrias','footer.link.contact':'Contacto',
     'prod.more':'Ver más →','panel.ind.cta':'Consultar solución','panel.prod.cta':'Solicitar cotización',
     'panel.prod.opts':'Versiones y opciones disponibles','panel.prod.brochure':'Descargar ficha técnica'
   },
   en: {
-    'nav.products':'Products','nav.company':'Company','nav.history':'History',
+    'nav.products':'Products','nav.company':'Company','nav.services':'Services','nav.history':'History',
     'nav.industries':'Industries','nav.contact':'Contact',
     'nav.viewProducts':'View products','nav.requestConsult':'Request a quote',
     'hero.badge':'Argentine Manufacturing · Since 1947',
@@ -991,6 +1065,13 @@ const LANG = {
     'ind.const':'Construction','ind.aero':'Aerospace',
     'prod.tag':'Product line','prod.title':'Equipment for<br>every <em>industry.</em>',
     'prod.lead':'From the most compact hoist to the seismic-resistant bridge crane — the entire range designed and manufactured in Argentina, with lifetime technical support.',
+    'serv.tag':'Service & after-sales','serv.title':'After-sales that <em>never stops.</em>',
+    'serv.lead':'From a rescheduling to the most complex problem, we solve it. Factory-direct support so your equipment never stops — with spare parts in stock and 24-hour response.',
+    'serv.1.t':'Preventive maintenance','serv.1.d':'Optimizes equipment safety and efficiency throughout its lifespan, preventing unplanned downtime.',
+    'serv.2.t':'Repair','serv.2.d':'Comprehensive repair of material-handling equipment, ours or third-party, under FEM and CMAA standards.',
+    'serv.3.t':'Revamping','serv.3.d':'Modernization and transformation of equipment to meet current standards and extend its lifespan.',
+    'serv.4.t':'Spare parts in stock','serv.4.d':'Permanent inventory of original components for immediate delivery. No importer can match it.',
+    'serv.5.t':'Consulting','serv.5.d':'Advice on logistics, internal transport and material handling to optimize your operation.',
     'p1.cat':'01 / Bridge cranes & gantries','p1.desc':'Bridge cranes, gantries, semi-gantries and jibs. Single or double girder, profiled or box beams — the most complete range on the market.',
     'p2.cat':'02 / Wire rope hoists','p2.desc':'Electric wire rope hoist. Self-braking motor, WESTON-TEGA safety brake and automatic overload limiter.',
     'p3.cat':'03 / High-capacity hoists','p3.desc':'Revolutionary generation with near-vertical lifting. Up to 80,000 kg, variable frequency drive and NEMA 4 panel.',
@@ -1009,13 +1090,13 @@ const LANG = {
     'form.select':'Select…','form.message':'Message','form.submit':'Send inquiry',
     'footer.desc':'Industrial lifting engineering. In-house manufacturing since 1947 in Buenos Aires, Argentina. Guaranteed spare parts stock for life.',
     'footer.col.products':'Products','footer.col.services':'Services','footer.col.company':'Company',
-    'footer.link.about':'About us','footer.link.history':'History',
+    'footer.link.about':'Why they choose us','footer.link.history':'History',
     'footer.link.industries':'Industries','footer.link.contact':'Contact',
     'prod.more':'See more →','panel.ind.cta':'Request solution','panel.prod.cta':'Request a quote',
     'panel.prod.opts':'Available versions & options','panel.prod.brochure':'Download datasheet'
   },
   pt: {
-    'nav.products':'Produtos','nav.company':'Empresa','nav.history':'História',
+    'nav.products':'Produtos','nav.company':'Empresa','nav.services':'Serviços','nav.history':'História',
     'nav.industries':'Indústrias','nav.contact':'Contato',
     'nav.viewProducts':'Ver produtos','nav.requestConsult':'Solicitar consulta',
     'hero.badge':'Fabricação Argentina · Desde 1947',
@@ -1049,6 +1130,13 @@ const LANG = {
     'ind.const':'Construção','ind.aero':'Aeroespacial',
     'prod.tag':'Linha de produtos','prod.title':'Equipamentos para<br>cada <em>indústria.</em>',
     'prod.lead':'Do talha mais compacto até a ponte rolante antissísmica — toda a linha projetada e fabricada na Argentina, com assistência técnica vitalícia.',
+    'serv.tag':'Serviços & pós-venda','serv.title':'Pós-venda que <em>não para.</em>',
+    'serv.lead':'De uma reprogramação ao problema mais complexo, nós resolvemos. Suporte direto de fábrica para que seu equipamento nunca pare — com peças em estoque e resposta em 24 horas.',
+    'serv.1.t':'Manutenção preventiva','serv.1.d':'Otimiza a segurança e eficiência do equipamento durante toda a vida útil, evitando paradas não programadas.',
+    'serv.2.t':'Reparo','serv.2.d':'Reparo integral de equipamentos de movimentação, próprios ou de terceiros, sob normas FEM e CMAA.',
+    'serv.3.t':'Revamping','serv.3.d':'Modernização e transformação de equipamentos para cumprir as normas vigentes e estender sua vida útil.',
+    'serv.4.t':'Peças em estoque','serv.4.d':'Inventário permanente de componentes originais para entrega imediata. Nenhum fornecedor importado iguala.',
+    'serv.5.t':'Consultoria','serv.5.d':'Assessoria em logística, transporte interno e manuseio de materiais para otimizar sua operação.',
     'p1.cat':'01 / Pontes rolantes & pórticos','p1.desc':'Pontes rolantes, pórticos, semipórticos e plumas. Monoviga ou biviga, vigas perfiladas ou caixão — a linha mais completa do mercado.',
     'p2.cat':'02 / Talhas a cabo','p2.desc':'Talha elétrica a cabo de aço. Motor autofrenante, freio de segurança WESTON-TEGA e limitador de sobrecarga automático.',
     'p3.cat':'03 / Talhas alta capacidade','p3.desc':'Geração revolucionária com içamento quase vertical. Até 80.000 kg, variador de frequência e painel NEMA 4.',
@@ -1067,7 +1155,7 @@ const LANG = {
     'form.select':'Selecionar…','form.message':'Mensagem','form.submit':'Enviar consulta',
     'footer.desc':'Engenharia de içamento industrial. Fabricação própria desde 1947 em Buenos Aires, Argentina. Estoque de peças garantido para sempre.',
     'footer.col.products':'Produtos','footer.col.services':'Serviços','footer.col.company':'Empresa',
-    'footer.link.about':'Quem somos','footer.link.history':'História',
+    'footer.link.about':'Por que nos escolhem','footer.link.history':'História',
     'footer.link.industries':'Indústrias','footer.link.contact':'Contato',
     'prod.more':'Ver mais →','panel.ind.cta':'Solicitar solução','panel.prod.cta':'Solicitar cotação',
     'panel.prod.opts':'Versões e opções disponíveis','panel.prod.brochure':'Baixar ficha técnica'
@@ -1199,37 +1287,37 @@ function refreshPanel(panel) {
 
 // ── INDUSTRY DATA ──
 const IND = {
-  auto:   { tag:'Industria automotriz', name:'Automotriz', img:'https://www.tega.com.ar/img/automotriz/automotriz-02.jpg', text:'Primera empresa en equipar líneas de ensamblado automotriz en Argentina, São Paulo y Curitiba. Soluciones para estampado, ensamblado de carrocerías, cabinas de pintura y montaje de motores.', chips:['Ensamblado de carrocerías','Cabinas de pintura','Estampado','Montaje de motores'] },
-  mfg:    { tag:'Manufactura industrial', name:'Manufactura', img:'https://www.tega.com.ar/img/automotriz/automotriz-04.jpg', text:'Equipamiento de izaje para las más diversas operaciones de manufactura industrial. Desde el traslado de materiales hasta la producción en serie con alta disponibilidad.', chips:['Líneas de producción','Almacenes','Manejo de materiales','Alta disponibilidad'] },
-  mining: { tag:'Industria minera', name:'Minería', img:'https://www.tega.com.ar/img/mineria/mineria-00.jpg', text:'Equipos certificados para las condiciones más adversas: polvo, humedad y vibraciones extremas. Para operación continua en minería a cielo abierto y subterránea.', chips:['Minería a cielo abierto','Minería subterránea','Polvo y humedad','Operación 24/7'] },
-  nuclear:{ tag:'Industria nuclear', name:'Nuclear', img:'https://www.tega.com.ar/img/nuclear/nuclear-00.JPG', text:'Proveedor calificado de la CNEA desde 1973. Equipos con trazabilidad total, fabricación bajo normas ASME y certificación para zonas controladas y vigiladas.', chips:['CNEA calificado','Trazabilidad total','Normas ASME','Zonas vigiladas'] },
-  food:   { tag:'Industria alimenticia', name:'Alimentación', img:'https://www.tega.com.ar/img/alimentacion/alimentacion-00.JPG', text:'Equipos con materiales sanitarios para la industria alimenticia. Diseño higiénico de fácil limpieza, cumplimiento de normativas FDA/SENASA y resistencia a lavados frecuentes.', chips:['Acero inoxidable','Diseño higiénico','FDA / SENASA','Fácil limpieza'] },
-  petro:  { tag:'Industria petroquímica', name:'Petroquímica', img:'https://www.tega.com.ar/img/petroquimica/petroquimica-00.jpg', text:'Equipos certificados para ambientes corrosivos con materiales y recubrimientos especiales. Soluciones para refinación, procesamiento y distribución petroquímica.', chips:['Ambientes corrosivos','Recubrimientos especiales','Refinación','Procesamiento'] },
-  oil:    { tag:'Oil & Gas', name:'Oil & Gas', img:'https://www.tega.com.ar/img/petroquimica/petroquimica-02.jpg', text:'Especialistas en izaje para yacimientos onshore y offshore. Equipos anti-explosivos y resistentes a ambientes con gas y vapores inflamables. Referentes en Sudamérica.', chips:['Onshore / Offshore','Anti-explosivo','Vapores inflamables','ATEX zona 1 y 2'] },
-  energy: { tag:'Industria energética', name:'Energía', img:'https://www.tega.com.ar/img/energia/energia-00.jpg', text:'Soluciones de izaje para plantas de generación eléctrica, turbinas de viento, paneles solares y subestaciones. Equipos con alta disponibilidad para operación crítica.', chips:['Plantas eléctricas','Eólica','Solar','Subestaciones'] },
-  paper:  { tag:'Pulpa y Papel', name:'Pulpa y Papel', img:'https://www.tega.com.ar/img/pulpa/pulpa-00.jpg', text:'Equipos de alta capacidad para el manejo de rollos de papel, bobinas y materias primas. Diseñados para ambientes húmedos con máxima confiabilidad y bajo mantenimiento.', chips:['Rollos y bobinas','Ambientes húmedos','Alta capacidad','Bajo mantenimiento'] },
-  steel:  { tag:'Industria siderúrgica', name:'Aceros', img:'https://www.tega.com.ar/img/aceros/aceros-00.jpg', text:'Desde el lingote hasta el producto final. Equipos con capacidades de hasta 200 toneladas para acerías y plantas siderúrgicas, con resistencia a altas temperaturas.', chips:['Hasta 200 toneladas','Altas temperaturas','Acerías','Laminación'] },
-  naval:  { tag:'Industria naval', name:'Astilleros', img:'https://www.tega.com.ar/img/astilleros/astilleros-00.jpg', text:'Equipos diseñados para operar en ambientes marítimos con protección anticorrosión salina. Soluciones para el ensamblado, mantenimiento y reparación de embarcaciones.', chips:['Protección salina','Astilleros','Ensamblado naval','Reparaciones'] },
-  chem:   { tag:'Industria química', name:'Química', img:'https://www.tega.com.ar/img/quimica/quimica-00.jpg', text:'Equipos para el manejo seguro de materias primas y productos químicos, con materiales resistentes a agentes corrosivos y certificaciones de seguridad internacionales.', chips:['Materiales resistentes','Certificaciones','Seguridad ATEX','Corrosión química'] },
-  const:  { tag:'Construcción e infraestructura', name:'Construcción', img:'https://www.tega.com.ar/img/construccion/construccion-00.jpg', text:'Torres grúa y aparejos para obras civiles, edificios de gran altura e infraestructura vial. Confiabilidad y seguridad en condiciones de trabajo a la intemperie.', chips:['Obras civiles','Infraestructura vial','Torres grúa','Intemperie'] },
-  aero:   { tag:'Industria aeroespacial', name:'Aeroespacial', img:'https://www.tega.com.ar/img/aeroespacial/aeroespacial-00.JPG', text:'Izaje de precisión para componentes de alta tecnología. Sistemas de control fino y anti-choque para el manejo de estructuras aeronáuticas, espaciales y de defensa.', chips:['Precisión milimétrica','Anti-choque','Aeronáutica','Defensa'] }
+  auto:   { tag:'Industria automotriz', name:'Automotriz', gallery:['assets/ind/auto-1.jpg','assets/ind/auto-2.jpg','assets/ind/auto-3.jpg','assets/ind/auto-4.jpg'], text:'Primera empresa en equipar líneas de ensamblado automotriz en Argentina, São Paulo y Curitiba. Soluciones para estampado, ensamblado de carrocerías, cabinas de pintura y montaje de motores.', chips:['Ensamblado de carrocerías','Cabinas de pintura','Estampado','Montaje de motores'] },
+  mfg:    { tag:'Manufactura industrial', name:'Manufactura', gallery:['assets/ind/mfg-1.jpg','assets/ind/mfg-2.jpg','assets/ind/mfg-3.jpg'], text:'Equipamiento de izaje para las más diversas operaciones de manufactura industrial. Desde el traslado de materiales hasta la producción en serie con alta disponibilidad.', chips:['Líneas de producción','Almacenes','Manejo de materiales','Alta disponibilidad'] },
+  mining: { tag:'Industria minera', name:'Minería', gallery:['assets/ind/mining-1.jpg','assets/ind/mining-2.jpg','assets/ind/mining-3.jpg','assets/ind/mining-4.jpg'], text:'Equipos certificados para las condiciones más adversas: polvo, humedad y vibraciones extremas. Para operación continua en minería a cielo abierto y subterránea.', chips:['Minería a cielo abierto','Minería subterránea','Polvo y humedad','Operación 24/7'] },
+  nuclear:{ tag:'Industria nuclear', name:'Nuclear', gallery:['assets/ind/nuclear-1.jpg','assets/ind/nuclear-2.jpg','assets/ind/nuclear-3.jpg','assets/ind/nuclear-4.jpg'], text:'Proveedor calificado de la CNEA desde 1973. Equipos con trazabilidad total, fabricación bajo normas ASME y certificación para zonas controladas y vigiladas.', chips:['CNEA calificado','Trazabilidad total','Normas ASME','Zonas vigiladas'] },
+  food:   { tag:'Industria alimenticia', name:'Alimentación', gallery:['assets/ind/food-1.jpg','assets/ind/food-2.jpg','assets/ind/food-3.jpg','assets/ind/food-4.jpg'], text:'Equipos con materiales sanitarios para la industria alimenticia. Diseño higiénico de fácil limpieza, cumplimiento de normativas FDA/SENASA y resistencia a lavados frecuentes.', chips:['Acero inoxidable','Diseño higiénico','FDA / SENASA','Fácil limpieza'] },
+  petro:  { tag:'Industria petroquímica', name:'Petroquímica', gallery:['assets/ind/petro-1.jpg','assets/ind/petro-2.jpg','assets/ind/petro-3.jpg','assets/ind/petro-4.jpg'], text:'Equipos certificados para ambientes corrosivos con materiales y recubrimientos especiales. Soluciones para refinación, procesamiento y distribución petroquímica.', chips:['Ambientes corrosivos','Recubrimientos especiales','Refinación','Procesamiento'] },
+  oil:    { tag:'Oil & Gas', name:'Oil & Gas', gallery:['assets/ind/oil-1.jpg','assets/ind/oil-2.jpg','assets/ind/oil-3.jpg'], text:'Especialistas en izaje para yacimientos onshore y offshore. Equipos anti-explosivos y resistentes a ambientes con gas y vapores inflamables. Referentes en Sudamérica.', chips:['Onshore / Offshore','Anti-explosivo','Vapores inflamables','ATEX zona 1 y 2'] },
+  energy: { tag:'Industria energética', name:'Energía', gallery:['assets/ind/energy-1.jpg','assets/ind/energy-2.jpg','assets/ind/energy-3.jpg','assets/ind/energy-4.jpg'], text:'Soluciones de izaje para plantas de generación eléctrica, turbinas de viento, paneles solares y subestaciones. Equipos con alta disponibilidad para operación crítica.', chips:['Plantas eléctricas','Eólica','Solar','Subestaciones'] },
+  paper:  { tag:'Pulpa y Papel', name:'Pulpa y Papel', gallery:['assets/ind/paper-1.jpg','assets/ind/paper-2.jpg','assets/ind/paper-3.jpg','assets/ind/paper-4.jpg'], text:'Equipos de alta capacidad para el manejo de rollos de papel, bobinas y materias primas. Diseñados para ambientes húmedos con máxima confiabilidad y bajo mantenimiento.', chips:['Rollos y bobinas','Ambientes húmedos','Alta capacidad','Bajo mantenimiento'] },
+  steel:  { tag:'Industria siderúrgica', name:'Aceros', gallery:['assets/ind/steel-1.jpg','assets/ind/steel-2.jpg','assets/ind/steel-3.jpg','assets/ind/steel-4.jpg'], text:'Desde el lingote hasta el producto final. Equipos con capacidades de hasta 200 toneladas para acerías y plantas siderúrgicas, con resistencia a altas temperaturas.', chips:['Hasta 200 toneladas','Altas temperaturas','Acerías','Laminación'] },
+  naval:  { tag:'Industria naval', name:'Astilleros', gallery:['assets/ind/naval-1.jpg','assets/ind/naval-2.jpg','assets/ind/naval-3.jpg'], text:'Equipos diseñados para operar en ambientes marítimos con protección anticorrosión salina. Soluciones para el ensamblado, mantenimiento y reparación de embarcaciones.', chips:['Protección salina','Astilleros','Ensamblado naval','Reparaciones'] },
+  chem:   { tag:'Industria química', name:'Química', gallery:['assets/ind/chem-1.jpg','assets/ind/chem-2.jpg','assets/ind/chem-3.jpg','assets/ind/chem-4.jpg'], text:'Equipos para el manejo seguro de materias primas y productos químicos, con materiales resistentes a agentes corrosivos y certificaciones de seguridad internacionales.', chips:['Materiales resistentes','Certificaciones','Seguridad ATEX','Corrosión química'] },
+  const:  { tag:'Construcción e infraestructura', name:'Construcción', gallery:['assets/ind/const-1.jpg','assets/ind/const-2.jpg','assets/ind/const-3.jpg','assets/ind/const-4.jpg'], text:'Torres grúa y aparejos para obras civiles, edificios de gran altura e infraestructura vial. Confiabilidad y seguridad en condiciones de trabajo a la intemperie.', chips:['Obras civiles','Infraestructura vial','Torres grúa','Intemperie'] },
+  aero:   { tag:'Industria aeroespacial', name:'Aeroespacial', gallery:['assets/ind/aero-1.jpg','assets/ind/aero-2.jpg','assets/ind/aero-3.jpg','assets/ind/aero-4.jpg'], text:'Izaje de precisión para componentes de alta tecnología. Sistemas de control fino y anti-choque para el manejo de estructuras aeronáuticas, espaciales y de defensa.', chips:['Precisión milimétrica','Anti-choque','Aeronáutica','Defensa'] }
 };
 
 // ── PRODUCT DATA ──
 const PROD = {
-  crane:    { tag:'01 / Puentes grúa & pórticos', name:'Tega Crane', img:'https://www.tega.com.ar/img/aceros/aceros-02.jpg', text:'La gama más completa del mercado: puentes grúa, pórticos, semipórticos y plumas. Versión monoviga o biviga, con vigas perfiladas o tipo cajón que optimizan el aprovechamiento del espacio. Diseñados y fabricados en Argentina bajo normas FEM europeas y ASME/CMAA norteamericanas para cada grado de severidad de trabajo.', specs:[['Capacidad','Hasta 200 t'],['Luz','Hasta 40 m'],['Normas','FEM · CMAA · ASME'],['Clases de uso','A1 a A8 (FEM)']], options:['Monoviga','Biviga','Pórtico','Semipórtico','Pluma giratoria','Monorriel especial'] },
-  powerlift:{ tag:'02 / Aparejos a cable', name:'Power Lift', img:'https://www.tega.com.ar/img/automotriz/automotriz-03.jpg', text:'Aparejo eléctrico a cable de acero de extraordinaria robustez y versatilidad. Motor autofrenante de alto par de arranque, factor de marcha 40% (240 arranques/h) sin recambio de juntas hasta 1.000.000 de maniobras. Freno mecánico de seguridad independiente WESTON-TEGA, bloque de carga cerrado con poleas de lubricación permanente y limitador de sobrecarga automático.', specs:[['Clasificación','FEM 1Bm – 3m'],['Control','24V baja tensión'],['Freno','WESTON-TEGA'],['Equivalencia','ASME H2 – H4']], options:['Doble velocidad','Microvelocidad','Velocidad variable','Radiocontrol','Celda de carga LAN','Montaje monorriel'] },
-  ultralift:{ tag:'03 / Aparejos alta capacidad', name:'Ultra Lift', img:'https://www.tega.com.ar/img/aceros/aceros-00.jpg', text:'Generación nueva y revolucionaria de aparejos eléctricos a cable. Izaje casi vertical: solo 1 cm de desplazamiento lateral por metro de elevación, para posicionamiento rápido y preciso. Motor de doble velocidad de alto par, variador de frecuencia para traslación y tablero NEMA 4. Limitador electromecánico que impide cargas superiores al 110%.', specs:[['Capacidad','500 – 80.000 kg'],['Recorrido','4 – 100 m'],['Velocidad','3/0,5 – 18/3 m/min'],['Tablero','NEMA 4']], options:['Carro biviga','Carro monorriel','Altura reducida','Variador de frecuencia','Multivoltaje 208–575V'] },
-  antiex:   { tag:'04 / Áreas clasificadas Ex', name:'Anti Explosivo', img:'https://www.tega.com.ar/img/petroquimica/petroquimica-00.jpg', text:'Equipos de izaje a prueba de explosión para áreas clasificadas — la división más importante de Sudamérica. La asistencia TEGA comienza desde el inicio mismo del proyecto. Componentes eléctricos según IEC (ATEX 100a) y NEC; mecánica según FEM y CMAA; fabricación bajo DIN, EN e ISO 9001. Proyectos en petroquímica, laboratorios, minería, fábricas de explosivos y petróleo/gas onshore y offshore.', specs:[['Zonas','ATEX Zona 1 y 2'],['Eléctrico','IEC ATEX 100a · NEC'],['Mecánico','FEM · CMAA'],['Posición','1° en Sudamérica']], options:['Antiexplosivo Ex d','ATEX 100a','Onshore / Offshore','Laboratorios','Minería','Fábricas de explosivos'] },
-  chain:    { tag:'05 / Aparejos a cadena', name:'Tega Chain', img:'https://www.tega.com.ar/img/alimentacion/alimentacion-02.jpg', text:'La solución más compacta y eficiente para la elevación en grados de uso medios. Motor patentado en aleación de aluminio aletado que optimiza la disipación de calor, factor de marcha 40%, construcción sellada apta para la industria química. Doble freno (motor + freno mecánico de seguridad), cadena grado 80 calibrada y gancho forjado giratorio 360° con traba de seguridad.', specs:[['Capacidad','500 kg – 10 t'],['Cadena','Grado 80 DIN'],['Control','24V baja tensión'],['Freno','Doble (motor + mecánico)']], options:['Suspensión a gancho','Detector de fase negativa','Limitador de sobrecarga','Fines de carrera','Apto químico / salino'] },
-  kit:      { tag:'06 / Kit para armado', name:'Tega Kit', img:'https://www.tega.com.ar/img/construccion/construccion-01.JPG', text:'La opción más sencilla para armar un puente grúa disponiendo de un taller con mínimas instalaciones. Sirve para armar grúas nuevas, modernizar equipos existentes o convertir puentes manuales a eléctricos. Incluye módulos conductores (ruedas, ejes, coronas, motorreductor y freno) y conducidos, tablero completo con botonera, cable de alimentación, llave seccionadora, fines de carrera y aparejo pre-cableado.', specs:[['Capacidad','0,5 – 20 t'],['Luz','4 – 30 m'],['Normas','FEM / CMAA'],['Entrega','Pre-cableado']], options:['Módulos conductores','Módulos conducidos','Tablero + botonera','Aparejo monorriel/birrail','Conversión manual → eléctrico'] },
-  radio:    { tag:'07 / Comando inalámbrico', name:'Radiolift', img:'https://www.tega.com.ar/img/automotriz/automotriz-00.jpg', text:'Comandos inalámbricos por radiofrecuencia para puentes grúa y aparejos. Máxima libertad y seguridad de operación, sin cables ni botoneras fijas. Compatible con toda la línea TEGA, con funciones programables, selección de equipo y batería recargable con respaldo.', specs:[['Tecnología','Radiofrecuencia'],['Funciones','Hasta 18'],['Compatibilidad','Toda línea TEGA'],['Batería','Recargable + backup']], options:['Multifunción','Doble emisor','Paro de emergencia','Selección de equipo','Compatible retrofit'] },
-  movicar:  { tag:'08 / Apiladoras', name:'MoviCar', img:'https://www.tega.com.ar/img/alimentacion/alimentacion-00.JPG', text:'Apiladoras electrohidráulicas para fábricas, depósitos y plataformas de despacho donde las cargas delicadas requieren manipulación cuidadosa. Operadas por una sola persona, totalmente silenciosas y sin contaminación ambiental. Serie 1 manual hasta 1.000 kg / 1,6 m; Serie 2 electrohidráulica hasta 1.000 kg / 3,2 m con batería y cargador incluidos y velocidad de descenso regulable.', specs:[['Capacidad','Hasta 1.000 kg'],['Elevación','Hasta 3,2 m'],['Energía','Eléctrica (batería)'],['Norma','IRAM 9000 · CE']], options:['Serie 1 manual','Serie 2 electrohidráulica','Descenso regulable','Batería + cargador','Pallet como plataforma'] },
-  service:  { tag:'09 / Servicio & repuestos', name:'Tega Service', img:'https://www.tega.com.ar/img/nuclear/nuclear-01.JPG', text:'Servicio integral de mantenimiento, reparación y transformación (revamping) de equipos de movimiento. Modernización a las normas de seguridad vigentes, extensión de vida útil y adaptación a nuevas aplicaciones. Mantenimiento preventivo, consultoría en logística y transporte interno. Fabricación y reparación bajo normas FEM y CMAA — directo de fábrica, con trazabilidad total de cada equipo.', specs:[['Servicios','Preventivo · correctivo'],['Revamping','Modernización integral'],['Normas','FEM / CMAA'],['Respuesta','24 hs · LATAM']], options:['Mantenimiento preventivo','Reparación','Revamping','Consultoría logística','Repuestos originales en stock'] }
+  crane:    { tag:'01 / Puentes grúa & pórticos', name:'Tega Crane', img:'assets/prod/crane.jpg', text:'La gama más completa del mercado: puentes grúa, pórticos, semipórticos y plumas. Versión monoviga o biviga, con vigas perfiladas o tipo cajón que optimizan el aprovechamiento del espacio. Diseñados y fabricados en Argentina bajo normas FEM europeas y ASME/CMAA norteamericanas para cada grado de severidad de trabajo.', specs:[['Capacidad','Hasta 200 t'],['Luz','Hasta 40 m'],['Normas','FEM · CMAA · ASME'],['Clases de uso','A1 a A8 (FEM)']], options:['Monoviga','Biviga','Pórtico','Semipórtico','Pluma giratoria','Monorriel especial'] },
+  powerlift:{ tag:'02 / Aparejos a cable', name:'Power Lift', img:'assets/prod/powerlift.jpg', text:'Aparejo eléctrico a cable de acero de extraordinaria robustez y versatilidad. Motor autofrenante de alto par de arranque, factor de marcha 40% (240 arranques/h) sin recambio de juntas hasta 1.000.000 de maniobras. Freno mecánico de seguridad independiente WESTON-TEGA, bloque de carga cerrado con poleas de lubricación permanente y limitador de sobrecarga automático.', specs:[['Clasificación','FEM 1Bm – 3m'],['Control','24V baja tensión'],['Freno','WESTON-TEGA'],['Equivalencia','ASME H2 – H4']], options:['Doble velocidad','Microvelocidad','Velocidad variable','Radiocontrol','Celda de carga LAN','Montaje monorriel'] },
+  ultralift:{ tag:'03 / Aparejos alta capacidad', name:'Ultra Lift', img:'assets/prod/ultralift.jpg', text:'Generación nueva y revolucionaria de aparejos eléctricos a cable. Izaje casi vertical: solo 1 cm de desplazamiento lateral por metro de elevación, para posicionamiento rápido y preciso. Motor de doble velocidad de alto par, variador de frecuencia para traslación y tablero NEMA 4. Limitador electromecánico que impide cargas superiores al 110%.', specs:[['Capacidad','500 – 80.000 kg'],['Recorrido','4 – 100 m'],['Velocidad','3/0,5 – 18/3 m/min'],['Tablero','NEMA 4']], options:['Carro biviga','Carro monorriel','Altura reducida','Variador de frecuencia','Multivoltaje 208–575V'] },
+  antiex:   { tag:'04 / Áreas clasificadas Ex', name:'Anti Explosivo', img:'assets/prod/antiex.jpg', text:'Equipos de izaje a prueba de explosión para áreas clasificadas — la división más importante de Sudamérica. La asistencia TEGA comienza desde el inicio mismo del proyecto. Componentes eléctricos según IEC (ATEX 100a) y NEC; mecánica según FEM y CMAA; fabricación bajo DIN, EN e ISO 9001. Proyectos en petroquímica, laboratorios, minería, fábricas de explosivos y petróleo/gas onshore y offshore.', specs:[['Zonas','ATEX Zona 1 y 2'],['Eléctrico','IEC ATEX 100a · NEC'],['Mecánico','FEM · CMAA'],['Posición','1° en Sudamérica']], options:['Antiexplosivo Ex d','ATEX 100a','Onshore / Offshore','Laboratorios','Minería','Fábricas de explosivos'] },
+  chain:    { tag:'05 / Aparejos a cadena', name:'Tega Chain', img:'assets/prod/chain.jpg', text:'La solución más compacta y eficiente para la elevación en grados de uso medios. Motor patentado en aleación de aluminio aletado que optimiza la disipación de calor, factor de marcha 40%, construcción sellada apta para la industria química. Doble freno (motor + freno mecánico de seguridad), cadena grado 80 calibrada y gancho forjado giratorio 360° con traba de seguridad.', specs:[['Capacidad','500 kg – 10 t'],['Cadena','Grado 80 DIN'],['Control','24V baja tensión'],['Freno','Doble (motor + mecánico)']], options:['Suspensión a gancho','Detector de fase negativa','Limitador de sobrecarga','Fines de carrera','Apto químico / salino'] },
+  kit:      { tag:'06 / Kit para armado', name:'Tega Kit', img:'assets/prod/kit.jpg', text:'La opción más sencilla para armar un puente grúa disponiendo de un taller con mínimas instalaciones. Sirve para armar grúas nuevas, modernizar equipos existentes o convertir puentes manuales a eléctricos. Incluye módulos conductores (ruedas, ejes, coronas, motorreductor y freno) y conducidos, tablero completo con botonera, cable de alimentación, llave seccionadora, fines de carrera y aparejo pre-cableado.', specs:[['Capacidad','0,5 – 20 t'],['Luz','4 – 30 m'],['Normas','FEM / CMAA'],['Entrega','Pre-cableado']], options:['Módulos conductores','Módulos conducidos','Tablero + botonera','Aparejo monorriel/birrail','Conversión manual → eléctrico'] },
+  radio:    { tag:'07 / Comando inalámbrico', name:'Radiolift', img:'assets/prod/radio.jpg', text:'Comandos inalámbricos por radiofrecuencia para puentes grúa y aparejos. Máxima libertad y seguridad de operación, sin cables ni botoneras fijas. Compatible con toda la línea TEGA, con funciones programables, selección de equipo y batería recargable con respaldo.', specs:[['Tecnología','Radiofrecuencia'],['Funciones','Hasta 18'],['Compatibilidad','Toda línea TEGA'],['Batería','Recargable + backup']], options:['Multifunción','Doble emisor','Paro de emergencia','Selección de equipo','Compatible retrofit'] },
+  movicar:  { tag:'08 / Apiladoras', name:'MoviCar', img:'assets/prod/movicar.jpg', text:'Apiladoras electrohidráulicas para fábricas, depósitos y plataformas de despacho donde las cargas delicadas requieren manipulación cuidadosa. Operadas por una sola persona, totalmente silenciosas y sin contaminación ambiental. Serie 1 manual hasta 1.000 kg / 1,6 m; Serie 2 electrohidráulica hasta 1.000 kg / 3,2 m con batería y cargador incluidos y velocidad de descenso regulable.', specs:[['Capacidad','Hasta 1.000 kg'],['Elevación','Hasta 3,2 m'],['Energía','Eléctrica (batería)'],['Norma','IRAM 9000 · CE']], options:['Serie 1 manual','Serie 2 electrohidráulica','Descenso regulable','Batería + cargador','Pallet como plataforma'] },
+  service:  { tag:'09 / Servicio & repuestos', name:'Tega Service', img:'assets/prod/service.jpg', text:'Servicio integral de mantenimiento, reparación y transformación (revamping) de equipos de movimiento. Modernización a las normas de seguridad vigentes, extensión de vida útil y adaptación a nuevas aplicaciones. Mantenimiento preventivo, consultoría en logística y transporte interno. Fabricación y reparación bajo normas FEM y CMAA — directo de fábrica, con trazabilidad total de cada equipo.', specs:[['Servicios','Preventivo · correctivo'],['Revamping','Modernización integral'],['Normas','FEM / CMAA'],['Respuesta','24 hs · LATAM']], options:['Mantenimiento preventivo','Reparación','Revamping','Consultoría logística','Repuestos originales en stock'] }
 };
 
 // Orden de productos para resolver claves de traducción
-const PROD_ORDER = ['crane','powerlift','ultralift','antiex','chain','kit','radio','movicar','service'];
+const PROD_ORDER = ['crane','powerlift','ultralift','antiex','chain','kit','radio','movicar'];
 
 function renderSpecs(specs) {
   return specs.map(([k,v]) => `<div class="ep-spec"><div class="ep-spec-key">${k}</div><div class="ep-spec-val">${v}</div></div>`).join('');
@@ -1239,14 +1327,43 @@ function renderSpecs(specs) {
 let activeInd = null;
 const indPanel = document.getElementById('indPanel');
 
+let galTimer = null;
+function setIndPhoto(i, instant) {
+  const imgEl = document.getElementById('indPanelImg');
+  const gal = (IND[activeInd] && IND[activeInd].gallery) || [];
+  if (!gal.length) return;
+  galIndex = (i + gal.length) % gal.length;
+  const swap = () => { imgEl.src = gal[galIndex]; imgEl.classList.remove('swapping'); };
+  if (instant) { swap(); }
+  else { imgEl.classList.add('swapping'); setTimeout(swap, 240); }
+  document.querySelectorAll('#indPanelThumbs .ep-thumb').forEach((t,idx)=>t.classList.toggle('active', idx===galIndex));
+}
+function startGalAuto() {
+  clearInterval(galTimer);
+  const gal = (IND[activeInd] && IND[activeInd].gallery) || [];
+  if (gal.length < 2) return;
+  galTimer = setInterval(() => setIndPhoto(galIndex + 1, false), 4500);
+}
+let galIndex = 0;
 function renderIndPanel(key, animate) {
   const d = getIndData(key); if (!d) return;
-  document.getElementById('indPanelImg').src = d.img;
-  document.getElementById('indPanelImg').alt = d.name;
+  const gal = d.gallery || [];
+  galIndex = 0;
+  const imgEl = document.getElementById('indPanelImg');
+  imgEl.classList.remove('swapping');
+  imgEl.src = gal[0] || '';
+  imgEl.alt = d.name;
+  // miniaturas
+  document.getElementById('indPanelThumbs').innerHTML = gal.map((src,idx)=>
+    `<button class="ep-thumb${idx===0?' active':''}" data-i="${idx}" aria-label="Foto ${idx+1}"><img src="${src}" alt="" loading="lazy"></button>`).join('');
+  document.querySelectorAll('#indPanelThumbs .ep-thumb').forEach(t=>{
+    t.addEventListener('click',(e)=>{ e.stopPropagation(); setIndPhoto(+t.dataset.i, false); startGalAuto(); });
+  });
   document.getElementById('indPanelTag').textContent = d.tag;
   document.getElementById('indPanelTitle').textContent = LANG[currentLang]?.['ind.'+key] || d.name;
   document.getElementById('indPanelText').textContent = d.text;
   document.getElementById('indPanelChips').innerHTML = d.chips.map(c=>`<span class="ep-chip">${c}</span>`).join('');
+  startGalAuto();
   if (animate === true) {
     if (activeInd === null) { openPanel(indPanel); } else { refreshPanel(indPanel); }
     setTimeout(() => indPanel.scrollIntoView({ behavior:'smooth', block:'nearest' }), 50);
@@ -1257,8 +1374,11 @@ function renderIndPanel(key, animate) {
 
 document.getElementById('indPanelClose').addEventListener('click', () => {
   document.querySelectorAll('.ind-card').forEach(c => c.classList.remove('selected'));
-  closePanel(indPanel); activeInd = null;
+  clearInterval(galTimer); closePanel(indPanel); activeInd = null;
 });
+// pausar autoplay al pasar el mouse sobre la imagen
+document.getElementById('indPanel').addEventListener('mouseenter', () => clearInterval(galTimer), true);
+document.getElementById('indPanel').addEventListener('mouseleave', () => startGalAuto(), true);
 document.querySelectorAll('.ind-card').forEach(card => {
   card.style.cursor = 'pointer';
   card.addEventListener('click', () => {
