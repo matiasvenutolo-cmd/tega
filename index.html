@@ -289,13 +289,11 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
 .f-links a:hover{color:white}
 .footer-bot{display:flex;justify-content:space-between;align-items:center;padding-top:28px;gap:20px;flex-wrap:wrap}
 .f-copy{font-size:13px;color:rgba(255,255,255,0.3)}
-.f-norms{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-/* sellos de norma estilo certificación */
-.f-seal{width:66px;height:66px;border-radius:50%;border:2px solid rgba(242,182,0,0.55);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle,rgba(242,182,0,0.10) 0%,rgba(242,182,0,0.02) 70%);position:relative;flex-shrink:0;transition:transform .25s ease,border-color .25s ease}
-.f-seal::before{content:'';position:absolute;inset:5px;border-radius:50%;border:1px dashed rgba(242,182,0,0.35)}
-.f-seal:hover{transform:translateY(-3px) rotate(-4deg);border-color:var(--y)}
-.f-seal-name{font-family:var(--display);font-size:15px;font-weight:900;color:var(--y);line-height:1;letter-spacing:0.01em}
-.f-seal-sub{font-size:7px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(242,182,0,0.7);margin-top:3px}
+.f-norms{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+/* chip blanco con el logo real de la norma (se ve sobre el footer oscuro) */
+.f-seal{height:54px;min-width:54px;padding:9px 12px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,0.25);transition:transform .2s ease,box-shadow .2s ease}
+.f-seal:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,0,0,0.35)}
+.f-seal img{height:100%;width:auto;max-width:130px;object-fit:contain;display:block}
 
 /* ── IND/PROD SVG ICONS ── */
 .ind-icon{color:rgba(255,255,255,0.55);transition:color .2s}
@@ -971,12 +969,12 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
     <div class="footer-bot">
       <span class="f-copy">© 2025 TEGA Aparejos, Grúas y Apiladoras S.A. — Buenos Aires, Argentina.</span>
       <div class="f-norms">
-        <div class="f-seal"><span class="f-seal-name">ISO</span><span class="f-seal-sub">9001</span></div>
-        <div class="f-seal"><span class="f-seal-name">FEM</span><span class="f-seal-sub">Europe</span></div>
-        <div class="f-seal"><span class="f-seal-name">CMAA</span><span class="f-seal-sub">USA</span></div>
-        <div class="f-seal"><span class="f-seal-name">IRAM</span><span class="f-seal-sub">Argentina</span></div>
-        <div class="f-seal"><span class="f-seal-name">ASME</span><span class="f-seal-sub">USA</span></div>
-        <div class="f-seal"><span class="f-seal-name">CE</span><span class="f-seal-sub">Marking</span></div>
+        <div class="f-seal"><img src="assets/norms/iso.jpg" alt="ISO 9001:2015"></div>
+        <div class="f-seal"><img src="assets/norms/fem.jpg" alt="FEM"></div>
+        <div class="f-seal"><img src="assets/norms/cmaa.jpg" alt="CMAA"></div>
+        <div class="f-seal"><img src="assets/norms/iram.jpg" alt="IRAM"></div>
+        <div class="f-seal"><img src="assets/norms/asme.jpg" alt="ASME"></div>
+        <div class="f-seal"><img src="assets/norms/ce.jpg" alt="CE"></div>
       </div>
     </div>
   </div>
