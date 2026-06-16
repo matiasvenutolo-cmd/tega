@@ -18,7 +18,7 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --y:#F2B600;--y-light:#FFF3CC;--y-pale:#FFFBEE;
+  --y:#FFD200;--y-light:#FFF3CC;--y-pale:#FFFBEE;
   --ink:#0A0A0A;--ink-soft:#1C1C1C;--mid:#666662;
   --fog:#D4CFC4;--bg:#F7F3E8;--card:#FFFDF5;--white:#FFFFFF;
   --display:'Montserrat',sans-serif;--body:'DM Sans',sans-serif;
@@ -47,7 +47,7 @@ nav.scrolled{box-shadow:var(--shadow)}
 .btn-nav-ghost:hover{border-color:var(--ink)}
 .btn-nav-primary{background:var(--y);color:var(--ink);padding:11px 24px;border-radius:var(--radius-btn);border:none;font-family:var(--body);font-size:14px;font-weight:700;cursor:pointer;transition:background .15s,transform .1s;white-space:nowrap;display:inline-flex;align-items:center;gap:8px}
 .btn-nav-primary::after{content:'→';font-size:14px;transition:transform .2s}
-.btn-nav-primary:hover{background:#FFCA1A}
+.btn-nav-primary:hover{background:#FFDE3A}
 .btn-nav-primary:hover::after{transform:translateX(3px)}
 
 /* ── HERO ── */
@@ -234,6 +234,8 @@ nav.scrolled{box-shadow:var(--shadow)}
 .pc-icon{width:48px;height:48px;object-fit:contain;margin-bottom:4px}
 .pc-num{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--y)}
 /* chip de tipo de producto */
+/* logo de submarca (oficial, del manual de marca) */
+.pc-logo{width:44px;height:44px;border-radius:10px;display:block;margin-bottom:12px;box-shadow:0 3px 10px rgba(70,58,0,0.14)}
 .pc-type{align-self:flex-start;font-size:10px;font-weight:800;letter-spacing:0.07em;text-transform:uppercase;padding:4px 11px;border-radius:999px;border:1px solid;line-height:1.3}
 .pc-type-struct{background:#e8effb;color:#1e40af;border-color:#bfd4f5}
 .pc-type-aparejo{background:var(--y-light);color:#876400;border-color:#eecf78}
@@ -279,9 +281,9 @@ textarea.f-ctrl{resize:vertical;min-height:96px;font-family:var(--body)}
 footer{background:var(--ink);color:white;padding:72px 56px 32px}
 .footer-inner{max-width:1280px;margin:0 auto}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:64px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.07)}
-.f-logo{display:inline-flex;align-items:flex-end;gap:12px;text-decoration:none;margin-bottom:22px}
-.f-logo-name{font-family:var(--display);font-weight:900;font-size:34px;letter-spacing:0.04em;color:#fff;line-height:.85}
-.f-logo-sub{font-family:var(--display);font-weight:800;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);line-height:1.25;padding-bottom:2px}
+.f-logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:9px;text-decoration:none;margin-bottom:22px}
+.f-logo-img{height:30px;width:auto;display:block;filter:brightness(0) invert(1)}
+.f-logo-sub{font-family:var(--display);font-weight:800;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);line-height:1.25}
 .f-desc{font-size:14px;line-height:1.7;color:rgba(255,255,255,0.45);max-width:260px}
 .f-col-title{font-family:var(--display);font-size:11px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:var(--y);margin-bottom:20px}
 .f-links{list-style:none;display:flex;flex-direction:column;gap:10px}
@@ -340,6 +342,8 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
 .expand-wrap.animating .ep-content > *:nth-child(5){transition-delay:.50s}
 .expand-wrap.animating .ep-content > *:nth-child(6){transition-delay:.58s}
 .expand-wrap.animating .ep-content > *{opacity:1;transform:translateY(0)}
+.ep-prodlogo{width:52px;height:52px;border-radius:11px;display:block;margin-bottom:14px;box-shadow:0 4px 14px rgba(0,0,0,0.35)}
+.ep-prodlogo[hidden]{display:none}
 .ep-tag{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--y);display:flex;align-items:center;gap:10px}
 .ep-tag::before{content:'';width:20px;height:2px;background:var(--y);border-radius:2px}
 .ep-title{font-family:var(--display);font-size:clamp(28px,3vw,42px);font-weight:800;color:white;line-height:1.1;letter-spacing:-0.02em}
@@ -722,6 +726,7 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
     </div>
     <div class="prod-grid" id="prodGrid">
       <div class="prod-card reveal" data-prod="crane" role="button" tabindex="0">
+        <img class="pc-logo" src="assets/submarcas/crane.png" alt="" loading="lazy">
         <span class="pc-type pc-type-struct" data-i18n="ptype.struct">Estructuras</span>
         <div class="pc-num" data-i18n="p1.cat">01 / Izaje pesado</div>
         <h3 class="pc-title">Tega Crane</h3>
@@ -729,6 +734,7 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
         <span class="pc-arrow" data-i18n="prod.more">Ver más →</span>
       </div>
       <div class="prod-card reveal" data-prod="powerlift" role="button" tabindex="0">
+        <img class="pc-logo" src="assets/submarcas/powerlift.png" alt="" loading="lazy">
         <span class="pc-type pc-type-aparejo" data-i18n="ptype.aparejo">Aparejos</span>
         <div class="pc-num" data-i18n="p2.cat">02 / Aparejos cable</div>
         <h3 class="pc-title">Power Lift</h3>
@@ -743,6 +749,7 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
         <span class="pc-arrow" data-i18n="prod.more">Ver más →</span>
       </div>
       <div class="prod-card reveal" data-prod="antiex" role="button" tabindex="0">
+        <img class="pc-logo" src="assets/submarcas/antiex.png" alt="" loading="lazy">
         <span class="pc-type pc-type-special" data-i18n="ptype.special">Equipos especiales</span>
         <div class="pc-num" data-i18n="p4.cat">04 / Áreas clasificadas</div>
         <h3 class="pc-title">Anti Explosivo</h3>
@@ -750,6 +757,7 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
         <span class="pc-arrow" data-i18n="prod.more">Ver más →</span>
       </div>
       <div class="prod-card reveal" data-prod="chain" role="button" tabindex="0">
+        <img class="pc-logo" src="assets/submarcas/chain.png" alt="" loading="lazy">
         <span class="pc-type pc-type-aparejo" data-i18n="ptype.aparejo">Aparejos</span>
         <div class="pc-num" data-i18n="p5.cat">05 / Aparejos cadena</div>
         <h3 class="pc-title">Tega Chain</h3>
@@ -757,6 +765,7 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
         <span class="pc-arrow" data-i18n="prod.more">Ver más →</span>
       </div>
       <div class="prod-card reveal" data-prod="kit" role="button" tabindex="0">
+        <img class="pc-logo" src="assets/submarcas/kit.png" alt="" loading="lazy">
         <span class="pc-type pc-type-access" data-i18n="ptype.access">Accesorios</span>
         <div class="pc-num" data-i18n="p6.cat">06 / Componentes</div>
         <h3 class="pc-title">Tega Kit</h3>
@@ -764,6 +773,7 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
         <span class="pc-arrow" data-i18n="prod.more">Ver más →</span>
       </div>
       <div class="prod-card reveal" data-prod="radio" role="button" tabindex="0">
+        <img class="pc-logo" src="assets/submarcas/radio.png" alt="" loading="lazy">
         <span class="pc-type pc-type-access" data-i18n="ptype.access">Accesorios</span>
         <div class="pc-num" data-i18n="p7.cat">07 / Control inalámbrico</div>
         <h3 class="pc-title">Radiolift</h3>
@@ -771,6 +781,7 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
         <span class="pc-arrow" data-i18n="prod.more">Ver más →</span>
       </div>
       <div class="prod-card reveal" data-prod="movicar" role="button" tabindex="0">
+        <img class="pc-logo" src="assets/submarcas/movicar.png" alt="" loading="lazy">
         <span class="pc-type pc-type-special" data-i18n="ptype.special">Equipos especiales</span>
         <div class="pc-num" data-i18n="p8.cat">08 / Apiladoras</div>
         <h3 class="pc-title">MoviCar</h3>
@@ -787,6 +798,7 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
           <button class="ep-close" id="prodPanelClose" aria-label="Cerrar">✕</button>
         </div>
         <div class="ep-content">
+          <img id="prodPanelLogo" class="ep-prodlogo" src="" alt="" hidden>
           <div class="ep-tag" id="prodPanelTag"></div>
           <h3 class="ep-title" id="prodPanelTitle"></h3>
           <p class="ep-text" id="prodPanelText"></p>
@@ -930,8 +942,8 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
     <div class="footer-top">
       <div>
         <a class="f-logo" href="#" aria-label="TEGA">
-          <span class="f-logo-name">TEGA</span>
-          <span class="f-logo-sub">Aparejos, Grúas<br>y Apiladoras S.A.</span>
+          <img class="f-logo-img" src="assets/tega-logo.png" alt="TEGA">
+          <span class="f-logo-sub">Aparejos, Grúas y Apiladoras S.A.</span>
         </a>
         <p class="f-desc" data-i18n="footer.desc">Ingeniería de elevación industrial. Fabricación propia desde 1947 en Buenos Aires, Argentina. Stock de repuestos garantizado de por vida.</p>
       </div>
@@ -1459,10 +1471,15 @@ document.querySelectorAll('.ind-card').forEach(card => {
 let activeProd = null;
 const prodPanel = document.getElementById('prodPanel');
 
+const SUBMARCA = {crane:'crane',powerlift:'powerlift',antiex:'antiex',chain:'chain',kit:'kit',radio:'radio',movicar:'movicar'};
 function renderProdPanel(key, animate) {
   const d = getProdData(key); if (!d) return;
   document.getElementById('prodPanelImg').src = d.img;
   document.getElementById('prodPanelImg').alt = d.name;
+  // logo de submarca (oficial) — se oculta si el producto no tiene
+  const logoEl = document.getElementById('prodPanelLogo');
+  if (SUBMARCA[key]) { logoEl.src = 'assets/submarcas/'+SUBMARCA[key]+'.png'; logoEl.hidden = false; }
+  else { logoEl.hidden = true; }
   document.getElementById('prodPanelTag').textContent = LANG[currentLang]?.['p'+(PROD_ORDER.indexOf(key)+1)+'.cat'] || d.tag;
   document.getElementById('prodPanelTitle').textContent = d.name;
   document.getElementById('prodPanelText').textContent = d.desc || d.text || '';
