@@ -60,23 +60,35 @@ nav.scrolled{box-shadow:var(--shadow)}
 @keyframes slowZoom{0%{transform:scale(1)}100%{transform:scale(1.07)}}
 
 /* ── FOOTER BRIDGE CRANE ANIMATION ── */
-.footer-crane{position:relative;height:120px;margin-bottom:40px;overflow:hidden;border-bottom:1px solid rgba(255,255,255,0.08)}
-/* vías de rodadura (sobre fondo oscuro) */
-.footer-crane::before{content:'';position:absolute;top:16px;left:0;right:0;height:3px;background:rgba(255,255,255,0.14)}
-.footer-crane::after{content:'';position:absolute;top:32px;left:0;right:0;height:3px;background:rgba(255,255,255,0.07)}
-/* carro/trolley que traslada */
-.crane-trolley{position:absolute;top:8px;left:3%;width:64px;animation:craneTraverse 14s cubic-bezier(0.45,0,0.55,1) infinite alternate}
-.crane-beam{width:64px;height:30px;background:var(--y);border-radius:4px;position:relative;box-shadow:0 6px 16px rgba(0,0,0,0.45)}
-.crane-beam::before{content:'';position:absolute;left:6px;right:6px;top:11px;height:7px;background:var(--ink);border-radius:2px}
-.crane-beam::after{content:'';position:absolute;left:10px;top:-6px;width:44px;height:6px;background:rgba(255,255,255,0.22);border-radius:2px}
-/* grupo de izaje: cable + gancho (sube/baja) */
-.crane-lift{position:absolute;top:30px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;height:50px;animation:craneHoist 4.5s ease-in-out infinite}
-.crane-cable{width:2px;flex:1;background:rgba(255,255,255,0.45)}
-.crane-hook{width:18px;height:16px;background:var(--y);border-radius:3px;position:relative}
-.crane-hook::before{content:'';position:absolute;left:3px;right:3px;top:4px;height:4px;background:var(--ink);border-radius:1px}
-.crane-hook::after{content:'';position:absolute;left:50%;bottom:-8px;width:8px;height:9px;border:2px solid var(--y);border-top:none;border-radius:0 0 8px 8px;transform:translateX(-50%)}
-@keyframes craneTraverse{0%{left:3%}100%{left:calc(100% - 64px - 3%)}}
-@keyframes craneHoist{0%,100%{height:40px}50%{height:78px}}
+/* Puente grúa doble viga TEGA — vista de elevación (testeros + viga + carro que iza una carga) */
+.footer-crane{position:relative;height:134px;margin-bottom:40px;overflow:hidden;border-bottom:1px solid rgba(255,255,255,0.08)}
+/* vías de rodadura (runway) */
+.fc-rail{position:absolute;left:0;right:0;top:46px;height:4px;background:rgba(255,255,255,0.16)}
+.fc-rail.lower{top:54px;height:3px;background:rgba(255,255,255,0.07)}
+/* testeros (end trucks) en cada extremo, con ruedas */
+.fc-endtruck{position:absolute;top:13px;width:30px;height:35px;background:linear-gradient(180deg,#3a3a36,#1c1c19);border:1px solid rgba(255,255,255,0.12);border-radius:3px}
+.fc-endtruck.left{left:10px}
+.fc-endtruck.right{right:10px}
+.fc-endtruck::before,.fc-endtruck::after{content:'';position:absolute;bottom:-5px;width:9px;height:9px;border-radius:50%;background:var(--y);box-shadow:0 1px 3px rgba(0,0,0,.5)}
+.fc-endtruck::before{left:3px}.fc-endtruck::after{right:3px}
+/* viga principal (doble) entre testeros */
+.fc-girder{position:absolute;top:16px;left:36px;right:36px;height:14px;background:var(--y);border-radius:2px;box-shadow:0 7px 20px rgba(0,0,0,.4)}
+.fc-girder::before{content:'';position:absolute;left:0;right:0;top:5px;height:4px;background:rgba(0,0,0,0.30)}
+.fc-girder::after{content:'';position:absolute;left:0;right:0;bottom:-7px;height:5px;background:var(--y);opacity:.5;border-radius:2px}
+/* carro (trolley) que traslada sobre la viga */
+.fc-trolley{position:absolute;top:7px;left:42px;width:34px;animation:fcTraverse 13s cubic-bezier(.45,0,.55,1) infinite alternate}
+.fc-cab{width:34px;height:15px;background:linear-gradient(180deg,#4a4a44,#22221e);border:1px solid rgba(255,255,255,.14);border-radius:3px;position:relative}
+.fc-cab::before{content:'';position:absolute;left:6px;right:6px;top:5px;height:5px;background:var(--y);border-radius:1px}
+/* izaje: cable + aparejo + gancho + carga (sube/baja) */
+.fc-lift{position:absolute;top:15px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;height:46px;animation:fcHoist 4.6s ease-in-out infinite}
+.fc-cable{width:2px;flex:1;background:rgba(255,255,255,.5)}
+.fc-block{width:14px;height:9px;background:var(--y);border-radius:2px;position:relative}
+.fc-block::after{content:'';position:absolute;left:50%;bottom:-7px;width:7px;height:8px;border:2px solid var(--y);border-top:none;border-radius:0 0 7px 7px;transform:translateX(-50%)}
+.fc-load{margin-top:9px;width:30px;height:18px;background:linear-gradient(180deg,#33332e,#1b1b17);border:1px solid rgba(255,255,255,.12);border-radius:2px;position:relative}
+.fc-load::before{content:'';position:absolute;inset:4px;border:1px dashed rgba(255,255,255,.18);border-radius:1px}
+@keyframes fcTraverse{0%{left:42px}100%{left:calc(100% - 34px - 42px)}}
+@keyframes fcHoist{0%,100%{height:30px}50%{height:64px}}
+@media(prefers-reduced-motion:reduce){.fc-trolley,.fc-lift{animation:none}}
 
 .hero-content{position:relative;z-index:5;max-width:640px;padding:80px 56px 0;display:flex;flex-direction:column;justify-content:center;flex:1}
 .hero-badge{display:inline-flex;align-items:center;gap:10px;background:var(--y-light);border-radius:var(--radius-btn);padding:7px 16px;margin-bottom:40px;align-self:flex-start;opacity:0;transform:translateY(12px);animation:up .6s .1s ease forwards}
@@ -521,7 +533,7 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
     <a href="#productos" data-i18n="nav.products">Productos</a>
     <a href="#industrias" data-i18n="nav.industries">Industrias</a>
     <a href="#servicios" data-i18n="nav.services">Servicios</a>
-    <a href="#historia" data-i18n="nav.history">Quiénes Somos</a>
+    <a href="quienes-somos.html" data-i18n="nav.history">Quiénes Somos</a>
     <a href="#contacto" data-i18n="nav.contact">Contacto</a>
   </div>
   <div class="nav-right">
@@ -881,6 +893,11 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
         <div class="tl-right"><div class="tl-card"><div class="tl-card-title" data-i18n="tl.now.title">78 años, toda Latinoamérica</div><div class="tl-card-text" data-i18n="tl.now.text">Con 5.000 m² de planta propia en La Boca, Buenos Aires, y presencia en toda Latinoamérica. 85% de clientes son líderes en sus industrias.</div></div></div>
       </div>
     </div>
+    <div style="text-align:center;margin-top:48px">
+      <a href="quienes-somos.html" class="btn-primary" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px">
+        <span data-i18n="hist.more">Conocé toda nuestra historia</span><span class="arr">→</span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -956,11 +973,17 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
   <div class="footer-inner">
     <!-- Puente grúa animado: traslada y eleva (su planta no se detiene) -->
     <div class="footer-crane" aria-hidden="true">
-      <div class="crane-trolley">
-        <div class="crane-beam"></div>
-        <div class="crane-lift">
-          <div class="crane-cable"></div>
-          <div class="crane-hook"></div>
+      <div class="fc-rail"></div>
+      <div class="fc-rail lower"></div>
+      <div class="fc-endtruck left"></div>
+      <div class="fc-endtruck right"></div>
+      <div class="fc-girder"></div>
+      <div class="fc-trolley">
+        <div class="fc-cab"></div>
+        <div class="fc-lift">
+          <div class="fc-cable"></div>
+          <div class="fc-block"></div>
+          <div class="fc-load"></div>
         </div>
       </div>
     </div>
@@ -1075,6 +1098,7 @@ const LANG = {
     'diff.cta.text':'¿Tiene un proyecto o necesita asesoramiento técnico?','diff.cta.btn':'Consultá ahora',
     'hist.tag':'Nuestra historia','hist.title':'78 años de <em>innovación</em> industrial.',
     'hist.lead':'Fundada en 1947 en Buenos Aires, TEGA fue pionera en cada etapa del izaje industrial en Argentina y Latinoamérica.',
+    'hist.more':'Conocé toda nuestra historia',
     'tl.1947.title':'Fundación','tl.1947.text':'Basilio Polijronopulos funda TEGA en Lanús, Buenos Aires, como taller de reparación y fabricación de máquinas eléctricas.',
     'tl.1948.title':'Primer aparejo a cadena de Argentina','tl.1948.text':'TEGA produce el primer aparejo eléctrico a cadena fabricado en el país, marcando el inicio de la industria nacional de izaje.',
     'tl.1962.title':'Licencia internacional','tl.1962.text':'Firma acuerdo de fabricación bajo licencia con Herbert Morris (Reino Unido), incorporando tecnología europea de primer nivel.',
@@ -1144,6 +1168,7 @@ const LANG = {
     'diff.cta.text':'Have a project or need technical advice?','diff.cta.btn':'Get in touch now',
     'hist.tag':'Our history','hist.title':'78 years of industrial <em>innovation.</em>',
     'hist.lead':'Founded in 1947 in Buenos Aires, TEGA pioneered every stage of industrial lifting in Argentina and Latin America.',
+    'hist.more':'Discover our full story',
     'tl.1947.title':'Foundation','tl.1947.text':'Basilio Polijronopulos founds TEGA in Lanús, Buenos Aires, as a repair and manufacturing workshop for electrical machines.',
     'tl.1948.title':'First electric chain hoist in Argentina','tl.1948.text':'TEGA produces the first electric chain hoist manufactured in the country, marking the beginning of the national lifting industry.',
     'tl.1962.title':'International license','tl.1962.text':'Manufacturing agreement signed under license with Herbert Morris (UK), incorporating top-tier European technology.',
@@ -1213,6 +1238,7 @@ const LANG = {
     'diff.cta.text':'Tem um projeto ou precisa de assessoria técnica?','diff.cta.btn':'Consulte agora',
     'hist.tag':'Nossa história','hist.title':'78 anos de <em>inovação</em> industrial.',
     'hist.lead':'Fundada em 1947 em Buenos Aires, a TEGA foi pioneira em cada etapa do içamento industrial na Argentina e na América Latina.',
+    'hist.more':'Conheça toda a nossa história',
     'tl.1947.title':'Fundação','tl.1947.text':'Basilio Polijronopulos funda a TEGA em Lanús, Buenos Aires, como oficina de reparo e fabricação de máquinas elétricas.',
     'tl.1948.title':'Primeiro talha a corrente da Argentina','tl.1948.text':'A TEGA produz o primeiro talha elétrico a corrente fabricado no país, marcando o início da indústria nacional de içamento.',
     'tl.1962.title':'Licença internacional','tl.1962.text':'Acordo de fabricação sob licença com Herbert Morris (Reino Unido), incorporando tecnologia europeia de primeiro nível.',

@@ -242,7 +242,7 @@ PAGE = """<!DOCTYPE html>
       <a href="../index.html#productos" data-i18n="nav.products">Productos</a>
       <a href="../index.html#industrias" data-i18n="nav.industries">Industrias</a>
       <a href="../index.html#servicios" data-i18n="nav.services">Servicios</a>
-      <a href="../index.html#historia" data-i18n="nav.history">Quiénes Somos</a>
+      <a href="../quienes-somos.html" data-i18n="nav.history">Quiénes Somos</a>
       <a href="../index.html#contacto" data-i18n="nav.contact">Contacto</a>
     </div>
     <div class="nav-right">
