@@ -97,10 +97,10 @@ section.sec{padding:54px 0}
 .val-t{font-family:var(--display);font-weight:800;font-size:18px;margin-bottom:7px}
 .val-d{font-size:15px;color:var(--mid)}
 /* logo evolution */
-.logos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.logo-cell{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;text-align:center;min-height:140px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.logos{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
+.logo-cell{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;text-align:center;min-height:128px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
 .logo-cell.ph{border-style:dashed;background:transparent;color:var(--mid)}
-.logo-cell img{max-height:48px;width:auto}
+.logo-cell img{max-height:56px;max-width:100%;width:auto;object-fit:contain}
 .logo-yr{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mid)}
 .logo-ph-txt{font-size:13px;color:var(--mid)}
 .note{margin-top:16px;font-size:13.5px;color:var(--mid);background:rgba(255,210,0,0.10);border:1px solid rgba(255,210,0,0.35);border-radius:12px;padding:12px 16px}
@@ -194,13 +194,8 @@ footer{margin-top:60px;background:var(--dark);color:#fff;padding:40px 0}
       <h2 class="sec-title" data-i18n="qs.logo.title">La evolución de nuestra marca</h2>
       <p class="sec-text" data-i18n="qs.logo.text">Casi ocho décadas dejaron su huella también en el logotipo de TEGA. Esta es la línea de tiempo de nuestra identidad visual.</p>
     </div>
-    <div class="logos">
-      <div class="logo-cell ph"><div class="logo-yr">1947</div><div class="logo-ph-txt" data-i18n="qs.logo.ph">Logo histórico</div></div>
-      <div class="logo-cell ph"><div class="logo-yr">1970s</div><div class="logo-ph-txt" data-i18n="qs.logo.ph">Logo histórico</div></div>
-      <div class="logo-cell ph"><div class="logo-yr">1990s</div><div class="logo-ph-txt" data-i18n="qs.logo.ph">Logo histórico</div></div>
-      <div class="logo-cell"><img src="assets/tega-logo.png" alt="Logo TEGA actual"><div class="logo-yr" data-i18n="qs.logo.now">Actual</div></div>
-    </div>
-    <div class="note" data-i18n="qs.logo.note">Espacio reservado para sumar los logotipos históricos de TEGA a medida que se digitalicen.</div>
+    <div class="logos" id="logoGrid"></div>
+    <div class="note" data-i18n="qs.logo.note">Logotipos originales recuperados del archivo histórico de TEGA.</div>
   </section>
 
   <!-- VALORES -->
@@ -284,7 +279,7 @@ const TXT = {
   "qs.logo.tag":"Identidad","qs.logo.title":"La evolución de nuestra marca",
   "qs.logo.text":"Casi ocho décadas dejaron su huella también en el logotipo de TEGA. Esta es la línea de tiempo de nuestra identidad visual.",
   "qs.logo.ph":"Logo histórico","qs.logo.now":"Actual",
-  "qs.logo.note":"Espacio reservado para sumar los logotipos históricos de TEGA a medida que se digitalicen.",
+  "qs.logo.note":"Logotipos originales recuperados del archivo histórico de TEGA.",
   "qs.val.tag":"Por qué TEGA","qs.val.title":"Lo que nos distingue",
   "qs.v1.t":"Fabricación 100% argentina","qs.v1.d":"Diseñamos y fabricamos íntegramente en nuestra planta de Buenos Aires, con trazabilidad total de cada equipo.",
   "qs.v2.t":"Ingeniería propia","qs.v2.d":"Resolvemos requerimientos a medida desde el inicio del proyecto, adaptando cada solución a su operación.",
@@ -310,7 +305,7 @@ const TXT = {
   "qs.logo.tag":"Identity","qs.logo.title":"The evolution of our brand",
   "qs.logo.text":"Nearly eight decades have also left their mark on the TEGA logo. This is the timeline of our visual identity.",
   "qs.logo.ph":"Historic logo","qs.logo.now":"Current",
-  "qs.logo.note":"Space reserved to add TEGA's historic logos as they are digitized.",
+  "qs.logo.note":"Original logos recovered from TEGA's historical archive.",
   "qs.val.tag":"Why TEGA","qs.val.title":"What sets us apart",
   "qs.v1.t":"100% Argentine manufacturing","qs.v1.d":"We design and manufacture entirely at our Buenos Aires plant, with full traceability of every unit.",
   "qs.v2.t":"In-house engineering","qs.v2.d":"We solve custom requirements from the start of the project, adapting each solution to your operation.",
@@ -336,7 +331,7 @@ const TXT = {
   "qs.logo.tag":"Identidade","qs.logo.title":"A evolução da nossa marca",
   "qs.logo.text":"Quase oito décadas deixaram sua marca também no logotipo da TEGA. Esta é a linha do tempo da nossa identidade visual.",
   "qs.logo.ph":"Logo histórico","qs.logo.now":"Atual",
-  "qs.logo.note":"Espaço reservado para adicionar os logotipos históricos da TEGA à medida que forem digitalizados.",
+  "qs.logo.note":"Logotipos originais recuperados do arquivo histórico da TEGA.",
   "qs.val.tag":"Por que TEGA","qs.val.title":"O que nos diferencia",
   "qs.v1.t":"Fabricação 100% argentina","qs.v1.d":"Projetamos e fabricamos integralmente na nossa planta de Buenos Aires, com rastreabilidade total de cada equipamento.",
   "qs.v2.t":"Engenharia própria","qs.v2.d":"Resolvemos requisitos sob medida desde o início do projeto, adaptando cada solução à sua operação.",
@@ -389,6 +384,28 @@ function renderTL(lang){
   ).join('');
 }
 
+// Evolución del logo (logos originales del archivo de TEGA)
+const LOGOS = [
+  ["1947","assets/logos-historia/logo-1947.png"],
+  ["1950","assets/logos-historia/logo-1950.png"],
+  ["1955","assets/logos-historia/logo-1955.png"],
+  ["1960","assets/logos-historia/logo-1960.png"],
+  ["1962","assets/logos-historia/logo-1962-morris.png"],
+  ["1965","assets/logos-historia/logo-1965.png"],
+  ["1966","assets/logos-historia/logo-1966-movicar.png"],
+  ["1968","assets/logos-historia/logo-1968.png"],
+  ["1970","assets/logos-historia/logo-1970.png"],
+  ["1995","assets/logos-historia/logo-1995.png"]
+];
+function renderLogos(lang){
+  const now = (TXT[lang] || TXT.es)["qs.logo.now"];
+  let h = LOGOS.map(l =>
+    '<div class="logo-cell"><img src="'+l[1]+'" alt="Logo TEGA '+l[0]+'" loading="lazy"><div class="logo-yr">'+l[0]+'</div></div>'
+  ).join('');
+  h += '<div class="logo-cell"><img src="assets/tega-logo.png" alt="Logo TEGA actual" loading="lazy"><div class="logo-yr">'+now+'</div></div>';
+  document.getElementById('logoGrid').innerHTML = h;
+}
+
 function setLang(code){
   if(!TXT[code]) return;
   document.documentElement.lang = code;
@@ -402,10 +419,12 @@ function setLang(code){
   });
   document.querySelectorAll('.nav-lang button').forEach(b=>b.classList.toggle('active', b.dataset.lang===code));
   renderTL(code);
+  renderLogos(code);
   try{ localStorage.setItem('tega-lang', code); }catch(e){}
 }
 
 renderTL('es');
+renderLogos('es');
 try{ const s=localStorage.getItem('tega-lang'); if(s&&TXT[s]&&s!=='es') setLang(s); }catch(e){}
 </script>
 </body>
