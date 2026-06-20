@@ -97,8 +97,8 @@ section.sec{padding:54px 0}
 .val-t{font-family:var(--display);font-weight:800;font-size:18px;margin-bottom:7px}
 .val-d{font-size:15px;color:var(--mid)}
 /* logo evolution */
-.logos{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
-.logo-cell{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;text-align:center;min-height:128px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+.logos{display:flex;flex-wrap:wrap;justify-content:center;gap:16px}
+.logo-cell{flex:0 0 calc((100% - 48px)/4);background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;text-align:center;min-height:128px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
 .logo-cell.ph{border-style:dashed;background:transparent;color:var(--mid)}
 .logo-cell img{max-height:56px;max-width:100%;width:auto;object-fit:contain}
 .logo-yr{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mid)}
@@ -125,7 +125,7 @@ footer{margin-top:60px;background:var(--dark);color:#fff;padding:40px 0}
   .nav-links{display:none}
   .nums{grid-template-columns:repeat(2,1fr)}
   .vals{grid-template-columns:1fr}
-  .logos{grid-template-columns:repeat(2,1fr)}
+  .logo-cell{flex-basis:calc((100% - 16px)/2)}
   .loc{grid-template-columns:1fr}
   .band{padding:34px 28px}
   .wrap,.navin{padding:0 20px}
