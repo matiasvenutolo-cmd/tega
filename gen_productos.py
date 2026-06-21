@@ -186,8 +186,16 @@ footer{margin-top:64px;background:var(--dark);color:#fff;padding:40px 0}
 .f-copy a{color:rgba(255,255,255,0.6);text-decoration:none}.f-copy a:hover{color:#fff}
 @media(max-width:860px){
   .nav-links{display:none}
+  .navin{height:60px}
+  .nav-logo{margin-right:0}
+  .nav-logo img{height:24px}
+  .nav-lang span{display:none}
+  .nav-lang button{padding:5px 7px;font-size:12px}
+  .btn-primary{padding:9px 14px;font-size:13px}
   .hero{grid-template-columns:1fr;gap:30px;padding:24px 0 44px}
   .h-img{order:-1}
+  .h-titlerow{gap:12px}
+  h1{font-size:clamp(30px,8vw,44px)}
   .two{grid-template-columns:1fr;gap:26px}
   .band{padding:34px 28px}
   .wrap,.navin{padding:0 20px}

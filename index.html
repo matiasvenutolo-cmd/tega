@@ -57,6 +57,8 @@ nav.scrolled{box-shadow:var(--shadow)}
 /* velo color crema (igual al header): opaco a la izquierda para el texto y se abre antes a la derecha para que el logo TEGA quede nítido */
 .hero-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(90deg,var(--bg) 0%,var(--bg) 32%,rgba(247,243,232,0.70) 46%,rgba(247,243,232,0.12) 62%,rgba(247,243,232,0) 74%)}
+/* foto del puente grúa: solo en mobile (reemplaza al video) */
+.hero-photo{display:none}
 @keyframes slowZoom{0%{transform:scale(1)}100%{transform:scale(1.07)}}
 
 /* ── FOOTER BRIDGE CRANE ANIMATION ── */
@@ -75,6 +77,8 @@ nav.scrolled{box-shadow:var(--shadow)}
 .fc-girder{position:absolute;top:16px;left:36px;right:36px;height:14px;background:var(--y);border-radius:2px;box-shadow:0 7px 20px rgba(0,0,0,.4)}
 .fc-girder::before{content:'';position:absolute;left:0;right:0;top:5px;height:4px;background:rgba(0,0,0,0.30)}
 .fc-girder::after{content:'';position:absolute;left:0;right:0;bottom:-7px;height:5px;background:var(--y);opacity:.5;border-radius:2px}
+/* placa con el nombre TEGA sobre la viga (como el puente grúa real) */
+.fc-name{position:absolute;left:13%;top:50%;transform:translateY(-50%);z-index:2;font-family:var(--display);font-weight:800;font-size:8px;letter-spacing:.06em;color:var(--ink);background:#fff;padding:2px 5px;border-radius:2px;line-height:1;box-shadow:0 1px 3px rgba(0,0,0,.25)}
 /* carro (trolley) tipo aparejo a cable Power Lift: tambor de cable + doble ramal + aparejo de gancho */
 .fc-trolley{position:absolute;top:9px;left:42px;width:40px;animation:fcTraverse 13s cubic-bezier(.45,0,.55,1) infinite alternate}
 .fc-cab{position:relative;width:40px;height:13px;background:linear-gradient(180deg,#54544c,#22221e);border:1px solid rgba(255,255,255,.16);border-radius:3px}
@@ -486,14 +490,18 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
   .btn-nav-primary{padding:9px 14px;font-size:13px;gap:5px}
   .btn-nav-primary::after{display:none}
 
-  /* ── HERO ── */
-  /* en mobile no se reproduce video: foto fija (poster) para no gastar datos */
+  /* ── HERO (mobile: sin video; texto sobre crema + foto enmarcada del puente grúa) ── */
   .hero-video{display:none}
-  /* poster con más zoom al puente grúa (igual que el video en desktop) */
-  .hero{background:var(--bg) url('assets/hero-poster.jpg') 60% 44% / 175% no-repeat}
-  .hero-content{padding:56px 20px 0;max-width:100%}
-  .hero-stats{padding:28px 20px 44px;gap:10px}
-  .hs-pill{padding:10px 14px}
+  .hero-veil{display:none}
+  .hero{min-height:auto;padding-top:60px;background:var(--bg)}
+  .hero-content{padding:36px 20px 0;max-width:100%;flex:none}
+  .hero-h1{font-size:clamp(38px,11vw,54px);margin-bottom:20px}
+  .hero-sub{margin-bottom:28px}
+  /* foto del puente grúa, nítida y separada del texto */
+  .hero-photo{display:block;aspect-ratio:16/10;object-fit:cover;object-position:center 38%;border-radius:16px;margin:26px 20px 4px;box-shadow:0 20px 44px -22px rgba(40,33,0,0.5)}
+  /* tarjetas de stats: 2 por fila; la última (impar) ocupa todo el ancho */
+  .hero-stats{padding:24px 20px 40px;gap:10px}
+  .hero-stats .hs-pill{flex:1 1 calc(50% - 5px);padding:12px 16px}
 
   /* ── TRUST ── */
   .trust{padding:20px}
@@ -588,6 +596,7 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
       <a href="#productos" class="btn-outline" data-i18n="hero.cta2">Ver productos</a>
     </div>
   </div>
+  <img class="hero-photo" src="assets/hero-poster.jpg" alt="Puente grúa TEGA fabricado en Argentina" loading="lazy">
   <div class="hero-stats">
     <div class="hs-pill"><div><div class="hs-num">78<em>+</em></div><div class="hs-label" data-i18n="stat.years">años en el rubro</div></div></div>
     <div class="hs-pill"><div><div class="hs-num">100<em>%</em></div><div class="hs-label" data-i18n="stat.stock">repuestos en stock</div></div></div>
@@ -985,7 +994,7 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
       <div class="fc-rail lower"></div>
       <div class="fc-endtruck left"></div>
       <div class="fc-endtruck right"></div>
-      <div class="fc-girder"></div>
+      <div class="fc-girder"><span class="fc-name">TEGA</span></div>
       <div class="fc-trolley">
         <div class="fc-cab"><div class="fc-drum"></div></div>
         <div class="fc-lift">
