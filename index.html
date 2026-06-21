@@ -77,8 +77,21 @@ nav.scrolled{box-shadow:var(--shadow)}
 .fc-girder{position:absolute;top:16px;left:36px;right:36px;height:14px;background:var(--y);border-radius:2px;box-shadow:0 7px 20px rgba(0,0,0,.4)}
 .fc-girder::before{content:'';position:absolute;left:0;right:0;top:5px;height:4px;background:rgba(0,0,0,0.30)}
 .fc-girder::after{content:'';position:absolute;left:0;right:0;bottom:-7px;height:5px;background:var(--y);opacity:.5;border-radius:2px}
-/* placa con el nombre TEGA sobre la viga (como el puente grúa real) */
-.fc-name{position:absolute;left:13%;top:50%;transform:translateY(-50%);z-index:2;font-family:var(--display);font-weight:800;font-size:8px;letter-spacing:.06em;color:var(--ink);background:#fff;padding:2px 5px;border-radius:2px;line-height:1;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+/* placa de fabricante TEGA remachada a la viga (el carro pasa por detrás) */
+.fc-plate{position:absolute;left:15%;top:11px;z-index:6;display:flex;align-items:stretch;height:23px;border-radius:3px;overflow:hidden;font-family:var(--display);box-shadow:0 4px 10px rgba(0,0,0,.55),0 0 0 1px rgba(0,0,0,.45)}
+.fc-plate-brand{position:relative;display:flex;align-items:center;padding:0 9px 0 12px;background:linear-gradient(180deg,#2a2a22 0%,#090907 100%);color:#fff;font-weight:900;font-size:13px;letter-spacing:.04em;text-shadow:0 1px 1px rgba(0,0,0,.5)}
+/* remaches en las 4 esquinas del lado oscuro */
+.fc-plate-brand::before,.fc-plate-brand::after{content:'';position:absolute;left:4px;width:3px;height:3px;border-radius:50%;background:radial-gradient(circle at 32% 30%,#fff,#6a6a64 70%);box-shadow:0 0 1px rgba(0,0,0,.7)}
+.fc-plate-brand::before{top:4px}.fc-plate-brand::after{bottom:4px}
+.fc-plate-cap{position:relative;display:flex;align-items:center;padding:0 9px;background:linear-gradient(180deg,#FFE04A 0%,var(--y) 45%,#e3ba00 100%);color:#1a1500;font-weight:900;font-size:12px;letter-spacing:.02em;box-shadow:inset 1px 0 0 rgba(0,0,0,.35)}
+.fc-plate-cap::before,.fc-plate-cap::after{content:'';position:absolute;right:4px;width:3px;height:3px;border-radius:50%;background:radial-gradient(circle at 32% 30%,rgba(0,0,0,.55),rgba(0,0,0,.25) 70%)}
+.fc-plate-cap::before{top:4px}.fc-plate-cap::after{bottom:4px}
+.fc-plate-cap i{font-style:normal;font-size:7px;font-weight:700;letter-spacing:.12em;opacity:.65;margin-right:3px}
+/* brillo metálico que recorre la placa */
+.fc-plate-glint{position:absolute;inset:0;overflow:hidden;border-radius:3px;pointer-events:none;z-index:2}
+.fc-plate-glint::after{content:'';position:absolute;top:-10%;left:-55%;width:36%;height:120%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-20deg);animation:fcGlint 5.5s ease-in-out infinite}
+@keyframes fcGlint{0%,60%{left:-55%}86%,100%{left:135%}}
+@media(prefers-reduced-motion:reduce){.fc-plate-glint::after{animation:none;opacity:0}}
 /* carro (trolley) tipo aparejo a cable Power Lift: tambor de cable + doble ramal + aparejo de gancho */
 .fc-trolley{position:absolute;top:9px;left:42px;width:40px;animation:fcTraverse 13s cubic-bezier(.45,0,.55,1) infinite alternate}
 .fc-cab{position:relative;width:40px;height:13px;background:linear-gradient(180deg,#54544c,#22221e);border:1px solid rgba(255,255,255,.16);border-radius:3px}
@@ -994,7 +1007,7 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
       <div class="fc-rail lower"></div>
       <div class="fc-endtruck left"></div>
       <div class="fc-endtruck right"></div>
-      <div class="fc-girder"><span class="fc-name">TEGA</span></div>
+      <div class="fc-girder"></div>
       <div class="fc-trolley">
         <div class="fc-cab"><div class="fc-drum"></div></div>
         <div class="fc-lift">
@@ -1002,6 +1015,11 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
           <div class="fc-block"></div>
           <div class="fc-load"></div>
         </div>
+      </div>
+      <div class="fc-plate" aria-label="TEGA — desde 1947">
+        <span class="fc-plate-brand">TEGA</span>
+        <span class="fc-plate-cap"><i>DESDE</i>1947</span>
+        <span class="fc-plate-glint"></span>
       </div>
     </div>
     <div class="footer-top">
