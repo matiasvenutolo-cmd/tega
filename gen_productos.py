@@ -27,7 +27,7 @@ PRODUCTS = [
     ("chain",     "tega-chain",     "Tega Chain",     "chain",     "aparejo", 5),
     ("kit",       "tega-kit",       "Tega Kit",       "kit",       "access",  6),
     ("radio",     "radiolift",      "Radiolift",      "radio",     "access",  7),
-    ("movicar",   "movicar",        "MoviCar",        "movicar",   "special", 8),
+    ("movicar",   "movicar",        "Movicar",        "movicar",   "special", 8),
 ]
 
 # Etiqueta de categoria (numero / texto) por idioma
@@ -58,7 +58,7 @@ SEO_DESC = {
     "chain":     "Tega Chain: aparejo eléctrico a cadena grado 80, compacto y eficiente. Hasta 10 t, doble freno y apto para ambientes agresivos. Fabricación argentina.",
     "kit":       "Tega Kit: componentes electromecánicos para armar tu propio puente grúa. De 0,5 a 20 t, normas FEM y CMAA, aparejo pre-cableado. Fabricación TEGA.",
     "radio":     "Radiolift: radiocomando inalámbrico TEGA (tecnología Telecrane) para puentes grúa y aparejos. Alcance hasta 300 m, compatible con todas las marcas.",
-    "movicar":   "MoviCar: apiladoras electrohidráulicas TEGA, silenciosas y sin emisiones. Hasta 1.000 kg y 3,2 m de elevación. Para fábricas, depósitos y expedición.",
+    "movicar":   "Movicar: apiladoras electrohidráulicas TEGA, silenciosas y sin emisiones. Hasta 1.000 kg y 3,2 m de elevación. Para fábricas, depósitos y expedición.",
 }
 
 # ── 3. Strings de interfaz (3 idiomas) ──
@@ -222,6 +222,9 @@ PAGE = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../assets/favicon-512.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <link rel="canonical" href="{canonical}">
@@ -244,7 +247,7 @@ PAGE = """<!DOCTYPE html>
 <nav>
   <div class="navin">
     <a class="nav-logo" href="../index.html" aria-label="TEGA">
-      <img src="https://www.tega.com.ar/img/tega-logo-y-texto.png" alt="TEGA — Aparejos, Grúas y Apiladoras S.A." onerror="this.src='../assets/tega-logo.png'">
+      <img src="../assets/tega-logo-header.png" alt="TEGA — Aparejos, Grúas y Apiladoras S.A." onerror="this.src='../assets/tega-logo.png'">
     </a>
     <div class="nav-links">
       <a href="../index.html#productos" data-i18n="nav.products">Productos</a>

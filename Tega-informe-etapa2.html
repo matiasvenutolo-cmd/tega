@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+@page{size:A4;margin:0}
+:root{
+  --paper:#F4F0E8;
+  --navy:#1A2A49;
+  --body:#535D6F;
+  --violet:#6B3FA0;
+  --violet-soft:#A185BC;
+  --line:#DAD3C6;
+  --sans:'Geist',ui-sans-serif,system-ui,sans-serif;
+  --mono:'Geist Mono',ui-monospace,monospace;
+}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font-family:var(--sans);background:var(--paper);color:var(--body);line-height:1.6;font-size:13px;letter-spacing:-0.011em;-webkit-font-smoothing:antialiased;font-feature-settings:"ss05","liga"}
+.page{width:210mm;height:297mm;overflow:hidden;background:var(--paper);padding:20mm 22mm 16mm;position:relative;margin:0 auto;page-break-after:always;display:flex;flex-direction:column}
+.page:last-child{page-break-after:auto}
+
+/* lockup pinaro */
+.lockup{display:inline-flex;align-items:center;gap:7px}
+.lockup svg{width:22px;height:22px;display:block}
+.lockup .wm{font-family:var(--sans);font-weight:600;letter-spacing:-0.04em;font-size:17px;color:var(--navy)}
+
+/* cover */
+.cover-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:16px}
+.cover-head .meta{font-family:var(--mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.1em;color:#9a8f7d}
+.kicker{font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--violet)}
+.cover-title{font-family:var(--sans);font-weight:700;font-size:46px;line-height:1.04;letter-spacing:-0.03em;color:var(--navy);margin:14px 0 0}
+.cover-sub{font-size:15px;color:var(--body);max-width:430px;margin-top:18px}
+.rule{height:3px;width:74px;background:var(--violet);border-radius:2px;margin:26px 0}
+.dl{margin-top:6px}
+.dl-row{display:grid;grid-template-columns:120px 1fr;gap:10px;padding:13px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.dl-row dt{font-family:var(--mono);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--violet)}
+.dl-row dd{font-size:14px;color:var(--navy)}
+.prepared{margin-top:auto}
+.prepared .lbl{font-size:12px;font-weight:600;color:var(--navy)}
+.prepared .name{font-size:14px;font-weight:600;color:var(--navy);margin-top:2px}
+.prepared .loc{font-size:12px;color:var(--body)}
+
+/* secciones */
+.sec{margin-bottom:26px;break-inside:avoid}
+.sec:last-of-type{margin-bottom:0}
+.sec-num{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--violet);letter-spacing:.06em}
+.sec-title{font-family:var(--sans);font-weight:700;font-size:22px;letter-spacing:-0.02em;color:var(--navy);margin:5px 0 0}
+.sec-title::after{content:"";display:block;height:3px;width:46px;background:var(--violet);border-radius:2px;margin-top:9px}
+.sec-intro{font-size:13px;color:var(--body);margin:14px 0 4px;max-width:600px}
+.sec-intro strong{color:var(--navy);font-weight:600}
+
+.items{margin-top:8px}
+.item{padding:11px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:20px 1fr;gap:12px;break-inside:avoid}
+.item:last-child{border-bottom:none}
+.item .chev{margin-top:3px}
+.item .chev svg{width:13px;height:13px;display:block}
+.item .t{font-size:13px;font-weight:600;color:var(--navy)}
+.item .d{font-size:12.5px;color:var(--body);margin-top:2px}
+
+.page-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.page-head .ttl{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--violet)}
+
+.foot{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:#9a8f7d}
+
+.note{background:#fff;border:1px solid var(--line);border-left:3px solid var(--violet);border-radius:8px;padding:16px 18px;margin-top:6px}
+.note .nt{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:8px}
+.note ul{list-style:none;margin:0}
+.note li{font-size:12.5px;color:var(--body);padding:5px 0 5px 16px;position:relative}
+.note li::before{content:"";position:absolute;left:0;top:11px;width:5px;height:5px;border-radius:50%;background:var(--violet-soft)}
+.note li b{color:var(--navy);font-weight:600}
+
+.tally{display:flex;gap:10px;margin:0 0 26px;flex-wrap:wrap}
+.tally .stat{flex:1;min-width:120px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.tally .stat .n{font-family:var(--sans);font-weight:700;font-size:26px;color:var(--navy);letter-spacing:-0.02em;line-height:1}
+.tally .stat .l{font-size:11px;color:var(--body);margin-top:5px}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="pg" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="40" y2="40">
+<stop offset="0%" stop-color="#22D3EE"/><stop offset="50%" stop-color="#8B5CF6"/><stop offset="100%" stop-color="#F472B6"/>
+</linearGradient></defs></svg>
+
+<!-- ════════ PORTADA ════════ -->
+<section class="page">
+  <div class="cover-head">
+    <span class="lockup">
+      <svg viewBox="0 0 40 40"><path d="M 8 18 L 20 10 L 32 18" stroke="url(#pg)" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 8 30 L 20 22 L 32 30" stroke="url(#pg)" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="wm">Pinaro</span>
+    </span>
+    <span class="meta">pinaro.ar</span>
+  </div>
+
+  <div style="margin-top:78px">
+    <div class="kicker">Informe de avance · Segunda etapa</div>
+    <h1 class="cover-title">Mejoras del sitio<br>web de TEGA</h1>
+    <p class="cover-sub">Resumen de todos los cambios implementados a partir de las devoluciones de la reunión con el cliente.</p>
+    <div class="rule"></div>
+    <dl class="dl">
+      <div class="dl-row"><dt>Para</dt><dd>TEGA Aparejos, Grúas y Apiladoras S.A.</dd></div>
+      <div class="dl-row"><dt>Etapa</dt><dd>Segunda — Devoluciones post-reunión</dd></div>
+      <div class="dl-row"><dt>Fecha</dt><dd>Junio 2026</dd></div>
+      <div class="dl-row"><dt>Estado</dt><dd>Implementado y publicado</dd></div>
+    </dl>
+  </div>
+
+  <div class="prepared">
+    <div class="lbl">Preparado por</div>
+    <div class="name">Matías Venutolo — Pinaro</div>
+    <div class="loc">Buenos Aires, Argentina · hola@pinaro.ar</div>
+  </div>
+</section>
+
+<!-- ════════ PÁGINA 2 — tally + 01 + 02 ════════ -->
+<section class="page">
+  <div class="page-head"><span class="ttl">Resumen de cambios</span><span class="ttl">TEGA · Etapa 2</span></div>
+
+  <div class="tally">
+    <div class="stat"><div class="n">10</div><div class="l">áreas de mejora abordadas</div></div>
+    <div class="stat"><div class="n">+10</div><div class="l">páginas nuevas (8 productos · privacidad · quiénes somos)</div></div>
+    <div class="stat"><div class="n">3</div><div class="l">idiomas mantenidos (ES · EN · PT)</div></div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-num">01</div>
+    <h2 class="sec-title">Privacidad y cookies</h2>
+    <p class="sec-intro">Incorporamos el marco legal que faltaba, alineado a la Ley 25.326 de Protección de Datos Personales.</p>
+    <div class="items">
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Nueva página de Política de Privacidad y Cookies</div><div class="d">Detalla qué datos se recopilan del formulario, con qué fin y los derechos del usuario.</div></div></div>
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Aviso de cookies</div><div class="d">Banner trilingüe con aceptación recordada y enlace a la política desde el pie del sitio.</div></div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-num">02</div>
+    <h2 class="sec-title">Portada (Hero)</h2>
+    <p class="sec-intro">Ajustes sobre el primer impacto visual del sitio, según lo conversado.</p>
+    <div class="items">
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Nuevo texto destacado</div><div class="d">"Fabricación Argentina de Equipos de Elevación · Desde 1947", manteniendo el año fundacional.</div></div></div>
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Tarjeta de normas de fabricación</div><div class="d">Con los logos FEM y CMAA, alineada al resto de las tarjetas de datos.</div></div></div>
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Video reencuadrado</div><div class="d">El logo TEGA del puente grúa ahora se ve completo y nítido, sin quedar tapado por el texto.</div></div></div>
+    </div>
+  </div>
+
+  <div class="foot"><span>Pinaro · Sistemas que crecen con vos</span><span>02</span></div>
+</section>
+
+<!-- ════════ PÁGINA 3 — 03 + 04 ════════ -->
+<section class="page">
+  <div class="page-head"><span class="ttl">Resumen de cambios</span><span class="ttl">TEGA · Etapa 2</span></div>
+
+  <div class="sec">
+    <div class="sec-num">03</div>
+    <h2 class="sec-title">Estructura y navegación</h2>
+    <div class="items">
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Secciones reordenadas</div><div class="d">Productos → Industrias → Servicios → Quiénes Somos → Contacto.</div></div></div>
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">"Historia" pasa a "Quiénes Somos"</div><div class="d">Ubicada junto a Contacto en el menú.</div></div></div>
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Nuevo llamado a la acción</div><div class="d">"Consultá ahora" debajo de "Por qué nos eligen", para captar consultas.</div></div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-num">04</div>
+    <h2 class="sec-title">Formulario de contacto</h2>
+    <div class="items">
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Teléfono obligatorio</div><div class="d">Para no perder el canal de contacto directo.</div></div></div>
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Selector con todos los países</div><div class="d">Lista completa, con los países de Latinoamérica al inicio.</div></div></div>
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Asunto y destino configurados</div><div class="d">Las consultas llegan a tecnologia@tega.com.ar con el asunto "Formulario de contacto página web".</div></div></div>
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Horario de atención</div><div class="d">Lunes a viernes · 8:30 a 16:30 (hora Argentina).</div></div></div>
+    </div>
+  </div>
+
+  <div class="foot"><span>Pinaro · Sistemas que crecen con vos</span><span>03</span></div>
+</section>
+
+<!-- ════════ PÁGINA 4 — 05 + 06 ════════ -->
+<section class="page">
+  <div class="page-head"><span class="ttl">Resumen de cambios</span><span class="ttl">TEGA · Etapa 2</span></div>
+
+  <div class="sec">
+    <div class="sec-num">05</div>
+    <h2 class="sec-title">Productos e industrias</h2>
+    <div class="items">
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Industria "Astilleros" pasa a "Naval"</div><div class="d">Nomenclatura corregida en los tres idiomas.</div></div></div>
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Submarca UltraLift con su logo</div><div class="d">Se incorpora el logo (igual al de PowerLift), que faltaba.</div></div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-num">06</div>
+    <h2 class="sec-title">SEO — Una URL por producto</h2>
+    <p class="sec-intro">El cambio de mayor impacto para el <strong>posicionamiento en Google</strong>: cada producto pasa a tener su propia página y dirección.</p>
+    <div class="items">
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">8 páginas individuales de producto</div><div class="d">Tega Crane, Power Lift, Ultra Lift, Anti Explosivo, Tega Chain, Tega Kit, Radiolift y MoviCar.</div></div></div>
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Optimización para buscadores</div><div class="d">Cada página con metadatos, vista previa para redes (Open Graph) y datos estructurados (Schema.org) que Google entiende.</div></div></div>
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Logo de submarca junto al nombre</div><div class="d">A la derecha del título de cada producto, como se pidió.</div></div></div>
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Tarjetas del inicio como enlaces reales</div><div class="d">Y direcciones limpias: tega.com.ar/productos/tega-crane.</div></div></div>
+    </div>
+  </div>
+
+  <div class="foot"><span>Pinaro · Sistemas que crecen con vos</span><span>04</span></div>
+</section>
+
+<!-- ════════ PÁGINA 5 — 07 + 08 ════════ -->
+<section class="page">
+  <div class="page-head"><span class="ttl">Resumen de cambios</span><span class="ttl">TEGA · Etapa 2</span></div>
+
+  <div class="sec">
+    <div class="sec-num">07</div>
+    <h2 class="sec-title">Nueva página "Quiénes Somos"</h2>
+    <p class="sec-intro">Una página dedicada y <strong>ampliable</strong>, para sumar todo el contenido institucional que quieran.</p>
+    <div class="items">
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Línea de tiempo histórica</div><div class="d">Desde la fundación en 1947 hasta hoy, con los hitos de la empresa.</div></div></div>
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Evolución de la marca</div><div class="d">Los 10 logotipos históricos de TEGA (1947–1995) recuperados del archivo, más el actual.</div></div></div>
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Valores, números clave y ubicación</div><div class="d">Diferenciales de TEGA, datos de trayectoria y mapa de la planta en La Boca.</div></div></div>
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Trilingüe y optimizada</div><div class="d">ES/EN/PT, con datos estructurados de organización para Google.</div></div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-num">08</div>
+    <h2 class="sec-title">Pie de página — Puente grúa animado</h2>
+    <p class="sec-intro">Les gustaba la animación; la llevamos a algo <strong>personalizado y memorable</strong>.</p>
+    <div class="items">
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Puente grúa doble viga realista</div><div class="d">Con testeros, viga principal y carro que traslada izando una carga.</div></div></div>
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Carro tipo aparejo a cable Power Lift</div><div class="d">Tambor de cable, doble ramal y bloque de gancho, fiel al producto real.</div></div></div>
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Marca "TEGA · DESDE 1947" en la viga</div><div class="d">Impresa sobre el riel y centrada; el carro pasa por encima al trasladarse.</div></div></div>
+    </div>
+  </div>
+
+  <div class="foot"><span>Pinaro · Sistemas que crecen con vos</span><span>05</span></div>
+</section>
+
+<!-- ════════ PÁGINA 6 — 09 + 10 ════════ -->
+<section class="page">
+  <div class="page-head"><span class="ttl">Resumen de cambios</span><span class="ttl">TEGA · Etapa 2</span></div>
+
+  <div class="sec">
+    <div class="sec-num">09</div>
+    <h2 class="sec-title">Versión mobile</h2>
+    <p class="sec-intro">Revisión integral de la experiencia en celulares.</p>
+    <div class="items">
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Hero rediseñado para celular</div><div class="d">Texto siempre legible sobre fondo claro + foto del puente grúa nítida y separada (en mobile no se reproduce video).</div></div></div>
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Tarjetas de datos prolijas</div><div class="d">Dos por fila y la última a todo el ancho, sin desalineaciones.</div></div></div>
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Páginas de producto y Quiénes Somos</div><div class="d">Ajustadas y verificadas en pantallas chicas.</div></div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-num">10</div>
+    <h2 class="sec-title">Identidad de marca</h2>
+    <div class="items">
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Amarillo institucional</div><div class="d">Actualizado al Pantone 116C (#FFD200) del manual de marca; submarcas mantenidas.</div></div></div>
+      <div class="item"><span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" stroke="#6B3FA0" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><div class="t">Pie del sitio</div><div class="d">Año actualizado a 2026.</div></div></div>
+    </div>
+  </div>
+
+  <div class="foot"><span>Pinaro · Sistemas que crecen con vos</span><span>06</span></div>
+</section>
+
+<!-- ════════ PÁGINA 7 — PRÓXIMOS PASOS ════════ -->
+<section class="page">
+  <div class="page-head"><span class="ttl">Próximos pasos</span><span class="ttl">TEGA · Etapa 2</span></div>
+
+  <div class="sec">
+    <div class="sec-num">—</div>
+    <h2 class="sec-title">Pendiente de material del cliente</h2>
+    <p class="sec-intro">Para cerrar esta etapa por completo, necesitamos los siguientes materiales de parte de TEGA:</p>
+    <div class="note">
+      <div class="nt">Nos quedamos a la espera de:</div>
+      <ul>
+        <li><b>Logos de clientes</b> y la lista de las nuevas empresas, para la barra de "Empresas que confían en TEGA" (mostrarlas con logo).</li>
+        <li><b>Textos y fotos definitivas</b> de los productos.</li>
+        <li><b>Activación del formulario</b>: alta en Formspree con el correo de TEGA para que las consultas lleguen automáticamente.</li>
+        <li><b>Confirmación de 3 años</b> de logotipos históricos estimados (1950, 1960 y 1966 — Movicar).</li>
+        <li><b>Contenido adicional</b> que quieran sumar a "Quiénes Somos".</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-num">—</div>
+    <h2 class="sec-title">Estado actual</h2>
+    <p class="sec-intro">Todos los cambios de esta etapa están <strong>implementados y publicados</strong> en el sitio. La estructura quedó preparada para incorporar el material pendiente sin rehacer trabajo.</p>
+  </div>
+
+  <div class="prepared">
+    <span class="lockup">
+      <svg viewBox="0 0 40 40"><path d="M 8 18 L 20 10 L 32 18" stroke="url(#pg)" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 8 30 L 20 22 L 32 30" stroke="url(#pg)" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="wm">Pinaro</span>
+    </span>
+    <div class="loc" style="margin-top:8px">Gracias por la confianza. Quedamos a disposición para avanzar con la siguiente etapa.<br>hola@pinaro.ar · pinaro.ar</div>
+  </div>
+
+  <div class="foot"><span>Pinaro · Sistemas que crecen con vos</span><span>07</span></div>
+</section>
+
+</body>
+</html>
