@@ -112,12 +112,71 @@ section.blk{padding:18px 0}
 .band{margin:56px 0 0;background:var(--dark);color:#fff;border-radius:22px;padding:48px 52px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
 .band h2{font-family:var(--display);font-weight:800;font-size:clamp(22px,2.6vw,30px);letter-spacing:-0.01em;line-height:1.15}
 .band p{color:rgba(255,255,255,0.62);font-size:16px;margin-top:10px;max-width:520px}
-/* footer */
-footer{margin-top:64px;background:var(--dark);color:#fff;padding:40px 0}
-.foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.foot img{height:30px}
-.f-copy{font-size:13px;color:rgba(255,255,255,0.4)}
-.f-copy a{color:rgba(255,255,255,0.6);text-decoration:none}.f-copy a:hover{color:#fff}
+/* ── FOOTER (compartido con el landing) ── */
+.footer-crane{position:relative;height:134px;margin-bottom:40px;overflow:hidden;border-bottom:1px solid rgba(255,255,255,0.08)}
+/* vías de rodadura (runway) */
+.fc-rail{position:absolute;left:0;right:0;top:46px;height:4px;background:rgba(255,255,255,0.16)}
+.fc-rail.lower{top:54px;height:3px;background:rgba(255,255,255,0.07)}
+/* testeros (end trucks) en cada extremo */
+.fc-endtruck{position:absolute;top:13px;width:30px;height:35px;background:linear-gradient(180deg,#3a3a36,#1c1c19);border:1px solid rgba(255,255,255,0.12);border-radius:3px}
+.fc-endtruck.left{left:10px}
+.fc-endtruck.right{right:10px}
+/* viga principal (doble) entre testeros */
+.fc-girder{position:absolute;top:16px;left:36px;right:36px;height:14px;background:var(--y);border-radius:2px;box-shadow:0 7px 20px rgba(0,0,0,.4)}
+.fc-girder::before{content:'';position:absolute;left:0;right:0;top:5px;height:4px;background:rgba(0,0,0,0.30)}
+.fc-girder::after{content:'';position:absolute;left:0;right:0;bottom:-7px;height:5px;background:var(--y);opacity:.5;border-radius:2px}
+/* marca TEGA "impresa" en la viga, centrada (el carro pasa por encima) */
+.fc-plate{position:absolute;left:50%;top:15px;transform:translateX(-50%);display:flex;align-items:stretch;height:18px;border-radius:2px;overflow:hidden;font-family:var(--display);background:#0c0c09;box-shadow:inset 0 0 0 1px rgba(0,0,0,.4),inset 0 1px 1px rgba(255,255,255,.06)}
+.fc-plate-brand{display:flex;align-items:center;padding:0 7px 0 8px;color:#fff;font-weight:900;font-size:11px;letter-spacing:.05em}
+.fc-plate-cap{display:flex;align-items:center;padding:0 8px;color:var(--y);font-weight:900;font-size:10.5px;letter-spacing:.02em;box-shadow:inset 1px 0 0 rgba(255,255,255,.14)}
+.fc-plate-cap i{font-style:normal;font-size:6px;font-weight:700;letter-spacing:.13em;opacity:.6;margin-right:3px;color:rgba(255,255,255,.75)}
+/* leve brillo que recorre la marca, como el reflejo del riel */
+.fc-plate-glint{position:absolute;inset:0;overflow:hidden;border-radius:2px;pointer-events:none}
+.fc-plate-glint::after{content:'';position:absolute;top:-10%;left:-55%;width:32%;height:120%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);animation:fcGlint 6s ease-in-out infinite}
+@keyframes fcGlint{0%,62%{left:-55%}88%,100%{left:140%}}
+@media(prefers-reduced-motion:reduce){.fc-plate-glint::after{animation:none;opacity:0}}
+/* carro (trolley) tipo aparejo a cable Power Lift: tambor de cable + doble ramal + aparejo de gancho */
+.fc-trolley{position:absolute;top:9px;left:42px;width:40px;animation:fcTraverse 13s cubic-bezier(.45,0,.55,1) infinite alternate}
+.fc-cab{position:relative;width:40px;height:13px;background:linear-gradient(180deg,#54544c,#22221e);border:1px solid rgba(255,255,255,.16);border-radius:3px}
+/* ruedas del carro sobre la viga */
+.fc-cab::before,.fc-cab::after{content:'';position:absolute;bottom:-4px;width:7px;height:7px;border-radius:50%;background:#15150f;border:1px solid rgba(255,255,255,.22)}
+.fc-cab::before{left:5px}.fc-cab::after{right:5px}
+/* tambor de cable horizontal (rasgo característico del aparejo) */
+.fc-drum{position:absolute;left:5px;right:5px;top:-7px;height:10px;border-radius:6px;background:linear-gradient(180deg,#dadad4 0%,#9a9a92 48%,#67675f 100%);border:1px solid rgba(0,0,0,.35);box-shadow:inset 0 1px 1px rgba(255,255,255,.45)}
+.fc-drum::before,.fc-drum::after{content:'';position:absolute;top:-1px;width:4px;height:12px;border-radius:2px;background:#34342f}
+.fc-drum::before{left:-3px}.fc-drum::after{right:-3px}
+/* izaje: doble ramal de cable + aparejo de gancho + carga (sube/baja) */
+.fc-lift{position:absolute;top:13px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;height:46px;animation:fcHoist 4.6s ease-in-out infinite}
+.fc-ropes{position:relative;width:12px;flex:1}
+.fc-ropes::before,.fc-ropes::after{content:'';position:absolute;top:0;bottom:0;width:2px;background:rgba(255,255,255,.55)}
+.fc-ropes::before{left:2px}.fc-ropes::after{right:2px}
+.fc-block{width:18px;height:11px;background:linear-gradient(180deg,#ffe24a,#dfb400);border:1px solid rgba(0,0,0,.25);border-radius:2px;position:relative}
+.fc-block::before{content:'';position:absolute;left:3px;right:3px;top:3px;height:2px;background:rgba(0,0,0,.28);border-radius:1px}
+.fc-block::after{content:'';position:absolute;left:50%;bottom:-8px;width:8px;height:9px;border:2px solid var(--y);border-top:none;border-radius:0 0 8px 8px;transform:translateX(-50%)}
+.fc-load{margin-top:10px;width:32px;height:18px;background:linear-gradient(180deg,#33332e,#1b1b17);border:1px solid rgba(255,255,255,.12);border-radius:2px;position:relative}
+.fc-load::before{content:'';position:absolute;inset:4px;border:1px dashed rgba(255,255,255,.18);border-radius:1px}
+@keyframes fcTraverse{0%{left:42px}100%{left:calc(100% - 40px - 42px)}}
+@keyframes fcHoist{0%,100%{height:30px}50%{height:64px}}
+@media(prefers-reduced-motion:reduce){.fc-trolley,.fc-lift{animation:none}}
+footer{background:var(--ink);color:#fff;padding:72px 56px 32px;margin-top:0}
+.footer-inner{max-width:1280px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:64px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.07)}
+.f-logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:9px;text-decoration:none;margin-bottom:22px}
+.f-logo-img{height:30px;width:auto;display:block}
+.f-logo-sub{font-family:var(--display);font-weight:800;font-size:9.5px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);line-height:1.25}
+.f-desc{font-size:14px;line-height:1.7;color:rgba(255,255,255,0.45);max-width:260px}
+.f-col-title{font-family:var(--display);font-size:11px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:var(--y);margin-bottom:20px}
+.f-links{list-style:none;display:flex;flex-direction:column;gap:10px;margin:0;padding:0}
+.f-links a{font-size:14px;color:rgba(255,255,255,0.45);text-decoration:none;transition:color .15s}
+.f-links a:hover{color:#fff}
+.footer-bot{display:flex;justify-content:space-between;align-items:center;padding-top:28px;gap:20px;flex-wrap:wrap}
+.f-copy{font-size:13px;color:rgba(255,255,255,0.3)}
+.f-priv{color:rgba(255,255,255,0.55);text-decoration:none}.f-priv:hover{color:#fff}
+.f-disclaimer{font-size:11px;color:rgba(255,255,255,0.28);margin-top:16px;text-align:center;letter-spacing:.01em}
+.f-norms{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.f-seal{height:54px;min-width:54px;padding:9px 12px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,0.25)}
+.f-seal img{height:100%;width:auto;max-width:130px;object-fit:contain;display:block}
+@media(max-width:860px){footer{padding:48px 20px 28px}.footer-top{grid-template-columns:1fr 1fr;gap:32px}.footer-bot{flex-direction:column;align-items:center;text-align:center;gap:18px}.f-norms{justify-content:center}.f-desc{max-width:none}}
 @media(max-width:860px){
   .nav-links{display:none}
   .navin{height:60px}
@@ -198,14 +257,78 @@ footer{margin-top:64px;background:var(--dark);color:#fff;padding:40px 0}
 </div>
 
 <footer>
-  <div class="wrap foot">
-    <img src="https://www.tega.com.ar/img/tega-logo-y-texto.png" alt="TEGA" style="filter:brightness(0) invert(1)" onerror="this.style.display='none'">
-    <span class="f-copy">© 2026 TEGA <span data-i18n="footer.rights">Aparejos, Grúas y Apiladoras S.A. — Buenos Aires, Argentina.</span> · <a href="../privacidad.html" data-i18n="footer.privacy">Política de Privacidad</a></span>
+  <div class="footer-inner">
+    <div class="footer-crane" aria-hidden="true">
+      <div class="fc-rail"></div>
+      <div class="fc-endtruck left"></div>
+      <div class="fc-endtruck right"></div>
+      <div class="fc-girder"></div>
+      <div class="fc-plate" aria-label="TEGA — desde 1947">
+        <span class="fc-plate-brand">TEGA</span>
+        <span class="fc-plate-cap"><i>DESDE</i>1947</span>
+        <span class="fc-plate-glint"></span>
+      </div>
+      <div class="fc-trolley">
+        <div class="fc-cab"><div class="fc-drum"></div></div>
+        <div class="fc-lift"><div class="fc-ropes"></div><div class="fc-block"></div><div class="fc-load"></div></div>
+      </div>
+    </div>
+    <div class="footer-top">
+      <div>
+        <a class="f-logo" href="../index.html" aria-label="TEGA">
+          <img class="f-logo-img" src="../assets/tega-logo-header.png" alt="TEGA" style="filter:brightness(0) invert(1)">
+          <span class="f-logo-sub">Aparejos, Grúas y Apiladoras S.A.</span>
+        </a>
+        <p class="f-desc" data-i18n="footer.desc">Ingeniería de elevación industrial. Fabricación propia desde 1947 en Buenos Aires, Argentina. Stock de repuestos garantizado de por vida.</p>
+      </div>
+      <div>
+        <div class="f-col-title" data-i18n="footer.col.products">Productos</div>
+        <ul class="f-links">
+          <li><a href="../productos/tega-crane.html">Tega Crane — Puentes grúa</a></li>
+          <li><a href="../productos/power-lift.html">Power Lift / Ultra Lift</a></li>
+          <li><a href="../productos/anti-explosivo.html">Anti Explosivo</a></li>
+          <li><a href="../productos/tega-chain.html">Tega Chain</a></li>
+          <li><a href="../productos/tega-kit.html">Tega Kit</a></li>
+          <li><a href="../productos/radiolift.html">Radiolift / Movicar</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="f-col-title" data-i18n="footer.col.services">Servicios</div>
+        <ul class="f-links">
+          <li><a href="../index.html#servicios" data-i18n="serv.1.t">Mantenimiento preventivo</a></li>
+          <li><a href="../index.html#servicios" data-i18n="serv.2.t">Reparación</a></li>
+          <li><a href="../index.html#servicios" data-i18n="serv.3.t">Revamping</a></li>
+          <li><a href="../index.html#servicios" data-i18n="serv.4.t">Repuestos en stock</a></li>
+          <li><a href="../index.html#servicios" data-i18n="serv.5.t">Consultoría</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="f-col-title" data-i18n="footer.col.company">Empresa</div>
+        <ul class="f-links">
+          <li><a href="../index.html#empresa" data-i18n="footer.link.about">Por qué nos eligen</a></li>
+          <li><a href="../quienes-somos.html" data-i18n="footer.link.history">Historia</a></li>
+          <li><a href="../index.html#industrias" data-i18n="footer.link.industries">Industrias</a></li>
+          <li><a href="../index.html#contacto" data-i18n="footer.link.contact">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bot">
+      <span class="f-copy">© 2026 TEGA Aparejos, Grúas y Apiladoras S.A. — Buenos Aires, Argentina. · <a href="../privacidad.html" class="f-priv" data-i18n="footer.privacy">Política de Privacidad</a></span>
+      <div class="f-norms">
+        <div class="f-seal"><img src="../assets/norms/iso.jpg" alt="ISO 9001:2015"></div>
+        <div class="f-seal"><img src="../assets/norms/fem.jpg" alt="FEM"></div>
+        <div class="f-seal"><img src="../assets/norms/cmaa.jpg" alt="CMAA"></div>
+        <div class="f-seal"><img src="../assets/norms/iram.jpg" alt="IRAM"></div>
+        <div class="f-seal"><img src="../assets/norms/asme.jpg" alt="ASME"></div>
+        <div class="f-seal"><img src="../assets/norms/ce.jpg" alt="CE"></div>
+      </div>
+    </div>
+    <p class="f-disclaimer" data-i18n="footer.disclaimer">Las especificaciones pueden variar sin previo aviso. Fotos no contractuales.</p>
   </div>
 </footer>
 
 <script>
-const TXT = {"es": {"ptype.struct": "Estructuras", "ptype.aparejo": "Aparejos", "ptype.access": "Accesorios", "ptype.special": "Equipos especiales", "nav.products": "Productos", "nav.industries": "Industrias", "nav.services": "Servicios", "nav.history": "Quiénes Somos", "nav.contact": "Contacto", "nav.requestConsult": "Solicitar consulta", "crumb.home": "Inicio", "crumb.products": "Productos", "back": "← Volver a productos", "cta.quote": "Solicitar cotización", "cta.contact": "Contactar a un especialista", "lbl.caps": "Características principales", "lbl.configs": "Configuraciones disponibles", "lbl.diffs": "Diferenciadores clave", "lbl.sectors": "Sectores de aplicación", "lbl.components": "Componentes antideflagrantes", "lbl.norms": "Normas y certificaciones", "band.title": "¿Necesita asesoramiento sobre este equipo?", "band.text": "Nuestro equipo técnico lo ayuda a definir la solución exacta para su operación.", "footer.rights": "Aparejos, Grúas y Apiladoras S.A. — Buenos Aires, Argentina.", "footer.privacy": "Política de Privacidad"}, "en": {"ptype.struct": "Structures", "ptype.aparejo": "Hoists", "ptype.access": "Accessories", "ptype.special": "Special equipment", "nav.products": "Products", "nav.industries": "Industries", "nav.services": "Services", "nav.history": "About Us", "nav.contact": "Contact", "nav.requestConsult": "Request a consultation", "crumb.home": "Home", "crumb.products": "Products", "back": "← Back to products", "cta.quote": "Request a quote", "cta.contact": "Talk to a specialist", "lbl.caps": "Key specifications", "lbl.configs": "Available configurations", "lbl.diffs": "Key differentiators", "lbl.sectors": "Application sectors", "lbl.components": "Explosion-proof components", "lbl.norms": "Standards & certifications", "band.title": "Need advice on this equipment?", "band.text": "Our engineering team helps you define the exact solution for your operation.", "footer.rights": "Aparejos, Grúas y Apiladoras S.A. — Buenos Aires, Argentina.", "footer.privacy": "Privacy Policy"}, "pt": {"ptype.struct": "Estruturas", "ptype.aparejo": "Talhas", "ptype.access": "Acessórios", "ptype.special": "Equipamentos especiais", "nav.products": "Produtos", "nav.industries": "Indústrias", "nav.services": "Serviços", "nav.history": "Quem Somos", "nav.contact": "Contato", "nav.requestConsult": "Solicitar consulta", "crumb.home": "Início", "crumb.products": "Produtos", "back": "← Voltar aos produtos", "cta.quote": "Solicitar cotação", "cta.contact": "Falar com um especialista", "lbl.caps": "Características principais", "lbl.configs": "Configurações disponíveis", "lbl.diffs": "Diferenciais-chave", "lbl.sectors": "Setores de aplicação", "lbl.components": "Componentes antiexplosão", "lbl.norms": "Normas e certificações", "band.title": "Precisa de assessoria sobre este equipamento?", "band.text": "Nossa equipe técnica ajuda você a definir a solução exata para sua operação.", "footer.rights": "Aparejos, Grúas y Apiladoras S.A. — Buenos Aires, Argentina.", "footer.privacy": "Política de Privacidade"}};
+const TXT = {"es": {"ptype.struct": "Estructuras", "ptype.aparejo": "Aparejos", "ptype.access": "Accesorios", "ptype.special": "Equipos especiales", "nav.products": "Productos", "nav.industries": "Industrias", "nav.services": "Servicios", "nav.history": "Quiénes Somos", "nav.contact": "Contacto", "nav.requestConsult": "Solicitar consulta", "crumb.home": "Inicio", "crumb.products": "Productos", "back": "← Volver a productos", "cta.quote": "Solicitar cotización", "cta.contact": "Contactar a un especialista", "lbl.caps": "Características principales", "lbl.configs": "Configuraciones disponibles", "lbl.diffs": "Diferenciadores clave", "lbl.sectors": "Sectores de aplicación", "lbl.components": "Componentes antideflagrantes", "lbl.norms": "Normas y certificaciones", "band.title": "¿Necesita asesoramiento sobre este equipo?", "band.text": "Nuestro equipo técnico lo ayuda a definir la solución exacta para su operación.", "footer.rights": "Aparejos, Grúas y Apiladoras S.A. — Buenos Aires, Argentina.", "footer.privacy": "Política de Privacidad", "footer.desc": "Ingeniería de elevación industrial. Fabricación propia desde 1947 en Buenos Aires, Argentina. Stock de repuestos garantizado de por vida.", "footer.col.products": "Productos", "footer.col.services": "Servicios", "footer.col.company": "Empresa", "serv.1.t": "Mantenimiento preventivo", "serv.2.t": "Reparación", "serv.3.t": "Revamping", "serv.4.t": "Repuestos en stock", "serv.5.t": "Consultoría", "footer.link.about": "Por qué nos eligen", "footer.link.history": "Historia", "footer.link.industries": "Industrias", "footer.link.contact": "Contacto", "footer.disclaimer": "Las especificaciones pueden variar sin previo aviso. Fotos no contractuales."}, "en": {"ptype.struct": "Structures", "ptype.aparejo": "Hoists", "ptype.access": "Accessories", "ptype.special": "Special equipment", "nav.products": "Products", "nav.industries": "Industries", "nav.services": "Services", "nav.history": "About Us", "nav.contact": "Contact", "nav.requestConsult": "Request a consultation", "crumb.home": "Home", "crumb.products": "Products", "back": "← Back to products", "cta.quote": "Request a quote", "cta.contact": "Talk to a specialist", "lbl.caps": "Key specifications", "lbl.configs": "Available configurations", "lbl.diffs": "Key differentiators", "lbl.sectors": "Application sectors", "lbl.components": "Explosion-proof components", "lbl.norms": "Standards & certifications", "band.title": "Need advice on this equipment?", "band.text": "Our engineering team helps you define the exact solution for your operation.", "footer.rights": "Aparejos, Grúas y Apiladoras S.A. — Buenos Aires, Argentina.", "footer.privacy": "Privacy Policy", "footer.desc": "Industrial lifting engineering. In-house manufacturing since 1947 in Buenos Aires, Argentina. Guaranteed spare parts stock for life.", "footer.col.products": "Products", "footer.col.services": "Services", "footer.col.company": "Company", "serv.1.t": "Preventive maintenance", "serv.2.t": "Repair", "serv.3.t": "Revamping", "serv.4.t": "Spare parts in stock", "serv.5.t": "Consulting", "footer.link.about": "Why they choose us", "footer.link.history": "History", "footer.link.industries": "Industries", "footer.link.contact": "Contact", "footer.disclaimer": "Specifications may change without notice. Photos are not contractual."}, "pt": {"ptype.struct": "Estruturas", "ptype.aparejo": "Talhas", "ptype.access": "Acessórios", "ptype.special": "Equipamentos especiais", "nav.products": "Produtos", "nav.industries": "Indústrias", "nav.services": "Serviços", "nav.history": "Quem Somos", "nav.contact": "Contato", "nav.requestConsult": "Solicitar consulta", "crumb.home": "Início", "crumb.products": "Produtos", "back": "← Voltar aos produtos", "cta.quote": "Solicitar cotação", "cta.contact": "Falar com um especialista", "lbl.caps": "Características principais", "lbl.configs": "Configurações disponíveis", "lbl.diffs": "Diferenciais-chave", "lbl.sectors": "Setores de aplicação", "lbl.components": "Componentes antiexplosão", "lbl.norms": "Normas e certificações", "band.title": "Precisa de assessoria sobre este equipamento?", "band.text": "Nossa equipe técnica ajuda você a definir a solução exata para sua operação.", "footer.rights": "Aparejos, Grúas y Apiladoras S.A. — Buenos Aires, Argentina.", "footer.privacy": "Política de Privacidade", "footer.desc": "Engenharia de içamento industrial. Fabricação própria desde 1947 em Buenos Aires, Argentina. Estoque de peças garantido para sempre.", "footer.col.products": "Produtos", "footer.col.services": "Serviços", "footer.col.company": "Empresa", "serv.1.t": "Manutenção preventiva", "serv.2.t": "Reparo", "serv.3.t": "Revamping", "serv.4.t": "Peças em estoque", "serv.5.t": "Consultoria", "footer.link.about": "Por que nos escolhem", "footer.link.history": "História", "footer.link.industries": "Indústrias", "footer.link.contact": "Contato", "footer.disclaimer": "As especificações podem mudar sem aviso prévio. Fotos não contratuais."}};
 const DATA = {"es": {"desc": "Aparejos eléctricos a cadena para diversos grados de uso. Compactos, con suspensión por gancho, grandes alzadas y doble sistema de frenos. La cadena grado 80 resiste ambientes agresivos: lluvia, agua salada y atmósferas químicas.", "caps": [["Carga", "500 kg – 10 t"], ["Cadena", "Grado 80"], ["Factor de marcha", "40% continuo"]], "configs": ["Suspensión por gancho o versión de altura perdida reducida", "Capacidades de 500 kg a 10 t", "Grandes alzadas según modelo", "Tensión de comando 24V", "Opcional cadena para ambientes agresivos"], "diffs": ["Doble sistema de frenos (según modelo)", "Motor freno patentado en aleación de aluminio compacta", "Cadena grado 80 apta para ambientes agresivos", "Detector de fase negativa incorporado", "Botonera con protección IP65"], "sectors": [], "components": [], "norms": [["Comando a bajo voltaje 24/45V", "blue"], ["Motor autofrenante libre de mantenimiento", "blue"]]}, "en": {"desc": "Electric chain hoists for various duty grades. Compact, with hook suspension, large lifts and a dual braking system. The Grade 80 chain withstands harsh environments: rain, salt water and chemical atmospheres.", "caps": [["Capacity", "500 kg – 10 t"], ["Chain", "Grade 80"], ["Duty factor", "40% continuous"]], "configs": ["Hook suspension or low-headroom version", "Capacities from 500 kg to 10 t", "Large lifts depending on model", "24V control voltage", "Optional chain for harsh environments"], "diffs": ["Dual braking system (depending on model)", "Patented compact aluminum-alloy brake motor", "Grade 80 chain rated for harsh environments", "Built-in negative phase detector", "IP65 pendant"], "sectors": [], "components": [], "norms": [["24/45V low-voltage control", "blue"], ["Maintenance-free self-braking motor", "blue"]]}, "pt": {"desc": "Talhas elétricas a corrente para diversos graus de uso. Compactas, com suspensão por gancho, grandes elevações e duplo sistema de freios. A corrente grau 80 resiste a ambientes agressivos: chuva, água salgada e atmosferas químicas.", "caps": [["Carga", "500 kg – 10 t"], ["Corrente", "Grau 80"], ["Fator de marcha", "40% contínuo"]], "configs": ["Suspensão por gancho ou versão de altura perdida reduzida", "Capacidades de 500 kg a 10 t", "Grandes elevações conforme modelo", "Tensão de comando 24V", "Corrente opcional para ambientes agressivos"], "diffs": ["Duplo sistema de freios (conforme modelo)", "Motor freio patenteado em liga de alumínio compacta", "Corrente grau 80 apta para ambientes agressivos", "Detector de fase negativa incorporado", "Botoeira com proteção IP65"], "sectors": [], "components": [], "norms": [["Comando em baixa tensão 24/45V", "blue"], ["Motor autofrenante livre de manutenção", "blue"]]}};
 const CAT = {"es": "05 / Aparejos a cadena", "en": "05 / Chain hoists", "pt": "05 / Talhas a corrente"};
 const LBL = {"es": {"lbl.caps": "Características principales", "lbl.configs": "Configuraciones disponibles", "lbl.diffs": "Diferenciadores clave", "lbl.sectors": "Sectores de aplicación", "lbl.components": "Componentes antideflagrantes", "lbl.norms": "Normas y certificaciones"}, "en": {"lbl.caps": "Key specifications", "lbl.configs": "Available configurations", "lbl.diffs": "Key differentiators", "lbl.sectors": "Application sectors", "lbl.components": "Explosion-proof components", "lbl.norms": "Standards & certifications"}, "pt": {"lbl.caps": "Características principais", "lbl.configs": "Configurações disponíveis", "lbl.diffs": "Diferenciais-chave", "lbl.sectors": "Setores de aplicação", "lbl.components": "Componentes antiexplosão", "lbl.norms": "Normas e certificações"}};
