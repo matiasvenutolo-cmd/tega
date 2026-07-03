@@ -110,6 +110,11 @@ section.sec{padding:54px 0}
 .logo-cell img{max-height:56px;max-width:100%;width:auto;object-fit:contain}
 .logo-yr{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mid)}
 .logo-ph-txt{font-size:13px;color:var(--mid)}
+/* folletos */
+.folletos{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px}
+.fol{display:block;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 6px 18px -12px rgba(40,33,0,.3);transition:transform .18s,box-shadow .18s}
+.fol:hover{transform:translateY(-4px);box-shadow:0 14px 30px -14px rgba(40,33,0,.4)}
+.fol img{width:100%;height:auto;display:block;aspect-ratio:3/4;object-fit:cover}
 .note{margin-top:16px;font-size:13.5px;color:var(--mid);background:rgba(255,210,0,0.10);border:1px solid rgba(255,210,0,0.35);border-radius:12px;padding:12px 16px}
 /* location */
 .loc{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:34px 36px}
@@ -194,35 +199,6 @@ footer{margin-top:60px;background:var(--dark);color:#fff;padding:40px 0}
     <div class="num"><div class="num-n" data-i18n="qs.n4.n">ISO 9001</div><div class="num-l" data-i18n="qs.n4.l">Procesos certificados</div></div>
   </div>
 
-  <!-- HISTORIA / NARRATIVA -->
-  <section class="sec">
-    <div class="story-grid">
-      <div class="story-left">
-        <div class="sec-head">
-          <div class="sec-tag" data-i18n="qs.story.tag">Nuestra historia</div>
-          <h2 class="sec-title" data-i18n="qs.story.title">Pioneros del izaje industrial argentino</h2>
-        </div>
-        <div class="prose">
-          <p data-i18n-html="qs.story.p1">En <strong>1947</strong>, Basilio Polijronopulos funda TEGA en Lanús, Buenos Aires, como un taller dedicado a la reparación y fabricación de máquinas eléctricas. Apenas un año más tarde, en 1948, la empresa produce el <strong>primer aparejo eléctrico a cadena fabricado en Argentina</strong> — el punto de partida de toda una industria.</p>
-          <p data-i18n-html="qs.story.p2">A lo largo de las décadas siguientes TEGA incorporó tecnología europea de primer nivel, se convirtió en <strong>proveedor calificado de la Comisión Nacional de Energía Atómica</strong> y expandió su presencia al Mercosur. Hoy, con planta propia en La Boca, fabrica bajo normas FEM, ASME y CMAA y lidera en Latinoamérica el segmento de equipos para áreas clasificadas (anti-explosivos).</p>
-        </div>
-      </div>
-      <!-- TIMELINE (render dinámico) -->
-      <div class="tl" id="timeline"></div>
-    </div>
-  </section>
-
-  <!-- EVOLUCIÓN DEL LOGO -->
-  <section class="sec">
-    <div class="sec-head">
-      <div class="sec-tag" data-i18n="qs.logo.tag">Identidad</div>
-      <h2 class="sec-title" data-i18n="qs.logo.title">La evolución de nuestra marca</h2>
-      <p class="sec-text" data-i18n="qs.logo.text">Casi ocho décadas dejaron su huella también en el logotipo de TEGA. Esta es la línea de tiempo de nuestra identidad visual.</p>
-    </div>
-    <div class="logos" id="logoGrid"></div>
-    <div class="note" data-i18n="qs.logo.note">Logotipos originales recuperados del archivo histórico de TEGA.</div>
-  </section>
-
   <!-- VALORES -->
   <section class="sec">
     <div class="sec-head">
@@ -250,6 +226,56 @@ footer{margin-top:60px;background:var(--dark);color:#fff;padding:40px 0}
         <div class="val-t" data-i18n="qs.v4.t">Servicio de por vida</div>
         <div class="val-d" data-i18n="qs.v4.d">Mantenimiento, repuestos originales en stock y revamping. Acompañamos cada equipo durante toda su vida útil.</div>
       </div>
+    </div>
+  </section>
+
+
+  <!-- HISTORIA / NARRATIVA -->
+  <section class="sec">
+    <div class="story-grid">
+      <div class="story-left">
+        <div class="sec-head">
+          <div class="sec-tag" data-i18n="qs.story.tag">Nuestra historia</div>
+          <h2 class="sec-title" data-i18n="qs.story.title">Pioneros del izaje industrial argentino</h2>
+        </div>
+        <div class="prose">
+          <p data-i18n-html="qs.story.p1">En <strong>1947</strong>, Basilio Polijronopulos funda TEGA en Lanús, Buenos Aires, como un taller dedicado a la reparación y fabricación de máquinas eléctricas. Apenas un año más tarde, en 1948, la empresa produce el <strong>primer aparejo eléctrico a cadena fabricado en Argentina</strong> — el punto de partida de toda una industria.</p>
+          <p data-i18n-html="qs.story.p2">Pasando al poco tiempo a dedicarse exclusivamente al diseño y manufactura de equipos de elevación, llegando a ofrecer la gama completa de productos para la manutención industrial: aparejos eléctricos a cable, aparejos eléctricos y manuales a cadena, puentes grúa, pórticos, semipórticos, sistemas monorrieles y equipos especiales para el movimiento de materiales para distintas áreas y ambientes de operación. Equipos para <strong>ambientes agresivos, áreas clasificadas a prueba de explosión (Ex) y áreas de producción alimenticia</strong>.</p>
+        </div>
+      </div>
+      <!-- TIMELINE (render dinámico) -->
+      <div class="tl" id="timeline"></div>
+    </div>
+  </section>
+
+  <!-- EVOLUCIÓN DEL LOGO -->
+  <section class="sec">
+    <div class="sec-head">
+      <div class="sec-tag" data-i18n="qs.logo.tag">Identidad</div>
+      <h2 class="sec-title" data-i18n="qs.logo.title">La evolución de nuestra marca</h2>
+      <p class="sec-text" data-i18n="qs.logo.text">Casi ocho décadas dejaron su huella también en el logotipo de TEGA. Esta es la línea de tiempo de nuestra identidad visual.</p>
+    </div>
+    <div class="logos" id="logoGrid"></div>
+    <div class="note" data-i18n="qs.logo.note">Logotipos originales recuperados del archivo histórico de TEGA.</div>
+  </section>
+
+  <!-- FOLLETOS -->
+  <section class="sec">
+    <div class="sec-head">
+      <div class="sec-tag" data-i18n="qs.fol.tag">Archivo</div>
+      <h2 class="sec-title" data-i18n="qs.fol.title">Folletos históricos</h2>
+      <p class="sec-text" data-i18n="qs.fol.text">Material técnico y comercial de TEGA a lo largo de los años.</p>
+    </div>
+    <div class="folletos">
+      <a class="fol" href="assets/folletos/folleto-01.jpg" target="_blank" rel="noopener"><img src="assets/folletos/folleto-01.jpg" alt="Folleto TEGA 01" loading="lazy"></a>
+      <a class="fol" href="assets/folletos/folleto-02.jpg" target="_blank" rel="noopener"><img src="assets/folletos/folleto-02.jpg" alt="Folleto TEGA 02" loading="lazy"></a>
+      <a class="fol" href="assets/folletos/folleto-03.jpg" target="_blank" rel="noopener"><img src="assets/folletos/folleto-03.jpg" alt="Folleto TEGA 03" loading="lazy"></a>
+      <a class="fol" href="assets/folletos/folleto-04.jpg" target="_blank" rel="noopener"><img src="assets/folletos/folleto-04.jpg" alt="Folleto TEGA 04" loading="lazy"></a>
+      <a class="fol" href="assets/folletos/folleto-05.jpg" target="_blank" rel="noopener"><img src="assets/folletos/folleto-05.jpg" alt="Folleto TEGA 05" loading="lazy"></a>
+      <a class="fol" href="assets/folletos/folleto-06.jpg" target="_blank" rel="noopener"><img src="assets/folletos/folleto-06.jpg" alt="Folleto TEGA 06" loading="lazy"></a>
+      <a class="fol" href="assets/folletos/folleto-07.jpg" target="_blank" rel="noopener"><img src="assets/folletos/folleto-07.jpg" alt="Folleto TEGA 07" loading="lazy"></a>
+      <a class="fol" href="assets/folletos/folleto-08.jpg" target="_blank" rel="noopener"><img src="assets/folletos/folleto-08.jpg" alt="Folleto TEGA 08" loading="lazy"></a>
+      <a class="fol" href="assets/folletos/folleto-09.jpg" target="_blank" rel="noopener"><img src="assets/folletos/folleto-09.jpg" alt="Folleto TEGA 09" loading="lazy"></a>
     </div>
   </section>
 
@@ -300,11 +326,11 @@ const TXT = {
   "qs.n4.n":"ISO 9001","qs.n4.l":"Procesos certificados",
   "qs.story.tag":"Nuestra historia","qs.story.title":"Pioneros del izaje industrial argentino",
   "qs.story.p1":"En <strong>1947</strong>, Basilio Polijronopulos funda TEGA en Lanús, Buenos Aires, como un taller dedicado a la reparación y fabricación de máquinas eléctricas. Apenas un año más tarde, en 1948, la empresa produce el <strong>primer aparejo eléctrico a cadena fabricado en Argentina</strong> — el punto de partida de toda una industria.",
-  "qs.story.p2":"A lo largo de las décadas siguientes TEGA incorporó tecnología europea de primer nivel, se convirtió en <strong>proveedor calificado de la Comisión Nacional de Energía Atómica</strong> y expandió su presencia al Mercosur. Hoy, con planta propia en La Boca, fabrica bajo normas FEM, ASME y CMAA y lidera en Latinoamérica el segmento de equipos para áreas clasificadas (anti-explosivos).",
+  "qs.story.p2":"Pasando al poco tiempo a dedicarse exclusivamente al diseño y manufactura de equipos de elevación, llegando a ofrecer la gama completa de productos para la manutención industrial: aparejos eléctricos a cable, aparejos eléctricos y manuales a cadena, puentes grúa, pórticos, semipórticos, sistemas monorrieles y equipos especiales para el movimiento de materiales para distintas áreas y ambientes de operación. Equipos para <strong>ambientes agresivos, áreas clasificadas a prueba de explosión (Ex) y áreas de producción alimenticia</strong>.",
   "qs.logo.tag":"Identidad","qs.logo.title":"La evolución de nuestra marca",
   "qs.logo.text":"Casi ocho décadas dejaron su huella también en el logotipo de TEGA. Esta es la línea de tiempo de nuestra identidad visual.",
   "qs.logo.ph":"Logo histórico","qs.logo.now":"Actual",
-  "qs.logo.note":"Logotipos originales recuperados del archivo histórico de TEGA.",
+  "qs.logo.note":"Logotipos originales recuperados del archivo histórico de TEGA.","qs.fol.tag":"Archivo","qs.fol.title":"Folletos históricos","qs.fol.text":"Material técnico y comercial de TEGA a lo largo de los años.",
   "qs.val.tag":"Por qué TEGA","qs.val.title":"Lo que nos distingue",
   "qs.v1.t":"Fabricación 100% argentina","qs.v1.d":"Diseñamos y fabricamos íntegramente en nuestra planta de Buenos Aires, con trazabilidad total de cada equipo.",
   "qs.v2.t":"Ingeniería propia","qs.v2.d":"Resolvemos requerimientos a medida desde el inicio del proyecto, adaptando cada solución a su operación.",
@@ -326,11 +352,11 @@ const TXT = {
   "qs.n4.n":"ISO 9001","qs.n4.l":"Certified processes",
   "qs.story.tag":"Our history","qs.story.title":"Pioneers of Argentine industrial lifting",
   "qs.story.p1":"In <strong>1947</strong>, Basilio Polijronopulos founds TEGA in Lanús, Buenos Aires, as a workshop for repairing and manufacturing electrical machinery. Just one year later, in 1948, the company produces the <strong>first electric chain hoist made in Argentina</strong> — the starting point of an entire industry.",
-  "qs.story.p2":"Over the following decades TEGA brought in top-tier European technology, became a <strong>qualified supplier to the National Atomic Energy Commission</strong> and expanded into Mercosur. Today, from its own plant in La Boca, it manufactures under FEM, ASME and CMAA standards and leads the explosion-proof (classified-area) equipment segment in Latin America.",
+  "qs.story.p2":"It soon devoted itself exclusively to the design and manufacture of lifting equipment, growing to offer the full range of material-handling products: electric wire-rope hoists, electric and manual chain hoists, bridge cranes, gantries, semi-gantries, monorail systems and special equipment for material movement across every area and operating environment. Equipment for <strong>harsh environments, explosion-proof classified areas (Ex) and food-production areas</strong>.",
   "qs.logo.tag":"Identity","qs.logo.title":"The evolution of our brand",
   "qs.logo.text":"Nearly eight decades have also left their mark on the TEGA logo. This is the timeline of our visual identity.",
   "qs.logo.ph":"Historic logo","qs.logo.now":"Current",
-  "qs.logo.note":"Original logos recovered from TEGA's historical archive.",
+  "qs.logo.note":"Original logos recovered from TEGA's historical archive.","qs.fol.tag":"Archive","qs.fol.title":"Historical brochures","qs.fol.text":"TEGA's technical and commercial material over the years.",
   "qs.val.tag":"Why TEGA","qs.val.title":"What sets us apart",
   "qs.v1.t":"100% Argentine manufacturing","qs.v1.d":"We design and manufacture entirely at our Buenos Aires plant, with full traceability of every unit.",
   "qs.v2.t":"In-house engineering","qs.v2.d":"We solve custom requirements from the start of the project, adapting each solution to your operation.",
@@ -352,11 +378,11 @@ const TXT = {
   "qs.n4.n":"ISO 9001","qs.n4.l":"Processos certificados",
   "qs.story.tag":"Nossa história","qs.story.title":"Pioneiros da elevação industrial argentina",
   "qs.story.p1":"Em <strong>1947</strong>, Basilio Polijronopulos funda a TEGA em Lanús, Buenos Aires, como uma oficina dedicada ao reparo e fabricação de máquinas elétricas. Apenas um ano depois, em 1948, a empresa produz a <strong>primeira talha elétrica a corrente fabricada na Argentina</strong> — o ponto de partida de toda uma indústria.",
-  "qs.story.p2":"Ao longo das décadas seguintes a TEGA incorporou tecnologia europeia de primeiro nível, tornou-se <strong>fornecedora qualificada da Comissão Nacional de Energia Atômica</strong> e expandiu sua presença ao Mercosul. Hoje, com planta própria em La Boca, fabrica sob normas FEM, ASME e CMAA e lidera na América Latina o segmento de equipamentos para áreas classificadas (antiexplosão).",
+  "qs.story.p2":"Logo passou a dedicar-se exclusivamente ao projeto e fabricação de equipamentos de elevação, chegando a oferecer a linha completa de produtos para a movimentação industrial: talhas elétricas a cabo, talhas elétricas e manuais a corrente, pontes rolantes, pórticos, semipórticos, sistemas monorraíl e equipamentos especiais para a movimentação de materiais em diferentes áreas e ambientes de operação. Equipamentos para <strong>ambientes agressivos, áreas classificadas à prova de explosão (Ex) e áreas de produção alimentícia</strong>.",
   "qs.logo.tag":"Identidade","qs.logo.title":"A evolução da nossa marca",
   "qs.logo.text":"Quase oito décadas deixaram sua marca também no logotipo da TEGA. Esta é a linha do tempo da nossa identidade visual.",
   "qs.logo.ph":"Logo histórico","qs.logo.now":"Atual",
-  "qs.logo.note":"Logotipos originais recuperados do arquivo histórico da TEGA.",
+  "qs.logo.note":"Logotipos originais recuperados do arquivo histórico da TEGA.","qs.fol.tag":"Arquivo","qs.fol.title":"Folhetos históricos","qs.fol.text":"Material técnico e comercial da TEGA ao longo dos anos.",
   "qs.val.tag":"Por que TEGA","qs.val.title":"O que nos diferencia",
   "qs.v1.t":"Fabricação 100% argentina","qs.v1.d":"Projetamos e fabricamos integralmente na nossa planta de Buenos Aires, com rastreabilidade total de cada equipamento.",
   "qs.v2.t":"Engenharia própria","qs.v2.d":"Resolvemos requisitos sob medida desde o início do projeto, adaptando cada solução à sua operação.",
@@ -378,6 +404,13 @@ const TL = {
   ["1992","Expansión al Mercosur","Primera filial en São Paulo, Brasil. TEGA lleva su tecnología a las líneas de ensamblado de las automotrices brasileñas."],
   ["2001","Certificación ISO 9001","TEGA obtiene la certificación ISO 9001, consolidando sus procesos de calidad al nivel de los estándares internacionales más exigentes."],
   ["2002","Líder en Anti-Explosivo","Primera y más importante división de equipos anti-explosivos para zonas clasificadas de Latinoamérica. Referente regional en petroquímica, minería y gas."],
+  ["2004","Exportación a África","Exportaciones al continente africano para la industria nuclear y de energía."],
+  ["2005","Proyectos energéticos regionales","Expansión y consolidación de proyectos energéticos en Colombia, Ecuador y Perú."],
+  ["2009","Sector automotriz brasileño","Exportaciones a Brasil para el sector automotriz."],
+  ["2013","Petroquímica y gas en Medio Oriente","Exportación de equipos para la industria petroquímica y de gas a Medio Oriente."],
+  ["2015","Desarrollos para minería","Desarrollos especiales para la industria minera."],
+  ["2020","Vaca Muerta","Provisión de equipos especiales para operación en Vaca Muerta."],
+  ["2023","Minería de litio","Provisión de equipos para minería de litio en Upstream y Downstream."],
   ["Hoy","Toda Latinoamérica","Con 5.000 m² de planta propia en La Boca, Buenos Aires, y presencia en toda Latinoamérica. El 85% de nuestros clientes son líderes en sus industrias."]
  ],
  en:[
@@ -388,6 +421,13 @@ const TL = {
   ["1992","Mercosur expansion","First subsidiary in São Paulo, Brazil. TEGA brings its technology to Brazilian automakers' assembly lines."],
   ["2001","ISO 9001 certification","TEGA obtains ISO 9001 certification, aligning its quality processes with the most demanding international standards."],
   ["2002","Anti-explosive leader","The first and most important anti-explosive equipment division for classified areas in Latin America. A regional benchmark in petrochemicals, mining and gas."],
+  ["2004","Exports to Africa","Exports to the African continent for the nuclear and energy industry."],
+  ["2005","Regional energy projects","Expansion and consolidation of energy projects in Colombia, Ecuador and Peru."],
+  ["2009","Brazilian automotive sector","Exports to Brazil for the automotive sector."],
+  ["2013","Petrochemicals & gas in the Middle East","Equipment exports for the petrochemical and gas industry to the Middle East."],
+  ["2015","Mining developments","Special developments for the mining industry."],
+  ["2020","Vaca Muerta","Supply of special equipment for operations at Vaca Muerta."],
+  ["2023","Lithium mining","Supply of equipment for lithium mining in Upstream and Downstream."],
   ["Today","All of Latin America","With a 5,000 m² own plant in La Boca, Buenos Aires, and presence across Latin America. 85% of our clients are leaders in their industries."]
  ],
  pt:[
@@ -398,6 +438,13 @@ const TL = {
   ["1992","Expansão ao Mercosul","Primeira filial em São Paulo, Brasil. A TEGA leva sua tecnologia às linhas de montagem das montadoras brasileiras."],
   ["2001","Certificação ISO 9001","A TEGA obtém a certificação ISO 9001, consolidando seus processos de qualidade no nível dos padrões internacionais mais exigentes."],
   ["2002","Líder em antiexplosão","A primeira e mais importante divisão de equipamentos antiexplosão para áreas classificadas da América Latina. Referência regional em petroquímica, mineração e gás."],
+  ["2004","Exportação para a África","Exportações para o continente africano para a indústria nuclear e de energia."],
+  ["2005","Projetos energéticos regionais","Expansão e consolidação de projetos energéticos na Colômbia, Equador e Peru."],
+  ["2009","Setor automotivo brasileiro","Exportações ao Brasil para o setor automotivo."],
+  ["2013","Petroquímica e gás no Oriente Médio","Exportação de equipamentos para a indústria petroquímica e de gás ao Oriente Médio."],
+  ["2015","Desenvolvimentos para mineração","Desenvolvimentos especiais para a indústria de mineração."],
+  ["2020","Vaca Muerta","Fornecimento de equipamentos especiais para operação em Vaca Muerta."],
+  ["2023","Mineração de lítio","Fornecimento de equipamentos para mineração de lítio em Upstream e Downstream."],
   ["Hoje","Toda a América Latina","Com 5.000 m² de planta própria em La Boca, Buenos Aires, e presença em toda a América Latina. 85% dos nossos clientes são líderes em seus setores."]
  ]
 };
@@ -420,14 +467,14 @@ const LOGOS = [
   ["1966","assets/logos-historia/logo-1966-movicar.png"],
   ["1968","assets/logos-historia/logo-1968.png"],
   ["1970","assets/logos-historia/logo-1970.png"],
-  ["1995","assets/logos-historia/logo-1995.png"]
+  ["1995","assets/logos-historia/logo-1995-negro.png"]
 ];
 function renderLogos(lang){
   const now = (TXT[lang] || TXT.es)["qs.logo.now"];
   let h = LOGOS.map(l =>
     '<div class="logo-cell"><img src="'+l[1]+'" alt="Logo TEGA '+l[0]+'" loading="lazy"><div class="logo-yr">'+l[0]+'</div></div>'
   ).join('');
-  h += '<div class="logo-cell"><img src="assets/tega-logo.png" alt="Logo TEGA actual" loading="lazy"><div class="logo-yr">'+now+'</div></div>';
+  h += '<div class="logo-cell"><img src="assets/logos-historia/logo-actual.png" alt="Logo TEGA actual" loading="lazy"><div class="logo-yr">'+now+'</div></div>';
   document.getElementById('logoGrid').innerHTML = h;
 }
 
