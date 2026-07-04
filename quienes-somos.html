@@ -111,8 +111,8 @@ section.sec{padding:54px 0}
 .logo-yr{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mid)}
 .logo-ph-txt{font-size:13px;color:var(--mid)}
 /* folletos */
-.folletos{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px}
-.fol{display:block;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 6px 18px -12px rgba(40,33,0,.3);transition:transform .18s,box-shadow .18s}
+.folletos{display:flex;flex-wrap:wrap;justify-content:center;gap:16px}
+.fol{flex:0 0 calc((100% - 64px)/5);display:block;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 6px 18px -12px rgba(40,33,0,.3);transition:transform .18s,box-shadow .18s}
 .fol:hover{transform:translateY(-4px);box-shadow:0 14px 30px -14px rgba(40,33,0,.4)}
 .fol img{width:100%;height:auto;display:block;aspect-ratio:3/4;object-fit:cover}
 .note{margin-top:16px;font-size:13.5px;color:var(--mid);background:rgba(255,210,0,0.10);border:1px solid rgba(255,210,0,0.35);border-radius:12px;padding:12px 16px}
@@ -208,6 +208,7 @@ footer{background:var(--ink);color:#fff;padding:72px 56px 32px;margin-top:0}
   h1{font-size:clamp(32px,9vw,46px)}
   .nums{grid-template-columns:repeat(2,1fr)}
   .logo-cell{flex-basis:calc((100% - 16px)/2)}
+  .fol{flex-basis:calc((100% - 32px)/3)}
   .loc{grid-template-columns:1fr}
   .band{padding:34px 28px}
   .wrap,.navin{padding:0 20px}
@@ -215,6 +216,7 @@ footer{background:var(--ink);color:#fff;padding:72px 56px 32px;margin-top:0}
 @media(max-width:560px){
   .nums{grid-template-columns:1fr}
   .vals{grid-template-columns:1fr}
+  .fol{flex-basis:calc((100% - 16px)/2)}
 }
 </style>
 </head>
