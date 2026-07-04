@@ -155,8 +155,8 @@ nav.scrolled{box-shadow:var(--shadow)}
 .trust-scroll{display:flex;gap:40px;align-items:center;animation:marquee 28s linear infinite;white-space:nowrap;width:max-content}
 .trust-scroll:hover{animation-play-state:paused}
 @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.trust-name{font-family:var(--display);font-size:15px;font-weight:800;letter-spacing:0.04em;color:var(--fog);white-space:nowrap;transition:color .2s;cursor:default}
-.trust-name:hover{color:var(--mid)}
+.trust-logo{height:32px;width:auto;max-width:160px;object-fit:contain;flex-shrink:0;opacity:.9;transition:opacity .2s,transform .2s}
+.trust-logo:hover{opacity:1;transform:scale(1.05)}
 
 /* ── DIFF ── */
 .diff{
@@ -623,21 +623,9 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
     <span class="trust-label" data-i18n="trust.label">Empresas que confían en TEGA</span>
     <div class="trust-marquee-wrap">
     <div class="trust-scroll" id="trustScroll">
-      <span class="trust-name">CNEA</span><span class="trust-name">INVAP</span>
-      <span class="trust-name">Techint</span><span class="trust-name">ARAMCO</span>
-      <span class="trust-name">Monsanto</span><span class="trust-name">Vale</span>
-      <span class="trust-name">Total Austral</span><span class="trust-name">YPF</span>
-      <span class="trust-name">OCP Ecuador</span><span class="trust-name">Fluor</span>
-      <span class="trust-name">Gas del Amazonas</span><span class="trust-name">Bechtel</span>
-      <span class="trust-name">Posco</span><span class="trust-name">AES</span><span class="trust-name">Bayer</span><span class="trust-name">Rio Tinto</span>
+      <img class="trust-logo" src="assets/clients/cnea.webp" alt="CNEA"><img class="trust-logo" src="assets/clients/invap.webp" alt="INVAP"><img class="trust-logo" src="assets/clients/techint.webp" alt="Techint"><img class="trust-logo" src="assets/clients/aramco.png" alt="ARAMCO"><img class="trust-logo" src="assets/clients/monsanto.png" alt="Monsanto"><img class="trust-logo" src="assets/clients/vale.svg" alt="Vale"><img class="trust-logo" src="assets/clients/total.svg" alt="Total Austral"><img class="trust-logo" src="assets/clients/ypf.svg" alt="YPF"><img class="trust-logo" src="assets/clients/ocpecuador.png" alt="OCP Ecuador"><img class="trust-logo" src="assets/clients/fluor.webp" alt="Fluor"><img class="trust-logo" src="assets/clients/gasamazonas.png" alt="Gas del Amazonas"><img class="trust-logo" src="assets/clients/bechtel.svg" alt="Bechtel"><img class="trust-logo" src="assets/clients/posco.webp" alt="Posco"><img class="trust-logo" src="assets/clients/aes.webp" alt="AES"><img class="trust-logo" src="assets/clients/bayer.svg" alt="Bayer"><img class="trust-logo" src="assets/clients/riotinto.webp" alt="Rio Tinto">
       <!-- duplicate for seamless loop -->
-      <span class="trust-name">CNEA</span><span class="trust-name">INVAP</span>
-      <span class="trust-name">Techint</span><span class="trust-name">ARAMCO</span>
-      <span class="trust-name">Monsanto</span><span class="trust-name">Vale</span>
-      <span class="trust-name">Total Austral</span><span class="trust-name">YPF</span>
-      <span class="trust-name">OCP Ecuador</span><span class="trust-name">Fluor</span>
-      <span class="trust-name">Gas del Amazonas</span><span class="trust-name">Bechtel</span>
-      <span class="trust-name">Posco</span><span class="trust-name">AES</span><span class="trust-name">Bayer</span><span class="trust-name">Rio Tinto</span>
+      <img class="trust-logo" src="assets/clients/cnea.webp" alt="CNEA"><img class="trust-logo" src="assets/clients/invap.webp" alt="INVAP"><img class="trust-logo" src="assets/clients/techint.webp" alt="Techint"><img class="trust-logo" src="assets/clients/aramco.png" alt="ARAMCO"><img class="trust-logo" src="assets/clients/monsanto.png" alt="Monsanto"><img class="trust-logo" src="assets/clients/vale.svg" alt="Vale"><img class="trust-logo" src="assets/clients/total.svg" alt="Total Austral"><img class="trust-logo" src="assets/clients/ypf.svg" alt="YPF"><img class="trust-logo" src="assets/clients/ocpecuador.png" alt="OCP Ecuador"><img class="trust-logo" src="assets/clients/fluor.webp" alt="Fluor"><img class="trust-logo" src="assets/clients/gasamazonas.png" alt="Gas del Amazonas"><img class="trust-logo" src="assets/clients/bechtel.svg" alt="Bechtel"><img class="trust-logo" src="assets/clients/posco.webp" alt="Posco"><img class="trust-logo" src="assets/clients/aes.webp" alt="AES"><img class="trust-logo" src="assets/clients/bayer.svg" alt="Bayer"><img class="trust-logo" src="assets/clients/riotinto.webp" alt="Rio Tinto">
     </div>
     </div>
   </div>
