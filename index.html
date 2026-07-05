@@ -503,15 +503,15 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
   .btn-nav-primary{padding:9px 14px;font-size:13px;gap:5px}
   .btn-nav-primary::after{display:none}
 
-  /* ── HERO (mobile: sin video; texto sobre crema + foto enmarcada del puente grúa) ── */
+  /* ── HERO (mobile: video como banner arriba, de lado a lado; texto abajo sobre crema) ── */
   .hero-video{display:none}
   .hero-veil{display:none}
   .hero{min-height:auto;padding-top:60px;background:var(--bg)}
-  .hero-content{padding:36px 20px 0;max-width:100%;flex:none}
+  /* el video va arriba (order:-1), full-width, como banner del hero */
+  .hero-photo{order:-1;display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:center 44%;margin:0;border-radius:0;background:#0e0e0c}
+  .hero-content{padding:32px 20px 0;max-width:100%;flex:none}
   .hero-h1{font-size:clamp(38px,11vw,54px);margin-bottom:20px}
   .hero-sub{margin-bottom:28px}
-  /* foto del puente grúa, nítida y separada del texto */
-  .hero-photo{display:block;width:calc(100% - 40px);aspect-ratio:16/9;object-fit:cover;object-position:center 42%;border-radius:16px;margin:26px 20px 4px;box-shadow:0 20px 44px -22px rgba(40,33,0,0.5)}
   /* tarjetas de stats: 2 por fila; la última (impar) ocupa todo el ancho */
   .hero-stats{padding:24px 20px 40px;gap:10px}
   .hero-stats .hs-pill{flex:1 1 calc(50% - 5px);padding:12px 16px}
