@@ -26,7 +26,7 @@ PRODUCTS = [
     ("antiex",    "anti-explosivo", "Anti Explosivo", "antiex",    "special", 4),
     ("chain",     "tega-chain",     "Tega Chain",     "chain",     "aparejo", 5),
     ("kit",       "tega-kit",       "Tega Kit",       "kit",       "access",  6),
-    ("radio",     "radiolift",      "Radiolift",      "radio",     "access",  7),
+    ("radio",     "radiolift",      "Radio Lift",      "radio",     "access",  7),
     ("movicar",   "movicar",        "MoviCar",        "movicar",   "special", 8),
 ]
 
@@ -57,7 +57,7 @@ SEO_DESC = {
     "antiex":    "Equipos de izaje antiexplosivos TEGA para áreas clasificadas (ATEX / NEC). La división Ex más importante de Sudamérica. Petroquímica, minería, oil & gas.",
     "chain":     "Tega Chain: aparejo eléctrico a cadena grado 80, compacto y eficiente. Hasta 10 t, doble freno y apto para ambientes agresivos. Fabricación argentina.",
     "kit":       "Tega Kit: componentes electromecánicos para armar tu propio puente grúa. De 0,5 a 20 t, normas FEM y CMAA, aparejo pre-cableado. Fabricación TEGA.",
-    "radio":     "Radiolift: radiocomando inalámbrico TEGA (tecnología Telecrane) para puentes grúa y aparejos. Alcance hasta 300 m, compatible con todas las marcas.",
+    "radio":     "Radio Lift: radiocomando inalámbrico TEGA (tecnología Telecrane) para puentes grúa y aparejos. Alcance hasta 300 m, compatible con todas las marcas.",
     "movicar":   "MoviCar: apiladoras electrohidráulicas TEGA, silenciosas y sin emisiones. Hasta 1.000 kg y 3,2 m de elevación. Para fábricas, depósitos y expedición.",
 }
 
@@ -543,7 +543,7 @@ PAGE = """<!DOCTYPE html>
               <option>Tega Crane — Puentes grúa</option><option>Power Lift — Aparejos a cable</option>
               <option>Ultra Lift — Alta capacidad</option><option>Anti Explosivo</option>
               <option>Tega Chain — Aparejos a cadena</option><option>Tega Kit — Componentes</option>
-              <option>Radiolift — Control inalámbrico</option><option>MoviCar — Apiladoras</option>
+              <option>Radio Lift — Control inalámbrico</option><option>MoviCar — Apiladoras</option>
               <option>Tega Service — Mantenimiento</option><option>Repuestos</option><option>Consulta general</option>
             </select>
           </div>
@@ -594,7 +594,7 @@ PAGE = """<!DOCTYPE html>
           <li><a href="../productos/anti-explosivo.html">Anti Explosivo</a></li>
           <li><a href="../productos/tega-chain.html">Tega Chain</a></li>
           <li><a href="../productos/tega-kit.html">Tega Kit</a></li>
-          <li><a href="../productos/radiolift.html">Radiolift / MoviCar</a></li>
+          <li><a href="../productos/radiolift.html">Radio Lift / MoviCar</a></li>
         </ul>
       </div>
       <div>
