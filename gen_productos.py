@@ -68,7 +68,7 @@ TXT = {
         "nav.products":"Productos","nav.industries":"Industrias","nav.services":"Servicios",
         "nav.history":"Quiénes Somos","nav.contact":"Contacto","nav.requestConsult":"Solicitar consulta",
         "crumb.home":"Inicio","crumb.products":"Productos",
-        "back":"← Volver a productos","cta.quote":"Solicitar cotización","cta.contact":"Contactar a un especialista",
+        "back":"← Volver a productos","cta.quote":"Solicitar consulta","cta.contact":"Solicitar consulta",
         "lbl.caps":"Características principales","lbl.configs":"Configuraciones disponibles",
         "lbl.diffs":"Diferenciadores clave","lbl.sectors":"Sectores de aplicación",
         "lbl.components":"Componentes antideflagrantes","lbl.norms":"Normas y certificaciones",
@@ -115,7 +115,7 @@ TXT = {
         "nav.products":"Products","nav.industries":"Industries","nav.services":"Services",
         "nav.history":"About Us","nav.contact":"Contact","nav.requestConsult":"Request a consultation",
         "crumb.home":"Home","crumb.products":"Products",
-        "back":"← Back to products","cta.quote":"Request a quote","cta.contact":"Talk to a specialist",
+        "back":"← Back to products","cta.quote":"Request a consultation","cta.contact":"Request a consultation",
         "lbl.caps":"Key specifications","lbl.configs":"Available configurations",
         "lbl.diffs":"Key differentiators","lbl.sectors":"Application sectors",
         "lbl.components":"Explosion-proof components","lbl.norms":"Standards & certifications",
@@ -162,7 +162,7 @@ TXT = {
         "nav.products":"Produtos","nav.industries":"Indústrias","nav.services":"Serviços",
         "nav.history":"Quem Somos","nav.contact":"Contato","nav.requestConsult":"Solicitar consulta",
         "crumb.home":"Início","crumb.products":"Produtos",
-        "back":"← Voltar aos produtos","cta.quote":"Solicitar cotação","cta.contact":"Falar com um especialista",
+        "back":"← Voltar aos produtos","cta.quote":"Solicitar consulta","cta.contact":"Solicitar consulta",
         "lbl.caps":"Características principais","lbl.configs":"Configurações disponíveis",
         "lbl.diffs":"Diferenciais-chave","lbl.sectors":"Setores de aplicação",
         "lbl.components":"Componentes antiexplosão","lbl.norms":"Normas e certificações",
@@ -274,7 +274,7 @@ section.blk{padding:18px 0}
 .norm{font-size:12.5px;font-weight:600;padding:7px 13px;border-radius:8px;background:#EEF3F8;border:1px solid #D4E0EC;color:#2c4a66}
 .norm.red{background:#FBF1EC;border-color:#E2B4A6;color:#8a3a22}
 /* band */
-.band{margin:56px 0 0;background:var(--dark);color:#fff;border-radius:22px;padding:48px 52px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.band{margin:56px 0 44px;background:var(--dark);color:#fff;border-radius:22px;padding:48px 52px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
 .band h2{font-family:var(--display);font-weight:800;font-size:clamp(22px,2.6vw,30px);letter-spacing:-0.01em;line-height:1.15}
 .band p{color:rgba(255,255,255,0.62);font-size:16px;margin-top:10px;max-width:520px}
 /* ── CONTACTO (formulario, igual que el landing) ── */
@@ -474,7 +474,7 @@ PAGE = """<!DOCTYPE html>
       </div>
       <p class="h-lead" id="d-desc" data-dyn="desc">{desc_body}</p>
       <div class="h-actions">
-        <a class="btn-primary" href="../index.html#contacto" data-i18n="cta.quote">Solicitar cotización</a>
+        <a class="btn-primary" href="../index.html#contacto" data-i18n="cta.quote">Solicitar consulta</a>
         <a class="btn-ghost" href="../index.html#productos" data-i18n="back">← Volver a productos</a>
       </div>
     </div>
@@ -490,7 +490,7 @@ PAGE = """<!DOCTYPE html>
       <h2 data-i18n="band.title">¿Necesita asesoramiento sobre este equipo?</h2>
       <p data-i18n="band.text">Nuestro equipo técnico lo ayuda a definir la solución exacta para su operación.</p>
     </div>
-    <a class="btn-primary" href="#contacto" data-i18n="cta.contact">Contactar a un especialista</a>
+    <a class="btn-primary" href="#contacto" data-i18n="cta.contact">Solicitar consulta</a>
   </div>
 </div>
 
