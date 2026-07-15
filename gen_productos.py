@@ -20,14 +20,14 @@ PRODATA = json.loads(m.group(1))
 # ── 2. Metadatos por producto (orden = grid del landing) ──
 # key, slug, nombre, imagen, logo submarca, tipo, n
 PRODUCTS = [
-    ("crane",     "tega-crane",     "Tega Crane",     "crane",     "struct",  1),
-    ("powerlift", "power-lift",     "Power Lift",     "powerlift", "aparejo", 2),
-    ("ultralift", "ultra-lift",     "Ultra Lift",     "powerlift", "aparejo", 3),
-    ("antiex",    "anti-explosivo", "Anti Explosivo", "antiex",    "special", 4),
-    ("chain",     "tega-chain",     "Tega Chain",     "chain",     "aparejo", 5),
-    ("kit",       "tega-kit",       "Tega Kit",       "kit",       "access",  6),
-    ("radio",     "radiolift",      "Radio Lift",      "radio",     "access",  7),
-    ("movicar",   "movicar",        "MoviCar",        "movicar",   "special", 8),
+    ("crane",     "puentegrua",     "Tega Crane",     "crane",     "struct",  1),
+    ("powerlift", "aparejoacable",     "Power Lift",     "powerlift", "aparejo", 2),
+    ("ultralift", "aparejoaltacapacidad",     "Ultra Lift",     "powerlift", "aparejo", 3),
+    ("antiex",    "antiexplosivo", "Anti Explosivo", "antiex",    "special", 4),
+    ("chain",     "aparejoacadena",     "Tega Chain",     "chain",     "aparejo", 5),
+    ("kit",       "kitpuentegrua",       "Tega Kit",       "kit",       "access",  6),
+    ("radio",     "radiocomando",      "Radio Lift",      "radio",     "access",  7),
+    ("movicar",   "apiladora",        "MoviCar",        "movicar",   "special", 8),
 ]
 
 # Etiqueta de categoria (numero / texto) por idioma
@@ -448,15 +448,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <nav>
   <div class="navin">
-    <a class="nav-logo" href="../index.html" aria-label="TEGA">
+    <a class="nav-logo" href="/" aria-label="TEGA">
       <img src="../assets/tega-logo-header.png" alt="TEGA — Aparejos, Grúas y Apiladoras S.A." onerror="this.src='../assets/tega-logo.png'">
     </a>
     <div class="nav-links">
-      <a href="../index.html#productos" data-i18n="nav.products">Productos</a>
-      <a href="../index.html#industrias" data-i18n="nav.industries">Industrias</a>
-      <a href="../index.html#servicios" data-i18n="nav.services">Servicios</a>
+      <a href="/#productos" data-i18n="nav.products">Productos</a>
+      <a href="/#industrias" data-i18n="nav.industries">Industrias</a>
+      <a href="/#servicios" data-i18n="nav.services">Servicios</a>
       <a href="../quienes-somos.html" data-i18n="nav.history">Quiénes Somos</a>
-      <a href="../index.html#contacto" data-i18n="nav.contact">Contacto</a>
+      <a href="/#contacto" data-i18n="nav.contact">Contacto</a>
     </div>
     <div class="nav-right">
       <div class="nav-lang">
@@ -464,15 +464,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span>/</span><button data-lang="en" onclick="setLang('en')">EN</button>
         <span>/</span><button data-lang="pt" onclick="setLang('pt')">PT</button>
       </div>
-      <a class="btn-primary" href="../index.html#contacto" data-i18n="nav.requestConsult">Solicitar consulta</a>
+      <a class="btn-primary" href="/#contacto" data-i18n="nav.requestConsult">Solicitar consulta</a>
     </div>
   </div>
 </nav>
 
 <div class="wrap">
   <div class="crumb">
-    <a href="../index.html" data-i18n="crumb.home">Inicio</a><span>/</span>
-    <a href="../index.html#productos" data-i18n="crumb.products">Productos</a><span>/</span>
+    <a href="/" data-i18n="crumb.home">Inicio</a><span>/</span>
+    <a href="/#productos" data-i18n="crumb.products">Productos</a><span>/</span>
     <b>{name}</b>
   </div>
 
@@ -486,8 +486,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <p class="h-lead" id="d-desc" data-dyn="desc">{desc_body}</p>
       <div class="h-actions">
-        <a class="btn-primary" href="../index.html#contacto" data-i18n="cta.quote">Solicitar consulta</a>
-        <a class="btn-ghost" href="../index.html#productos" data-i18n="back">← Volver a productos</a>
+        <a class="btn-primary" href="/#contacto" data-i18n="cta.quote">Solicitar consulta</a>
+        <a class="btn-ghost" href="/#productos" data-i18n="back">← Volver a productos</a>
       </div>
     </div>
     <div class="h-img"><img src="../assets/prod/{key}.jpg" alt="{name} — TEGA" loading="eager"></div>
@@ -592,7 +592,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="footer-top">
       <div>
-        <a class="f-logo" href="../index.html" aria-label="TEGA">
+        <a class="f-logo" href="/" aria-label="TEGA">
           <img class="f-logo-img" src="../assets/tega-logo-header.png" alt="TEGA" style="filter:brightness(0) invert(1)">
           <span class="f-logo-sub">Aparejos, Grúas y Apiladoras S.A.</span>
         </a>
@@ -601,31 +601,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div>
         <div class="f-col-title" data-i18n="footer.col.products">Productos</div>
         <ul class="f-links">
-          <li><a href="../productos/tega-crane.html">Tega Crane — Puentes grúa</a></li>
-          <li><a href="../productos/power-lift.html">Power Lift / Ultra Lift</a></li>
-          <li><a href="../productos/anti-explosivo.html">Anti Explosivo</a></li>
-          <li><a href="../productos/tega-chain.html">Tega Chain</a></li>
-          <li><a href="../productos/tega-kit.html">Tega Kit</a></li>
-          <li><a href="../productos/radiolift.html">Radio Lift / MoviCar</a></li>
+          <li><a href="/puentegrua">Tega Crane — Puentes grúa</a></li>
+          <li><a href="/aparejoacable">Power Lift / Ultra Lift</a></li>
+          <li><a href="/antiexplosivo">Anti Explosivo</a></li>
+          <li><a href="/aparejoacadena">Tega Chain</a></li>
+          <li><a href="/kitpuentegrua">Tega Kit</a></li>
+          <li><a href="/radiocomando">Radio Lift / MoviCar</a></li>
         </ul>
       </div>
       <div>
         <div class="f-col-title" data-i18n="footer.col.services">Servicios</div>
         <ul class="f-links">
-          <li><a href="../index.html#servicios" data-i18n="serv.1.t">Mantenimiento preventivo</a></li>
-          <li><a href="../index.html#servicios" data-i18n="serv.2.t">Reparación</a></li>
-          <li><a href="../index.html#servicios" data-i18n="serv.3.t">Revamping</a></li>
-          <li><a href="../index.html#servicios" data-i18n="serv.4.t">Repuestos en stock</a></li>
-          <li><a href="../index.html#servicios" data-i18n="serv.5.t">Consultoría</a></li>
+          <li><a href="/#servicios" data-i18n="serv.1.t">Mantenimiento preventivo</a></li>
+          <li><a href="/#servicios" data-i18n="serv.2.t">Reparación</a></li>
+          <li><a href="/#servicios" data-i18n="serv.3.t">Revamping</a></li>
+          <li><a href="/#servicios" data-i18n="serv.4.t">Repuestos en stock</a></li>
+          <li><a href="/#servicios" data-i18n="serv.5.t">Consultoría</a></li>
         </ul>
       </div>
       <div>
         <div class="f-col-title" data-i18n="footer.col.company">Empresa</div>
         <ul class="f-links">
-          <li><a href="../index.html#empresa" data-i18n="footer.link.about">Por qué nos eligen</a></li>
+          <li><a href="/#empresa" data-i18n="footer.link.about">Por qué nos eligen</a></li>
           <li><a href="../quienes-somos.html" data-i18n="footer.link.history">Historia</a></li>
-          <li><a href="../index.html#industrias" data-i18n="footer.link.industries">Industrias</a></li>
-          <li><a href="../index.html#contacto" data-i18n="footer.link.contact">Contacto</a></li>
+          <li><a href="/#industrias" data-i18n="footer.link.industries">Industrias</a></li>
+          <li><a href="/#contacto" data-i18n="footer.link.contact">Contacto</a></li>
         </ul>
       </div>
     </div>
@@ -772,7 +772,7 @@ for key, slug, name, logo, ptype, n in PRODUCTS:
     cat_map = {lg: CAT[key][lg] for lg in LANGS}
     desc_es = pd["es"]["desc"]
     seo = SEO_DESC[key]
-    canonical = f"{SITE}/productos/{slug}"
+    canonical = f"{SITE}/{slug}"
     ogimage = f"{SITE}/assets/prod/{key}.jpg"
     title = f"{name} — {PTYPE[ptype]['es']} TEGA | Aparejos, Grúas y Apiladoras"
     jsonld = build_jsonld(name, seo, ogimage, CAT[key]["es"])

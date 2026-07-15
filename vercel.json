@@ -1,4 +1,80 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/puentegrua",
+      "destination": "/productos/puentegrua.html"
+    },
+    {
+      "source": "/aparejoacable",
+      "destination": "/productos/aparejoacable.html"
+    },
+    {
+      "source": "/aparejoaltacapacidad",
+      "destination": "/productos/aparejoaltacapacidad.html"
+    },
+    {
+      "source": "/antiexplosivo",
+      "destination": "/productos/antiexplosivo.html"
+    },
+    {
+      "source": "/aparejoacadena",
+      "destination": "/productos/aparejoacadena.html"
+    },
+    {
+      "source": "/kitpuentegrua",
+      "destination": "/productos/kitpuentegrua.html"
+    },
+    {
+      "source": "/radiocomando",
+      "destination": "/productos/radiocomando.html"
+    },
+    {
+      "source": "/apiladora",
+      "destination": "/productos/apiladora.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/productos/tega-crane",
+      "destination": "/puentegrua",
+      "permanent": true
+    },
+    {
+      "source": "/productos/power-lift",
+      "destination": "/aparejoacable",
+      "permanent": true
+    },
+    {
+      "source": "/productos/ultra-lift",
+      "destination": "/aparejoaltacapacidad",
+      "permanent": true
+    },
+    {
+      "source": "/productos/anti-explosivo",
+      "destination": "/antiexplosivo",
+      "permanent": true
+    },
+    {
+      "source": "/productos/tega-chain",
+      "destination": "/aparejoacadena",
+      "permanent": true
+    },
+    {
+      "source": "/productos/tega-kit",
+      "destination": "/kitpuentegrua",
+      "permanent": true
+    },
+    {
+      "source": "/productos/radiolift",
+      "destination": "/radiocomando",
+      "permanent": true
+    },
+    {
+      "source": "/productos/movicar",
+      "destination": "/apiladora",
+      "permanent": true
+    }
+  ]
 }
