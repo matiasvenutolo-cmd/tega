@@ -3,6 +3,159 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/producto.php",
+      "has": [
+        {
+          "type": "query",
+          "key": "productID",
+          "value": "7"
+        }
+      ],
+      "destination": "/puentegrua",
+      "permanent": true
+    },
+    {
+      "source": "/producto.php",
+      "has": [
+        {
+          "type": "query",
+          "key": "productID",
+          "value": "13"
+        }
+      ],
+      "destination": "/aparejoacable",
+      "permanent": true
+    },
+    {
+      "source": "/producto.php",
+      "has": [
+        {
+          "type": "query",
+          "key": "productID",
+          "value": "14"
+        }
+      ],
+      "destination": "/antiexplosivo",
+      "permanent": true
+    },
+    {
+      "source": "/producto.php",
+      "has": [
+        {
+          "type": "query",
+          "key": "productID",
+          "value": "10"
+        }
+      ],
+      "destination": "/aparejoacadena",
+      "permanent": true
+    },
+    {
+      "source": "/producto.php",
+      "has": [
+        {
+          "type": "query",
+          "key": "productID",
+          "value": "9"
+        }
+      ],
+      "destination": "/kitpuentegrua",
+      "permanent": true
+    },
+    {
+      "source": "/producto.php",
+      "has": [
+        {
+          "type": "query",
+          "key": "productID",
+          "value": "6"
+        }
+      ],
+      "destination": "/aparejoaltacapacidad",
+      "permanent": true
+    },
+    {
+      "source": "/producto.php",
+      "has": [
+        {
+          "type": "query",
+          "key": "productID",
+          "value": "12"
+        }
+      ],
+      "destination": "/radiocomando",
+      "permanent": true
+    },
+    {
+      "source": "/producto.php",
+      "has": [
+        {
+          "type": "query",
+          "key": "productID",
+          "value": "8"
+        }
+      ],
+      "destination": "/apiladora",
+      "permanent": true
+    },
+    {
+      "source": "/producto.php",
+      "has": [
+        {
+          "type": "query",
+          "key": "productID",
+          "value": "11"
+        }
+      ],
+      "destination": "/#servicios",
+      "permanent": true
+    },
+    {
+      "source": "/productos.php",
+      "destination": "/#productos",
+      "permanent": true
+    },
+    {
+      "source": "/quienes-somos.php",
+      "destination": "/quienes-somos",
+      "permanent": true
+    },
+    {
+      "source": "/servicios.php",
+      "destination": "/#servicios",
+      "permanent": true
+    },
+    {
+      "source": "/industrias.php",
+      "destination": "/#industrias",
+      "permanent": true
+    },
+    {
+      "source": "/contacto.php",
+      "destination": "/#contacto",
+      "permanent": true
+    },
+    {
+      "source": "/historia.php",
+      "destination": "/quienes-somos",
+      "permanent": true
+    },
+    {
+      "source": "/trayectoria.php",
+      "destination": "/quienes-somos",
+      "permanent": true
+    },
+    {
+      "source": "/evolucion-logo.php",
+      "destination": "/quienes-somos",
+      "permanent": true
+    },
+    {
+      "source": "/folletos.php",
+      "destination": "/quienes-somos",
+      "permanent": true
+    },
+    {
       "source": "/productos/tega-crane",
       "destination": "/puentegrua",
       "permanent": true
