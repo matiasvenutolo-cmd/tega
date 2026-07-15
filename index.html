@@ -2,6 +2,14 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PBJX9PLZ');</script>
+<!-- End Google Tag Manager -->
+<meta name="google-site-verification" content="NWe_gcaCCtJhxZJuzuluxdHMxKg55iVsE78jgdRw-zY">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="assets/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="assets/favicon-512.png">
@@ -552,6 +560,10 @@ footer{background:var(--ink);color:white;padding:72px 56px 32px}
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PBJX9PLZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <!-- NAV -->
 <nav id="mainNav">
@@ -1613,18 +1625,6 @@ document.getElementById('prodPanelClose').addEventListener('click', () => {
 });
 // Las cards de producto navegan a su pagina propia (productos/<slug>.html) via <a href>.
 
-// ── AVISO DE COOKIES ──
-document.addEventListener('DOMContentLoaded',function(){
-  try{ if(localStorage.getItem('tega-cookie-ok')) return; }catch(e){}
-  var bar=document.getElementById('cookieBar');
-  if(!bar) return;
-  bar.classList.remove('hide');
-  document.getElementById('cookieOk').addEventListener('click',function(){
-    bar.classList.add('hide');
-    try{ localStorage.setItem('tega-cookie-ok','1'); }catch(e){}
-  });
-});
-
 // Al llegar desde otra página con #seccion (ej: productos), asegurar que caiga en la sección
 window.addEventListener('load', function(){
   if (location.hash.length > 1) {
@@ -1634,10 +1634,5 @@ window.addEventListener('load', function(){
 });
 </script>
 
-<!-- Aviso de cookies -->
-<div class="cookie-bar hide" id="cookieBar">
-  <p data-i18n-html="cookie.text">Usamos almacenamiento local solo para recordar tu idioma. No usamos cookies de seguimiento. <a href="privacidad.html">Más info</a>.</p>
-  <button id="cookieOk" data-i18n="cookie.ok">Entendido</button>
-</div>
 </body>
 </html>
