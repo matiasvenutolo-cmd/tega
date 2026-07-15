@@ -1,40 +1,6 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [
-    {
-      "source": "/puentegrua",
-      "destination": "/productos/puentegrua.html"
-    },
-    {
-      "source": "/aparejoacable",
-      "destination": "/productos/aparejoacable.html"
-    },
-    {
-      "source": "/aparejoaltacapacidad",
-      "destination": "/productos/aparejoaltacapacidad.html"
-    },
-    {
-      "source": "/antiexplosivo",
-      "destination": "/productos/antiexplosivo.html"
-    },
-    {
-      "source": "/aparejoacadena",
-      "destination": "/productos/aparejoacadena.html"
-    },
-    {
-      "source": "/kitpuentegrua",
-      "destination": "/productos/kitpuentegrua.html"
-    },
-    {
-      "source": "/radiocomando",
-      "destination": "/productos/radiocomando.html"
-    },
-    {
-      "source": "/apiladora",
-      "destination": "/productos/apiladora.html"
-    }
-  ],
   "redirects": [
     {
       "source": "/productos/tega-crane",

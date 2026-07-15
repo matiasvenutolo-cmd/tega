@@ -7,7 +7,7 @@ import json, re, os, html
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC  = os.path.join(ROOT, "index.html")
-OUT  = os.path.join(ROOT, "productos")
+OUT  = ROOT
 SITE = "https://tega.com.ar"  # canonical base (ajustar si cambia el dominio definitivo)
 
 # ── 1. Extraer PRODATA (JSON valido) de index.html ──
@@ -420,9 +420,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta name="google-site-verification" content="NWe_gcaCCtJhxZJuzuluxdHMxKg55iVsE78jgdRw-zY">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="../assets/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" href="../assets/favicon-512.png">
-<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/favicon-512.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <link rel="canonical" href="{canonical}">
@@ -449,7 +449,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <nav>
   <div class="navin">
     <a class="nav-logo" href="/" aria-label="TEGA">
-      <img src="../assets/tega-logo-header.png" alt="TEGA — Aparejos, Grúas y Apiladoras S.A." onerror="this.src='../assets/tega-logo.png'">
+      <img src="assets/tega-logo-header.png" alt="TEGA — Aparejos, Grúas y Apiladoras S.A." onerror="this.src='assets/tega-logo.png'">
     </a>
     <div class="nav-links">
       <a href="/#productos" data-i18n="nav.products">Productos</a>
@@ -482,7 +482,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="h-type" data-i18n="ptype.{ptype}">{ptype_label}</span>
       <div class="h-titlerow">
         <h1>{name}</h1>
-        <img class="h-logo" src="../assets/submarcas/{logo}.png" alt="{name}">
+        <img class="h-logo" src="assets/submarcas/{logo}.png" alt="{name}">
       </div>
       <p class="h-lead" id="d-desc" data-dyn="desc">{desc_body}</p>
       <div class="h-actions">
@@ -490,7 +490,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a class="btn-ghost" href="/#productos" data-i18n="back">← Volver a productos</a>
       </div>
     </div>
-    <div class="h-img"><img src="../assets/prod/{key}.jpg" alt="{name} — TEGA" loading="eager"></div>
+    <div class="h-img"><img src="assets/prod/{key}.jpg" alt="{name} — TEGA" loading="eager"></div>
   </header>
 
   {caps_html}
@@ -593,7 +593,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="footer-top">
       <div>
         <a class="f-logo" href="/" aria-label="TEGA">
-          <img class="f-logo-img" src="../assets/tega-logo-header.png" alt="TEGA" style="filter:brightness(0) invert(1)">
+          <img class="f-logo-img" src="assets/tega-logo-header.png" alt="TEGA" style="filter:brightness(0) invert(1)">
           <span class="f-logo-sub">Aparejos, Grúas y Apiladoras S.A.</span>
         </a>
         <p class="f-desc" data-i18n="footer.desc">Ingeniería de elevación industrial. Fabricación propia desde 1947 en Buenos Aires, Argentina. Stock de repuestos garantizado de por vida.</p>
@@ -632,12 +632,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="footer-bot">
       <span class="f-copy">© 2026 TEGA Aparejos, Grúas y Apiladoras S.A. — Buenos Aires, Argentina. · <a href="../privacidad.html" class="f-priv" data-i18n="footer.privacy">Política de Privacidad</a></span>
       <div class="f-norms">
-        <div class="f-seal"><img src="../assets/norms/iso.jpg" alt="ISO 9001:2015"></div>
-        <div class="f-seal"><img src="../assets/norms/fem.jpg" alt="FEM"></div>
-        <div class="f-seal"><img src="../assets/norms/cmaa.jpg" alt="CMAA"></div>
-        <div class="f-seal"><img src="../assets/norms/iram.jpg" alt="IRAM"></div>
-        <div class="f-seal"><img src="../assets/norms/asme.jpg" alt="ASME"></div>
-        <div class="f-seal"><img src="../assets/norms/ce.jpg" alt="CE"></div>
+        <div class="f-seal"><img src="assets/norms/iso.jpg" alt="ISO 9001:2015"></div>
+        <div class="f-seal"><img src="assets/norms/fem.jpg" alt="FEM"></div>
+        <div class="f-seal"><img src="assets/norms/cmaa.jpg" alt="CMAA"></div>
+        <div class="f-seal"><img src="assets/norms/iram.jpg" alt="IRAM"></div>
+        <div class="f-seal"><img src="assets/norms/asme.jpg" alt="ASME"></div>
+        <div class="f-seal"><img src="assets/norms/ce.jpg" alt="CE"></div>
       </div>
     </div>
     <p class="f-disclaimer" data-i18n="footer.disclaimer">Las especificaciones pueden variar sin previo aviso. Fotos no contractuales.</p>
